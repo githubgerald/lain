@@ -238,6 +238,21 @@ h1, h2, h3, h4, h5, h6 {
     width: calc(100% - 200px);
     height: 200px;
 
+    .fileUploadButton {
+      background: url(/assets/images/mumenupload.png);
+      background-size: cover;
+      background-repeat: no-repeat; 
+      background-position: center; 
+      width: 32px;
+      height: 32px;
+      float: left;
+      margin: 10px 10px;
+    }
+
+    .fileUpload {
+      display: none;
+    }
+
     .inputBox {
         background-color: transparent;
         color: $colour-text-primary;
