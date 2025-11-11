@@ -1,0 +1,322 @@
+/* ===================== 
+       Colour Palette
+   ===================== */
+
+// System
+$colour-primary: #66CCDA;
+$colour-secondary: #0394BB;
+$colour-user: #DD8E32;
+$colour-others: #13801D;
+$colour-admin: #467592;
+$colour-mention: #3a3af8;
+
+// Modes
+$colour-light: #f8f9fa;
+$colour-dark: #343a40;
+$colour-oled: #000000;
+
+// Text
+$colour-text-primary: #646464;
+$colour-text-time: $colour-primary;
+$colour-text-button: #000000;
+
+// System Messages
+$colour-success: #28a745;
+$colour-danger: #dc3545;
+$colour-warning: #ffc107;
+
+/* ===================== 
+        Typography 
+   ===================== */
+
+// Fonts
+@font-face {
+  font-family: 'LoveLetter';
+  src: url('/assets/fonts/LoveLetter.TTF');
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('/assets/fonts/OpenSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'VT323';
+  font-weight: 400;
+  font-style: normal;
+  src: url('/assets/fonts/VT323-Regular.ttf') format('truetype'),
+}
+
+$font-primary: 'LoveLetter';
+$font-secondary: 'OpenSans', sans-serif;
+$font-mono: 'VT323';
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Text Sizes
+$text-sm: 1.125;
+$text-md: 1.5rem;
+$text-lg: 1.725rem;
+
+
+/* ===================== 
+          Layout
+   ===================== */
+
+// Image Sizes
+$img-sm: 64px;
+$img-md: 128px;
+$img-lg: 256px;
+
+// Borders
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-width: 2px;
+$border-colour: $colour-primary;
+
+// Buttons
+$btn-padding-top: 0.5rem;
+$btn-padding-bottom: 1rem;
+$btn-font-size: $text-md;
+$btn-border-radius: $border-radius-md;
+$btn-height: 2.5rem;
+
+// Navbar
+$navbar-height: 60px;
+$navbar-bg: $colour-primary;
+$navbar-text: $colour-text-primary;
+$navbar-padding-top: 0.5rem;
+$navbar-padding-bottom: 1rem;
+
+// Sections
+$section-padding-top: 3rem;
+$section-padding-bottom: 1rem;
+
+// Spacing
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+
+// Shadows
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+// Transitions
+$transition-fast: 150ms ease-in-out;
+$transition-base: 250ms ease-in-out;
+$transition-slow: 350ms ease-in-out;
+
+/* ===================== 
+          Reset
+   ===================== */
+
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+/* ===================== 
+        Global Styles
+   ===================== */
+
+body {
+    text-align: center;
+    background-color: $colour-dark;
+}
+
+p {
+  font-family: $font-secondary;
+  font-size: $text-md;
+}
+
+span {
+    font-family: $font-mono;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font: $font-primary;
+  font-size: $text-md;
+  font-weight: $font-weight-bold;
+}
+
+.navbar {
+    color: $navbar-text;
+    font-family: $font-primary;
+    background-color: $navbar-bg;
+    height: $navbar-height;
+    padding-top: $navbar-padding-top;
+    padding-bottom: $navbar-padding-bottom;
+}
+
+.chatsSection {
+    border: solid $border-width $border-colour;
+    padding-top: $section-padding-top;
+    padding-bottom: $section-padding-bottom;
+    position: fixed;
+    left: 0;
+    top: $navbar-height;
+    bottom: 0;
+    width: 200px;
+    overflow-y: auto;
+
+    .chatsText {
+        font-family: $font-primary;
+    }
+}
+
+.textSection {
+    border: solid $border-width $border-colour;
+    padding-top: $section-padding-top;
+    padding-bottom: $section-padding-bottom;
+    margin-left: 200px;
+    margin-bottom: 200px;
+    width: calc(100% - 200px);
+    height: calc(100vh - $navbar-height - 200px);
+    overflow-y: auto;
+}
+
+.textInputSection {
+    border: solid $border-width $border-colour;
+    position: fixed;
+    left: 200px;
+    right: 0;
+    bottom: 0;
+    width: calc(100% - 200px);
+    height: 200px;
+
+    .inputBox {
+        background-color: transparent;
+        color: $colour-text-primary;
+        font-family: $font-mono;
+        font-size: $text-md;
+        border: none;
+        padding: 10px 10px;
+        width: 75%;
+        float: left;
+        height: 8vh;
+        resize: none;
+        overflow: hidden;
+
+        &:focus {
+            border: none;
+            outline: none;
+            caret-color: $colour-primary;
+
+            &::placeholder {
+                color: transparent;
+            }
+        }
+    }
+
+    .button {
+        background-color: $colour-primary;
+        color: $colour-text-button;
+        font-family: $font-mono;
+        font-size: $btn-font-size;
+        padding: 5px 40px;
+        border: solid 4px $colour-secondary; 
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+
+        &:hover {
+            transition: $transition-slow;
+            background-color: $colour-secondary;
+        }
+    }
+}
+
+.countWrapper {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    
+    .charCount {
+        font-family: $font-mono;
+        font-size: $text-md;
+        color: $colour-primary;
+    }
+}
+
+.userText {
+    color: $colour-user;
+    font: $font-primary;
+    font-size: $text-sm;
+    font-weight: $font-weight-regular;
+}
+
+.othersText {
+    color: $colour-others;
+    font: $font-primary;
+    font-size: $text-sm;
+    font-weight: $font-weight-regular;
+}
+
+.adminText {
+    color: $colour-admin;
+    font: $font-primary;
+    font-size: $text-sm;
+    font-weight: $font-weight-regular;
+}
+
+.mentionText {
+    color: $colour-mention;
+    font: $font-primary;
+    font-size: $text-sm;
+    font-weight: $font-weight-regular;
+}

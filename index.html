@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <title>Lain Chat</title>
+</head>
+<body>
+    <nav class="navbar">
+        navbar
+    </nav>
+
+    <div class="chatsSection">
+        <p class="chatsText">chats</p>
+    </div>
+
+    <div class="section">
+        <div class="textSection">
+            <div class="pythonScript">
+                <p class="userText"><span>[user]</span> Hello Lain</p>
+                <p class="othersText"><span>[alex]</span> Hello Alex</p>
+                <p class="adminText"><span>[system]</span> Darius here</p>
+                <p class="mentionText"><span>[mention]</span> yo lain waddup</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="textInputSection">
+        <textarea
+        class="inputBox" 
+        id="msgBox" 
+        name="messagebox" 
+        placeholder="Send a message"
+        maxlength="140"
+        ></textarea>
+
+        <input
+        class="button" 
+        id="txtSend"
+        type="submit" 
+        value="Send"
+        >
+
+        <div class="countWrapper">
+            <p class="charCount">
+                <span id="char">0</span> / 140
+            </p>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

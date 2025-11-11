@@ -1,0 +1,227 @@
+/* ===================== 
+       Colour Palette
+   ===================== */
+/* ===================== 
+        Typography 
+   ===================== */
+@font-face {
+  font-family: "LoveLetter";
+  src: url("/assets/fonts/LoveLetter.TTF");
+}
+@font-face {
+  font-family: "OpenSans";
+  src: url("/assets/fonts/OpenSans-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "VT323";
+  font-weight: 400;
+  font-style: normal;
+  src: url("/assets/fonts/VT323-Regular.ttf") format("truetype");
+}
+/* ===================== 
+          Layout
+   ===================== */
+/* ===================== 
+          Reset
+   ===================== */
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+/* ===================== 
+        Global Styles
+   ===================== */
+body {
+  text-align: center;
+  background-color: #343a40;
+}
+
+p {
+  font-family: "OpenSans", sans-serif;
+  font-size: 1.5rem;
+}
+
+span {
+  font-family: "VT323";
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font: "LoveLetter";
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.navbar {
+  color: #646464;
+  font-family: "LoveLetter";
+  background-color: #66CCDA;
+  height: 60px;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.chatsSection {
+  border: solid 2px #66CCDA;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+  position: fixed;
+  left: 0;
+  top: 60px;
+  bottom: 0;
+  width: 200px;
+  overflow-y: auto;
+}
+.chatsSection .chatsText {
+  font-family: "LoveLetter";
+}
+
+.textSection {
+  border: solid 2px #66CCDA;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+  margin-left: 200px;
+  margin-bottom: 200px;
+  width: calc(100% - 200px);
+  height: calc(100vh - 60px - 200px);
+  overflow-y: auto;
+}
+
+.textInputSection {
+  border: solid 2px #66CCDA;
+  position: fixed;
+  left: 200px;
+  right: 0;
+  bottom: 0;
+  width: calc(100% - 200px);
+  height: 200px;
+}
+.textInputSection .inputBox {
+  background-color: transparent;
+  color: #646464;
+  font-family: "VT323";
+  font-size: 1.5rem;
+  border: none;
+  padding: 10px 10px;
+  width: 75%;
+  float: left;
+  height: 8vh;
+  resize: none;
+  overflow: hidden;
+}
+.textInputSection .inputBox:focus {
+  border: none;
+  outline: none;
+  caret-color: #66CCDA;
+}
+.textInputSection .inputBox:focus::-moz-placeholder {
+  color: transparent;
+}
+.textInputSection .inputBox:focus::placeholder {
+  color: transparent;
+}
+.textInputSection .button {
+  background-color: #66CCDA;
+  color: #000000;
+  font-family: "VT323";
+  font-size: 1.5rem;
+  padding: 5px 40px;
+  border: solid 4px #0394BB;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+.textInputSection .button:hover {
+  transition: 350ms ease-in-out;
+  background-color: #0394BB;
+}
+
+.countWrapper {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
+.countWrapper .charCount {
+  font-family: "VT323";
+  font-size: 1.5rem;
+  color: #66CCDA;
+}
+
+.userText {
+  color: #DD8E32;
+  font: "LoveLetter";
+  font-size: 1.125;
+  font-weight: 400;
+}
+
+.othersText {
+  color: #13801D;
+  font: "LoveLetter";
+  font-size: 1.125;
+  font-weight: 400;
+}
+
+.adminText {
+  color: #467592;
+  font: "LoveLetter";
+  font-size: 1.125;
+  font-weight: 400;
+}
+
+.mentionText {
+  color: #3a3af8;
+  font: "LoveLetter";
+  font-size: 1.125;
+  font-weight: 400;
+}
