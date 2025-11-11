@@ -148,6 +148,68 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
 }
 
+.messageButtonsWrapper {
+  display: flex;
+  margin-top: -52px;
+  margin-left: 50px;
+  padding: 10px 10px;
+  position: absolute;
+}
+.messageButtonsWrapper .chatButtonWrapper input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.messageButtonsWrapper .chatButtonWrapper label {
+  border-top: solid 4px rgba(102, 204, 218, 0.3137254902);
+  border-right: solid 4px rgba(102, 204, 218, 0.3137254902);
+  border-bottom: solid 3px #66CCDA;
+  border-left: solid 4px rgba(102, 204, 218, 0.3137254902);
+  font-family: "VT323";
+  font-size: 1.725rem;
+  padding: 4px 24px;
+  background-color: transparent;
+  color: #66CCDA;
+}
+.messageButtonsWrapper .chatButtonWrapper input:checked ~ label {
+  border-top: solid 4px #66CCDA;
+  border-right: solid 4px #66CCDA;
+  border-bottom: solid 4px #343a40;
+  border-left: solid 4px #66CCDA;
+  font-family: "VT323";
+  font-size: 1.725rem;
+  padding: 4px 24px;
+  background-color: transparent;
+  color: #66CCDA;
+}
+.messageButtonsWrapper .shareButtonWrapper input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.messageButtonsWrapper .shareButtonWrapper label {
+  border-top: solid 4px rgba(102, 204, 218, 0.3137254902);
+  border-right: solid 4px rgba(102, 204, 218, 0.3137254902);
+  border-bottom: solid 3px #66CCDA;
+  border-left: solid 4px rgba(102, 204, 218, 0.3137254902);
+  font-family: "VT323";
+  font-size: 1.725rem;
+  padding: 4px 24px;
+  background-color: transparent;
+  color: #66CCDA;
+}
+.messageButtonsWrapper .shareButtonWrapper input:checked ~ label {
+  border-top: solid 4px #66CCDA;
+  border-right: solid 4px #66CCDA;
+  border-bottom: solid 4px #343a40;
+  border-left: solid 4px #66CCDA;
+  font-family: "VT323";
+  font-size: 1.725rem;
+  padding: 4px 24px;
+  background-color: transparent;
+  color: #66CCDA;
+}
+
 .textInputSection {
   border: solid 2px #66CCDA;
   position: fixed;

@@ -46,6 +46,33 @@
     </div>
 
     <div class="textInputSection">
+
+        <div class="messageButtonsWrapper">
+            <div class="chatButtonWrapper">
+                <input
+                id="chatBtn"
+                name="chatButton"
+                value="Chat"
+                type="checkbox"
+                checked
+                />
+                <label for="chatBtn">
+                    <span>Chat</span>
+                </label>
+            </div>
+            <div class="shareButtonWrapper">
+                <input
+                id="shareBtn"
+                name="shareButton"
+                value="Share"
+                type="checkbox"
+                />
+                <label for="shareBtn">
+                    <span>Share</span>
+                </label>
+            </div>
+        </div>
+
         <label
         for="fileUpload" 
         class="fileUploadButton"
@@ -57,7 +84,7 @@
         type="file"
         multiple
         accept="image/*"
-        >
+        />
 
         <textarea
         class="inputBox" 
@@ -72,11 +99,11 @@
         id="txtSend"
         type="submit" 
         value="Send"
-        >
+        />
 
         <div class="countWrapper">
             <p class="charCount">
-                <span id="char">0</span> / 140
+                <span id="char">0</span>/140
             </p>
         </div>
     </div>

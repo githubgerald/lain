@@ -5,6 +5,7 @@
 // System
 $colour-primary: #66CCDA;
 $colour-secondary: #0394BB;
+$colour-primary-low-opacity: #66ccda50;
 $colour-user: #DD8E32;
 $colour-others: #13801D;
 $colour-admin: #467592;
@@ -243,6 +244,74 @@ h1, h2, h3, h4, h5, h6 {
       overflow-y: scroll; 
       height: 100%; 
     } 
+}
+
+.messageButtonsWrapper {
+  display: flex;
+  margin-top: -52px;
+  margin-left: 50px;
+  padding: 10px 10px;
+  position: absolute;
+
+  .chatButtonWrapper {
+      input {
+        appearance: none;
+      }
+
+      label {
+        border-top: solid 4px $colour-primary-low-opacity;
+        border-right: solid 4px $colour-primary-low-opacity;
+        border-bottom: solid 3px $colour-primary;
+        border-left: solid 4px $colour-primary-low-opacity;
+        font-family: $font-mono;
+        font-size: $text-lg;
+        padding: 4px 24px;
+        background-color: transparent;
+        color: $colour-primary;
+      }
+
+      input:checked~label {
+        border-top: solid 4px $colour-primary;
+        border-right: solid 4px $colour-primary;
+        border-bottom: solid 4px $colour-dark;
+        border-left: solid 4px $colour-primary;
+        font-family: $font-mono;
+        font-size: $text-lg;
+        padding: 4px 24px;
+        background-color: transparent;
+        color: $colour-primary;
+      }
+  }
+
+  .shareButtonWrapper {
+      input {
+        appearance: none;
+      }
+
+      label {
+        border-top: solid 4px $colour-primary-low-opacity;
+        border-right: solid 4px $colour-primary-low-opacity;
+        border-bottom: solid 3px $colour-primary;
+        border-left: solid 4px $colour-primary-low-opacity;
+        font-family: $font-mono;
+        font-size: $text-lg;
+        padding: 4px 24px;
+        background-color: transparent;
+        color: $colour-primary;
+      }
+
+      input:checked~label {
+        border-top: solid 4px $colour-primary;
+        border-right: solid 4px $colour-primary;
+        border-bottom: solid 4px $colour-dark;
+        border-left: solid 4px $colour-primary;
+        font-family: $font-mono;
+        font-size: $text-lg;
+        padding: 4px 24px;
+        background-color: transparent;
+        color: $colour-primary;
+      }
+    }
 }
 
 .textInputSection {
