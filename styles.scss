@@ -197,9 +197,7 @@ h1, h2, h3, h4, h5, h6 {
     color: $navbar-text;
     font-family: $font-primary;
     background-color: $navbar-bg;
-    height: $navbar-height;
-    padding-top: $navbar-padding-top;
-    padding-bottom: $navbar-padding-bottom;
+    padding: 18px;
 }
 
 .chatsSection {
@@ -220,13 +218,31 @@ h1, h2, h3, h4, h5, h6 {
 
 .textSection {
     border: solid $border-width $border-colour;
-    padding-top: $section-padding-top;
-    padding-bottom: $section-padding-bottom;
+    padding: 10px 0;
     margin-left: 200px;
     margin-bottom: 200px;
     width: calc(100% - 200px);
     height: calc(100vh - $navbar-height - 200px);
     overflow-y: auto;
+
+    
+    ::-webkit-scrollbar {
+        width: 20px;
+        background-color: $colour-primary;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: $colour-primary;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: $colour-dark;
+    }
+
+      .scrollable {
+      overflow-y: scroll; 
+      height: 100%; 
+    } 
 }
 
 .textInputSection {
