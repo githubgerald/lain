@@ -29,3 +29,19 @@ share.addEventListener("change", function() {
         this.disabled = true
     }
 })
+
+// Update current time
+function updateTime() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    
+    const currentTime = `${hours}:${minutes}`;
+    document.getElementById('timeTxt').textContent = currentTime;
+}
+
+// Update the time every minute
+setInterval(updateTime, 60000);
+
+// Initial call to display time immediately
+updateTime()

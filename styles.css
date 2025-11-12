@@ -301,7 +301,7 @@ h1, h2, h3, h4, h5, h6 {
   border-left: solid 8px #66CCDA;
   font-family: "VT323";
   font-size: 1.725rem;
-  padding: 4px 24px;
+  padding: px 24px;
   background-color: transparent;
   color: #66CCDA;
 }
@@ -309,6 +309,7 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  float: left;
 }
 .messageButtonsWrapper .shareButtonWrapper label {
   border-top: solid 8px rgba(102, 204, 218, 0.3137254902);

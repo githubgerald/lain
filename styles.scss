@@ -416,7 +416,7 @@ h1, h2, h3, h4, h5, h6 {
         border-left: solid 8px $colour-primary;
         font-family: $font-mono;
         font-size: $text-lg;
-        padding: 4px 24px;
+        padding: px 24px;
         background-color: transparent;
         color: $colour-primary;
       }
@@ -425,6 +425,7 @@ h1, h2, h3, h4, h5, h6 {
   .shareButtonWrapper {
       input {
         appearance: none;
+        float: left;
       }
 
       label {
