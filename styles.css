@@ -102,6 +102,17 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
+.button {
+  background-color: #66CCDA;
+  color: #000000;
+  font-family: "VT323";
+  font-size: 1.5rem;
+  padding: 5px 40px;
+  margin: 10px 10px;
+  border: solid 4px #0394BB;
+  cursor: pointer;
+}
+
 .navbar {
   color: #646464;
   font-family: "LoveLetter";
@@ -109,8 +120,20 @@ h1, h2, h3, h4, h5, h6 {
   padding: 18px;
 }
 
-.chatsSection {
+.infoSection {
   border: solid 2px #66CCDA;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+  position: fixed;
+  left: 0;
+  top: 60px;
+  bottom: 0;
+  width: 200px;
+  overflow-y: auto;
+}
+
+.chatsSection {
+  border-right: solid 2px #66CCDA;
   padding-top: 3rem;
   padding-bottom: 1rem;
   position: fixed;
@@ -122,10 +145,42 @@ h1, h2, h3, h4, h5, h6 {
 }
 .chatsSection .chatsText {
   font-family: "LoveLetter";
+  display: block;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+.chatsSection .button {
+  background-color: #66CCDA;
+  color: #000000;
+  font-family: "VT323";
+  font-size: 1.5rem;
+  padding: 5px 40px;
+  margin: 10px 10px;
+  border: solid 4px #0394BB;
+  cursor: pointer;
+  left: 10px;
+  top: 10px;
+}
+.chatsSection .button:hover {
+  transition: 350ms ease-in-out;
+  background-color: #0394BB;
+}
+.chatsSection ::-webkit-scrollbar {
+  width: 20px;
+  background-color: #66CCDA;
+}
+.chatsSection ::-webkit-scrollbar-thumb {
+  background-color: #66CCDA;
+}
+.chatsSection ::-webkit-scrollbar-track {
+  background-color: #343a40;
+}
+.chatsSection .scrollable {
+  overflow-y: scroll;
+  height: 100%;
 }
 
 .textSection {
-  border: solid 2px #66CCDA;
   padding: 10px 0;
   margin-left: 200px;
   margin-bottom: 200px;
@@ -150,7 +205,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .messageButtonsWrapper {
   display: flex;
-  margin-top: -52px;
+  margin-top: -56px;
   margin-left: 50px;
   padding: 10px 10px;
   position: absolute;
@@ -161,10 +216,10 @@ h1, h2, h3, h4, h5, h6 {
           appearance: none;
 }
 .messageButtonsWrapper .chatButtonWrapper label {
-  border-top: solid 4px rgba(102, 204, 218, 0.3137254902);
-  border-right: solid 4px rgba(102, 204, 218, 0.3137254902);
-  border-bottom: solid 3px #66CCDA;
-  border-left: solid 4px rgba(102, 204, 218, 0.3137254902);
+  border-top: solid 8px rgba(102, 204, 218, 0.3137254902);
+  border-right: solid 8px rgba(102, 204, 218, 0.3137254902);
+  border-bottom: solid 8px #66CCDA;
+  border-left: solid 8px rgba(102, 204, 218, 0.3137254902);
   font-family: "VT323";
   font-size: 1.725rem;
   padding: 4px 24px;
@@ -172,10 +227,10 @@ h1, h2, h3, h4, h5, h6 {
   color: #66CCDA;
 }
 .messageButtonsWrapper .chatButtonWrapper input:checked ~ label {
-  border-top: solid 4px #66CCDA;
-  border-right: solid 4px #66CCDA;
-  border-bottom: solid 4px #343a40;
-  border-left: solid 4px #66CCDA;
+  border-top: solid 8px #66CCDA;
+  border-right: solid 8px #66CCDA;
+  border-bottom: solid 8px #343a40;
+  border-left: solid 8px #66CCDA;
   font-family: "VT323";
   font-size: 1.725rem;
   padding: 4px 24px;
@@ -188,10 +243,10 @@ h1, h2, h3, h4, h5, h6 {
           appearance: none;
 }
 .messageButtonsWrapper .shareButtonWrapper label {
-  border-top: solid 4px rgba(102, 204, 218, 0.3137254902);
-  border-right: solid 4px rgba(102, 204, 218, 0.3137254902);
-  border-bottom: solid 3px #66CCDA;
-  border-left: solid 4px rgba(102, 204, 218, 0.3137254902);
+  border-top: solid 8px rgba(102, 204, 218, 0.3137254902);
+  border-right: solid 8px rgba(102, 204, 218, 0.3137254902);
+  border-bottom: solid 8px #66CCDA;
+  border-left: solid 8px rgba(102, 204, 218, 0.3137254902);
   font-family: "VT323";
   font-size: 1.725rem;
   padding: 4px 24px;
@@ -199,10 +254,10 @@ h1, h2, h3, h4, h5, h6 {
   color: #66CCDA;
 }
 .messageButtonsWrapper .shareButtonWrapper input:checked ~ label {
-  border-top: solid 4px #66CCDA;
-  border-right: solid 4px #66CCDA;
-  border-bottom: solid 4px #343a40;
-  border-left: solid 4px #66CCDA;
+  border-top: solid 8px #66CCDA;
+  border-right: solid 8px #66CCDA;
+  border-bottom: solid 8px #343a40;
+  border-left: solid 8px #66CCDA;
   font-family: "VT323";
   font-size: 1.725rem;
   padding: 4px 24px;
@@ -211,13 +266,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .textInputSection {
-  border: solid 2px #66CCDA;
+  border-top: solid 8px #66CCDA;
   position: fixed;
   left: 200px;
   right: 0;
   bottom: 0;
   width: calc(100% - 200px);
-  height: 200px;
+  height: 150px;
 }
 .textInputSection .fileUploadButton {
   background: url(/assets/images/mumenupload.png);

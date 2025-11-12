@@ -194,6 +194,17 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: $font-weight-bold;
 }
 
+.button {
+  background-color: $colour-primary;
+  color: $colour-text-button;
+  font-family: $font-mono;
+  font-size: $btn-font-size;
+  padding: 5px 40px;
+  margin: 10px 10px;
+  border: solid 4px $colour-secondary; 
+  cursor: pointer;
+}
+
 .navbar {
     color: $navbar-text;
     font-family: $font-primary;
@@ -201,7 +212,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 18px;
 }
 
-.chatsSection {
+.infoSection {
     border: solid $border-width $border-colour;
     padding-top: $section-padding-top;
     padding-bottom: $section-padding-bottom;
@@ -211,14 +222,63 @@ h1, h2, h3, h4, h5, h6 {
     bottom: 0;
     width: 200px;
     overflow-y: auto;
+}
 
-    .chatsText {
-        font-family: $font-primary;
+.chatsSection {
+    border-right: solid $border-width $border-colour;
+    padding-top: $section-padding-top;
+    padding-bottom: $section-padding-bottom;
+    position: fixed;
+    left: 0;
+    top: $navbar-height;
+    bottom: 0;
+    width: 200px;
+    overflow-y: auto;
+
+        .chatsText {
+            font-family: $font-primary;
+            display: block;
+            text-align: center;
+            padding-bottom: $section-padding-bottom;
+        }
+
+        .button {
+          background-color: $colour-primary;
+          color: $colour-text-button;
+          font-family: $font-mono;
+          font-size: $btn-font-size;
+          padding: 5px 40px;
+          margin: 10px 10px;
+          border: solid 4px $colour-secondary; 
+          cursor: pointer;
+          left: 10px;
+          top: 10px;
+
+        &:hover {
+            transition: $transition-slow;
+            background-color: $colour-secondary;
+        }
     }
+    ::-webkit-scrollbar {
+        width: 20px;
+        background-color: $colour-primary;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: $colour-primary;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: $colour-dark;
+    }
+
+      .scrollable {
+      overflow-y: scroll; 
+      height: 100%; 
+    } 
 }
 
 .textSection {
-    border: solid $border-width $border-colour;
     padding: 10px 0;
     margin-left: 200px;
     margin-bottom: 200px;
@@ -226,7 +286,6 @@ h1, h2, h3, h4, h5, h6 {
     height: calc(100vh - $navbar-height - 200px);
     overflow-y: auto;
 
-    
     ::-webkit-scrollbar {
         width: 20px;
         background-color: $colour-primary;
@@ -248,7 +307,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .messageButtonsWrapper {
   display: flex;
-  margin-top: -52px;
+  margin-top: -56px;
   margin-left: 50px;
   padding: 10px 10px;
   position: absolute;
@@ -259,10 +318,10 @@ h1, h2, h3, h4, h5, h6 {
       }
 
       label {
-        border-top: solid 4px $colour-primary-low-opacity;
-        border-right: solid 4px $colour-primary-low-opacity;
-        border-bottom: solid 3px $colour-primary;
-        border-left: solid 4px $colour-primary-low-opacity;
+        border-top: solid 8px $colour-primary-low-opacity;
+        border-right: solid 8px $colour-primary-low-opacity;
+        border-bottom: solid 8px $colour-primary;
+        border-left: solid 8px $colour-primary-low-opacity;
         font-family: $font-mono;
         font-size: $text-lg;
         padding: 4px 24px;
@@ -271,10 +330,10 @@ h1, h2, h3, h4, h5, h6 {
       }
 
       input:checked~label {
-        border-top: solid 4px $colour-primary;
-        border-right: solid 4px $colour-primary;
-        border-bottom: solid 4px $colour-dark;
-        border-left: solid 4px $colour-primary;
+        border-top: solid 8px $colour-primary;
+        border-right: solid 8px $colour-primary;
+        border-bottom: solid 8px $colour-dark;
+        border-left: solid 8px $colour-primary;
         font-family: $font-mono;
         font-size: $text-lg;
         padding: 4px 24px;
@@ -289,10 +348,10 @@ h1, h2, h3, h4, h5, h6 {
       }
 
       label {
-        border-top: solid 4px $colour-primary-low-opacity;
-        border-right: solid 4px $colour-primary-low-opacity;
-        border-bottom: solid 3px $colour-primary;
-        border-left: solid 4px $colour-primary-low-opacity;
+        border-top: solid 8px $colour-primary-low-opacity;
+        border-right: solid 8px $colour-primary-low-opacity;
+        border-bottom: solid 8px $colour-primary;
+        border-left: solid 8px $colour-primary-low-opacity;
         font-family: $font-mono;
         font-size: $text-lg;
         padding: 4px 24px;
@@ -301,10 +360,10 @@ h1, h2, h3, h4, h5, h6 {
       }
 
       input:checked~label {
-        border-top: solid 4px $colour-primary;
-        border-right: solid 4px $colour-primary;
-        border-bottom: solid 4px $colour-dark;
-        border-left: solid 4px $colour-primary;
+        border-top: solid 8px $colour-primary;
+        border-right: solid 8px $colour-primary;
+        border-bottom: solid 8px $colour-dark;
+        border-left: solid 8px $colour-primary;
         font-family: $font-mono;
         font-size: $text-lg;
         padding: 4px 24px;
@@ -315,13 +374,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .textInputSection {
-    border: solid $border-width $border-colour;
+    border-top: solid 8px $border-colour;
     position: fixed;
     left: 200px;
     right: 0;
     bottom: 0;
     width: calc(100% - 200px);
-    height: 200px;
+    height: 150px;
 
     .fileUploadButton {
       background: url(/assets/images/mumenupload.png);
