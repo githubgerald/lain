@@ -66,6 +66,9 @@ $text-lg: 1.725rem;
           Layout
    ===================== */
 
+$grid-chats-width: 200px;
+$grid-input-height: 150px;
+
 // Image Sizes
 $img-sm: 64px;
 $img-md: 128px;
@@ -205,34 +208,107 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
 }
 
+.parent {
+    display: grid;
+    grid-template-columns: $grid-chats-width repeat(4, 1fr);
+    grid-template-rows: $navbar-height 50px repeat(3, 1fr) $grid-input-height;
+    height: 100vh;
+    width: 100vw;
+    gap: 0;
+}
+
 .navbar {
+    grid-column: span 5 / span 5;
+    grid-column-start: 1;
+    grid-row-start: 1;
     color: $navbar-text;
     font-family: $font-primary;
     background-color: $navbar-bg;
     padding: 18px;
+    display: flex;
+    align-items: center;
 }
 
-.infoSection {
-    border: solid $border-width $border-colour;
-    padding-top: $section-padding-top;
-    padding-bottom: $section-padding-bottom;
-    position: fixed;
-    left: 0;
-    top: $navbar-height;
-    bottom: 0;
-    width: 200px;
-    overflow-y: auto;
+.topBar {
+    grid-column: span 5 / span 5;
+    grid-column-start: 1;
+    grid-row-start: 2;
+    border-bottom: solid $border-width $border-colour;
+    overflow-y: hidden;
+    display: grid;
+    grid-template-columns: $grid-chats-width $grid-chats-width 1fr;
+    gap: 0;
+    align-items: center;
+    font-size: $text-lg;
+
+    .topBarProfile {
+        border-right: solid $border-width $border-colour;
+        padding: 5px 0;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        gap: 10px;
+
+        .pfpImage {
+          border-radius: 50px;
+          background: url(/assets/images/ado.jpg);
+          background-size: cover;
+          background-repeat: no-repeat; 
+          background-position: center; 
+          width: 32px;
+          height: 32px;
+          margin: 0px 10px;
+          cursor: pointer;
+        }
+
+        .pfp {
+          display: none;
+        }
+
+        .settingsImage {
+          background: url(/assets/images/settings.svg);
+          background-size: cover;
+          background-repeat: no-repeat; 
+          background-position: center; 
+          width: 32px;
+          height: 32px;
+          cursor: pointer;
+        }
+
+        .settings {
+          display: none;
+        }
+    }
+
+    .topBarChannel {
+      border-right: solid $border-width $border-colour;
+      white-space: nowrap;
+      margin-left: 10px;
+      text-align: left;
+      padding: 5px 0;
+
+      span{
+        padding-left: 20px;
+        border-left: solid $border-width $border-colour;
+        color: $colour-text-primary;
+      }
+    }
+
+    .topBarTime {
+      color: $colour-primary;
+      margin-left: 10px;
+      text-align: left;
+      padding: 5px 0;
+    }
 }
 
 .chatsSection {
+    grid-row: span 4 / span 4;
+    grid-column-start: 1;
+    grid-row-start: 3;
+    padding: 10px 0;
     border-right: solid $border-width $border-colour;
-    padding-top: $section-padding-top;
     padding-bottom: $section-padding-bottom;
-    position: fixed;
-    left: 0;
-    top: $navbar-height;
-    bottom: 0;
-    width: 200px;
     overflow-y: auto;
 
         .chatsText {
@@ -259,6 +335,7 @@ h1, h2, h3, h4, h5, h6 {
             background-color: $colour-secondary;
         }
     }
+
     ::-webkit-scrollbar {
         width: 20px;
         background-color: $colour-primary;
@@ -279,11 +356,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .textSection {
+    grid-column: span 4 / span 4;
+    grid-row: span 3 / span 3;
+    grid-column-start: 2;
+    grid-row-start: 3;
     padding: 10px 0;
-    margin-left: 200px;
-    margin-bottom: 200px;
-    width: calc(100% - 200px);
-    height: calc(100vh - $navbar-height - 200px);
+    width: 100%;
+    height: 100%;
     overflow-y: auto;
 
     ::-webkit-scrollbar {
@@ -327,6 +406,7 @@ h1, h2, h3, h4, h5, h6 {
         padding: 4px 24px;
         background-color: transparent;
         color: $colour-primary;
+        cursor: pointer;
       }
 
       input:checked~label {
@@ -357,6 +437,7 @@ h1, h2, h3, h4, h5, h6 {
         padding: 4px 24px;
         background-color: transparent;
         color: $colour-primary;
+        cursor: pointer;
       }
 
       input:checked~label {
@@ -374,13 +455,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .textInputSection {
+    grid-column: span 4 / span 4;
+    grid-column-start: 2;
+    grid-row-start: 6;
+    margin-left: 4px;
     border-top: solid 8px $border-colour;
-    position: fixed;
-    left: 200px;
-    right: 0;
-    bottom: 0;
-    width: calc(100% - 200px);
-    height: 150px;
+    position: relative;
 
     .fileUploadButton {
       background: url(/assets/images/mumenupload.png);
@@ -391,6 +471,7 @@ h1, h2, h3, h4, h5, h6 {
       height: 32px;
       float: left;
       margin: 10px 10px;
+      cursor: pointer;
     }
 
     .fileUpload {

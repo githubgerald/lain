@@ -113,34 +113,99 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
 }
 
+.parent {
+  display: grid;
+  grid-template-columns: 200px repeat(4, 1fr);
+  grid-template-rows: 60px 50px repeat(3, 1fr) 150px;
+  height: 100vh;
+  width: 100vw;
+  gap: 0;
+}
+
 .navbar {
+  grid-column: span 5/span 5;
+  grid-column-start: 1;
+  grid-row-start: 1;
   color: #646464;
   font-family: "LoveLetter";
   background-color: #66CCDA;
   padding: 18px;
+  display: flex;
+  align-items: center;
 }
 
-.infoSection {
-  border: solid 2px #66CCDA;
-  padding-top: 3rem;
-  padding-bottom: 1rem;
-  position: fixed;
-  left: 0;
-  top: 60px;
-  bottom: 0;
-  width: 200px;
-  overflow-y: auto;
+.topBar {
+  grid-column: span 5/span 5;
+  grid-column-start: 1;
+  grid-row-start: 2;
+  border-bottom: solid 2px #66CCDA;
+  overflow-y: hidden;
+  display: grid;
+  grid-template-columns: 200px 200px 1fr;
+  gap: 0;
+  align-items: center;
+  font-size: 1.725rem;
+}
+.topBar .topBarProfile {
+  border-right: solid 2px #66CCDA;
+  padding: 5px 0;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 10px;
+}
+.topBar .topBarProfile .pfpImage {
+  border-radius: 50px;
+  background: url(/assets/images/ado.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 32px;
+  height: 32px;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+.topBar .topBarProfile .pfp {
+  display: none;
+}
+.topBar .topBarProfile .settingsImage {
+  background: url(/assets/images/settings.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+.topBar .topBarProfile .settings {
+  display: none;
+}
+.topBar .topBarChannel {
+  border-right: solid 2px #66CCDA;
+  white-space: nowrap;
+  margin-left: 10px;
+  text-align: left;
+  padding: 5px 0;
+}
+.topBar .topBarChannel span {
+  padding-left: 20px;
+  border-left: solid 2px #66CCDA;
+  color: #646464;
+}
+.topBar .topBarTime {
+  color: #66CCDA;
+  margin-left: 10px;
+  text-align: left;
+  padding: 5px 0;
 }
 
 .chatsSection {
+  grid-row: span 4/span 4;
+  grid-column-start: 1;
+  grid-row-start: 3;
+  padding: 10px 0;
   border-right: solid 2px #66CCDA;
-  padding-top: 3rem;
   padding-bottom: 1rem;
-  position: fixed;
-  left: 0;
-  top: 60px;
-  bottom: 0;
-  width: 200px;
   overflow-y: auto;
 }
 .chatsSection .chatsText {
@@ -181,11 +246,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .textSection {
+  grid-column: span 4/span 4;
+  grid-row: span 3/span 3;
+  grid-column-start: 2;
+  grid-row-start: 3;
   padding: 10px 0;
-  margin-left: 200px;
-  margin-bottom: 200px;
-  width: calc(100% - 200px);
-  height: calc(100vh - 60px - 200px);
+  width: 100%;
+  height: 100%;
   overflow-y: auto;
 }
 .textSection ::-webkit-scrollbar {
@@ -225,6 +292,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 4px 24px;
   background-color: transparent;
   color: #66CCDA;
+  cursor: pointer;
 }
 .messageButtonsWrapper .chatButtonWrapper input:checked ~ label {
   border-top: solid 8px #66CCDA;
@@ -252,6 +320,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 4px 24px;
   background-color: transparent;
   color: #66CCDA;
+  cursor: pointer;
 }
 .messageButtonsWrapper .shareButtonWrapper input:checked ~ label {
   border-top: solid 8px #66CCDA;
@@ -266,13 +335,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .textInputSection {
+  grid-column: span 4/span 4;
+  grid-column-start: 2;
+  grid-row-start: 6;
+  margin-left: 4px;
   border-top: solid 8px #66CCDA;
-  position: fixed;
-  left: 200px;
-  right: 0;
-  bottom: 0;
-  width: calc(100% - 200px);
-  height: 150px;
+  position: relative;
 }
 .textInputSection .fileUploadButton {
   background: url(/assets/images/mumenupload.png);
@@ -283,6 +351,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 32px;
   float: left;
   margin: 10px 10px;
+  cursor: pointer;
 }
 .textInputSection .fileUpload {
   display: none;
