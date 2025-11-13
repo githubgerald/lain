@@ -5,7 +5,7 @@ from flask_cors import CORS
 server = Flask(__name__)
 CORS(server)  # https://stackoverflow.com/a/46637194
 
-
+# serverside
 @server.route("/api/v0/chats/<int:chat_id>", methods=["GET"])
 def get_chat(chat_id):
     response = []
@@ -22,9 +22,13 @@ def receive_msg(chat_id):
     chOpen.close()
     return jsonify({"messaged": new_msg}), 201
 
+# clientside
 @server.route("/")
-def index():
+def get_webcli_index():
     return send_from_directory("static", "index.html")
+@server.route("/assets/<asset_type>/<asset_file>", methods=["GET"])
+def get_webcli_assets(asset_type, asset_file):
+    return send_from_directory("assets/"+asset_type, asset_file)
 
 if __name__ == "__main__":
     server.run(debug=False)
