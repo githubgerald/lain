@@ -3,10 +3,8 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import os
 
-HOST=str("127.0.0.1") # ignore
-PORT=int(5010) # ignore
 server = Flask(__name__)
-CORS(server)
+CORS(server) # https://stackoverflow.com/a/46637194
 
 @server.route('/api/chats/<int:chat_id>', methods=['GET'])
 def get_chat(chat_id):
