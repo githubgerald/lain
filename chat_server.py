@@ -1,18 +1,17 @@
 #!/usr/bin/python3
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-import os
 
 server = Flask(__name__)
 CORS(server) # https://stackoverflow.com/a/46637194
 
 @server.route('/api/chats/<int:chat_id>', methods=['GET'])
 def get_chat(chat_id):
-    chOpen = open("./chats/"+str(chat_id)+".txt")
-    chRead = chOpen.read()
-    chOpen.close()
-    response = jsonify({'messages': chRead})
-    return response
+    response = []
+    with open("./chats/"+str(chat_id)+".txt") as file:
+        for line in file:
+            response.append(line)
+    return jsonify({"messages":response})
 
 @server.route('/api/chats/<int:chat_id>', methods=['POST'])
 def receive_msg(chat_id):
