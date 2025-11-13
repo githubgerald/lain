@@ -10,7 +10,7 @@ def get_chat(chat_id):
     response = []
     with open("./chats/"+str(chat_id)+".txt") as file:
         for line in file:
-            response.append(line)
+            response.append(line.rstrip())
     return jsonify({"messages":response})
 
 @server.route('/api/chats/<int:chat_id>', methods=['POST'])
