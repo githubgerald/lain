@@ -1,3 +1,9 @@
+// Settings menu
+function myFunction() {
+  var popup = document.getElementById("settingsMenu");
+  popup.classList.toggle("show");
+}
+
 // Character Count
 
 let area = document.getElementById('msgBox');
@@ -45,3 +51,4 @@ setInterval(updateTime, 60000);
 
 // Initial call to display time immediately
 updateTime()
+

@@ -113,6 +113,170 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
 }
 
+.settingsMenuWrapper {
+  grid-column: span 4/span 4;
+  grid-row: span 3/span 3;
+  grid-column-start: 2;
+  grid-row-start: 3;
+  padding-left: 4px;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+.settingsMenuWrapper ::-webkit-scrollbar {
+  width: 20px;
+  background-color: #66CCDA;
+}
+.settingsMenuWrapper ::-webkit-scrollbar-thumb {
+  background-color: #66CCDA;
+}
+.settingsMenuWrapper ::-webkit-scrollbar-track {
+  background-color: #343a40;
+}
+.settingsMenuWrapper .scrollable {
+  overflow-y: scroll;
+  height: 100%;
+}
+.settingsMenuWrapper .settingsMenu {
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: #555;
+  color: #fff;
+  text-align: left;
+  padding: 1.5rem;
+  position: relative;
+  z-index: 1000;
+  overflow-y: auto;
+}
+.settingsMenuWrapper .settingsMenu form {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+}
+.settingsMenuWrapper .settingsMenu .settingsSection {
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #666;
+}
+.settingsMenuWrapper .settingsMenu .settingsSection:last-of-type {
+  border-bottom: none;
+}
+.settingsMenuWrapper .settingsMenu h2 {
+  color: #66CCDA;
+  font-family: "LoveLetter";
+  font-size: 1.725rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+.settingsMenuWrapper .settingsMenu label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #ddd;
+  font-family: "OpenSans", sans-serif;
+  font-size: 1.125;
+  text-align: left;
+}
+.settingsMenuWrapper .settingsMenu input[type=text],
+.settingsMenuWrapper .settingsMenu input[type=email],
+.settingsMenuWrapper .settingsMenu select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #666;
+  border-radius: 4px;
+  background-color: #444;
+  color: #fff;
+  font-family: "OpenSans", sans-serif;
+}
+.settingsMenuWrapper .settingsMenu input[type=checkbox],
+.settingsMenuWrapper .settingsMenu input[type=radio] {
+  margin-right: 0.5rem;
+}
+.settingsMenuWrapper .settingsMenu .checkboxWrapper,
+.settingsMenuWrapper .settingsMenu .radioWrapper {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+.settingsMenuWrapper .settingsMenu .checkboxWrapper label,
+.settingsMenuWrapper .settingsMenu .radioWrapper label {
+  margin-bottom: 0;
+  display: inline;
+}
+.settingsMenuWrapper .settingsMenu .sliderWrapper {
+  margin-bottom: 1.5rem;
+}
+.settingsMenuWrapper .settingsMenu .sliderWrapper label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.settingsMenuWrapper .settingsMenu .sliderWrapper label .sliderValue {
+  font-weight: 700;
+  color: #66CCDA;
+  font-family: "VT323";
+}
+.settingsMenuWrapper .settingsMenu .sliderWrapper input[type=range] {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+.settingsMenuWrapper .settingsMenu .sliderWrapper .colorPreview {
+  width: 100%;
+  height: 30px;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  border: 2px solid #666;
+}
+.settingsMenuWrapper .settingsMenu input[type=submit],
+.settingsMenuWrapper .settingsMenu .submitButton {
+  background-color: #66CCDA;
+  color: #000000;
+  font-family: "VT323";
+  font-size: 1.5rem;
+  padding: 0.5rem 3rem;
+  margin-top: 1.5rem;
+  border: solid 4px #0394BB;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 250ms ease-in-out;
+}
+.settingsMenuWrapper .settingsMenu input[type=submit]:hover,
+.settingsMenuWrapper .settingsMenu .submitButton:hover {
+  background-color: #0394BB;
+}
+.settingsMenuWrapper .settingsMenu .closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "VT323";
+  font-size: 1.5rem;
+}
+.settingsMenuWrapper .settingsMenu .closeButton:hover {
+  background-color: darkblue;
+}
+.settingsMenuWrapper .show {
+  visibility: visible;
+  animation: fadeIn 1s;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .parent {
   display: grid;
   grid-template-columns: 200px repeat(4, 1fr);
@@ -254,6 +418,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   overflow-y: auto;
+  padding: 50px;
 }
 .textSection ::-webkit-scrollbar {
   width: 20px;
@@ -268,6 +433,9 @@ h1, h2, h3, h4, h5, h6 {
 .textSection .scrollable {
   overflow-y: scroll;
   height: 100%;
+}
+.textSection .scrollable .pythonScript {
+  float: left;
 }
 
 .messageButtonsWrapper {
