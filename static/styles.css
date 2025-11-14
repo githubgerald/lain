@@ -108,9 +108,14 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "VT323";
   font-size: 1.5rem;
   padding: 5px 40px;
-  margin: 10px 10px;
   border: solid 4px #0394BB;
   cursor: pointer;
+  right: 10px;
+  bottom: 10px;
+}
+.button:hover {
+  transition: 350ms ease-in-out;
+  background-color: #0394BB;
 }
 
 .settingsMenuWrapper {
@@ -379,20 +384,9 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 1rem;
 }
 .chatsSection .button {
-  background-color: #66CCDA;
-  color: #000000;
-  font-family: "VT323";
-  font-size: 1.5rem;
   padding: 5px 40px;
   margin: 10px 10px;
-  border: solid 4px #0394BB;
-  cursor: pointer;
-  left: 10px;
-  top: 10px;
-}
-.chatsSection .button:hover {
-  transition: 350ms ease-in-out;
-  background-color: #0394BB;
+  position: inherit;
 }
 .chatsSection ::-webkit-scrollbar {
   width: 20px;
@@ -550,20 +544,7 @@ h1, h2, h3, h4, h5, h6 {
   color: transparent;
 }
 .textInputSection .button {
-  background-color: #66CCDA;
-  color: #000000;
-  font-family: "VT323";
-  font-size: 1.5rem;
-  padding: 5px 40px;
-  border: solid 4px #0394BB;
-  cursor: pointer;
   position: absolute;
-  right: 10px;
-  bottom: 10px;
-}
-.textInputSection .button:hover {
-  transition: 350ms ease-in-out;
-  background-color: #0394BB;
 }
 
 .countWrapper {

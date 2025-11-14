@@ -198,14 +198,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .button {
-  background-color: $colour-primary;
-  color: $colour-text-button;
-  font-family: $font-mono;
-  font-size: $btn-font-size;
-  padding: 5px 40px;
-  margin: 10px 10px;
-  border: solid 4px $colour-secondary; 
-  cursor: pointer;
+    background-color: $colour-primary;
+    color: $colour-text-button;
+    font-family: $font-mono;
+    font-size: $btn-font-size;
+    padding: 5px 40px;
+    border: solid 4px $colour-secondary; 
+    cursor: pointer;
+    right: 10px;
+    bottom: 10px;
+
+    &:hover {
+        transition: $transition-slow;
+        background-color: $colour-secondary;
+    }
 }
 
 .settingsMenuWrapper {
@@ -508,22 +514,10 @@ h1, h2, h3, h4, h5, h6 {
         }
 
         .button {
-          background-color: $colour-primary;
-          color: $colour-text-button;
-          font-family: $font-mono;
-          font-size: $btn-font-size;
           padding: 5px 40px;
           margin: 10px 10px;
-          border: solid 4px $colour-secondary; 
-          cursor: pointer;
-          left: 10px;
-          top: 10px;
-
-        &:hover {
-            transition: $transition-slow;
-            background-color: $colour-secondary;
+          position: inherit;
         }
-    }
 
     ::-webkit-scrollbar {
         width: 20px;
@@ -699,21 +693,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .button {
-        background-color: $colour-primary;
-        color: $colour-text-button;
-        font-family: $font-mono;
-        font-size: $btn-font-size;
-        padding: 5px 40px;
-        border: solid 4px $colour-secondary; 
-        cursor: pointer;
         position: absolute;
-        right: 10px;
-        bottom: 10px;
-
-        &:hover {
-            transition: $transition-slow;
-            background-color: $colour-secondary;
-        }
     }
 }
 
