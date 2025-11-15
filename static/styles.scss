@@ -241,37 +241,51 @@ h6 {
   }
 }
 
-.demo-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
-    padding: 2rem;
-}
-
 .media-wrapper {
+    display: block;
+    margin: $spacing-sm 0;
+    width: fit-content;
+    max-width: 100%;
+    grid-column: 4;
     position: relative;
-    margin: $spacing-lg auto;
-    max-width: 70vw;
-    max-height: 70vh;
     
     // Let images determine their own size within constraints
     &[data-media-type="image"] {
-        width: auto;
+        width: 50%;
         height: auto;
         
         .media-container {
-            width: auto;
+            width: 50%;
             height: auto;
-            max-width: 70vw;
+            max-width: min(500px, 70vw);
             max-height: 70vh;
         }
         
         .media-content {
             width: auto;
             height: auto;
-            max-width: 70vw;
+            max-width: 100%;
             max-height: 70vh;
+        }
+    }
+    
+    &[data-media-type="video"] {
+        width: 50%;
+        height: auto;
+        
+        .media-container {
+            width: auto;
+            height: auto;
+            max-width: min(600px, 70vw);
+            max-height: 70vh;
+        }
+        
+        .media-content {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 70vh;
+            cursor: pointer;
         }
     }
 }
@@ -301,10 +315,10 @@ h6 {
     bottom: -50%;
     width: 200%;
     height: 200%;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+    background-image: url("/assets/images/crt-scanlines.jpg");
     pointer-events: none;
     animation: grain 0.5s steps(4) infinite;
-    opacity: 0.3;
+    opacity: 0.1;
     mix-blend-mode: overlay;
 }
 
@@ -339,12 +353,13 @@ h6 {
     border-bottom-left-radius: $border-radius-md - 2px;
     border-bottom-right-radius: $border-radius-md - 2px;
     overflow: hidden;
+    z-index: 10;
 }
 
 .visualizer-container {
     flex: 1;
     height: 100%;
-    background: $colour-primary;
+    background: $colour-oled;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -354,6 +369,7 @@ h6 {
 .audio-visualizer {
     height: 30px;
     width: 150px;
+    background: $colour-oled;
 }
 
 .volume-container {

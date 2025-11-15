@@ -4,7 +4,7 @@ function myFunction() {
   popup.classList.toggle("show");
 }
 
-/* // Media Wrapper functionality
+// Media Wrapper functionality
 class MediaWrapper {
     constructor(element) {
         this.wrapper = element;
@@ -21,7 +21,6 @@ class MediaWrapper {
 
     initImage() {
         // Images will naturally size themselves within the max constraints
-        // No additional processing needed due to CSS handling
         this.mediaContent.addEventListener('load', () => {
             console.log('Image loaded:', this.mediaContent.src);
         });
@@ -34,29 +33,47 @@ class MediaWrapper {
         this.volumeIndicator = this.wrapper.querySelector('.volume-indicator');
         this.canvas = this.wrapper.querySelector('.audio-visualizer');
         this.canvasCtx = this.canvas.getContext('2d');
+        this.previousVolume = 50; // Store previous volume for unmute
 
         // Set initial volume
         this.video.volume = this.volume / 100;
         this.updateVolumeIndicator();
 
+        // Click video to play/pause (not on controls)
+        this.video.addEventListener('click', (e) => {
+            this.togglePlayPause();
+        });
+
+        // Prevent controls from triggering video play/pause
+        this.controls.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
         // Volume button click
-        this.volumeButton.addEventListener('click', () => this.toggleMute());
+        this.volumeButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.toggleMute();
+        });
 
         // Scroll to change volume
         this.wrapper.addEventListener('wheel', (e) => this.handleScroll(e), { passive: false });
 
         // Initialize audio visualizer
-        this.video.addEventListener('play', () => this.initAudioContext(), { once: true });
-        
-        // Unmute on interaction
-        this.video.addEventListener('click', () => {
-            if (this.video.muted) {
-                this.video.muted = false;
-                this.volume = 50;
-                this.video.volume = 0.5;
-                this.updateVolumeIndicator();
+        this.video.addEventListener('play', () => {
+            if (!this.audioContext) {
+                this.initAudioContext();
             }
-        });
+        }, { once: true });
+    }
+
+    togglePlayPause() {
+        if (this.video.paused) {
+            this.video.play().catch(err => {
+                console.error('Error playing video:', err);
+            });
+        } else {
+            this.video.pause();
+        }
     }
 
     handleScroll(e) {
@@ -66,16 +83,24 @@ class MediaWrapper {
         const delta = e.deltaY > 0 ? -5 : 5;
         this.volume = Math.max(0, Math.min(100, this.volume + delta));
         
+        // If we're scrolling and volume is above 0, save it as previous
+        if (this.volume > 0) {
+            this.previousVolume = this.volume;
+        }
+        
         this.video.volume = this.volume / 100;
         this.video.muted = false;
         this.updateVolumeIndicator();
     }
 
     toggleMute() {
-        if (this.volume === 0) {
-            this.volume = 50;
+        if (this.volume === 0 || this.video.muted) {
+            // Unmute: restore to previous volume
+            this.volume = this.previousVolume;
             this.video.muted = false;
         } else {
+            // Mute: save current volume and set to 0
+            this.previousVolume = this.volume;
             this.volume = 0;
         }
         
@@ -98,7 +123,7 @@ class MediaWrapper {
             
             // Create analyser
             this.analyser = this.audioContext.createAnalyser();
-            this.analyser.fftSize = 256;
+            this.analyser.fftSize = 2048;
             this.bufferLength = this.analyser.frequencyBinCount;
             this.dataArray = new Uint8Array(this.bufferLength);
             
@@ -120,58 +145,38 @@ class MediaWrapper {
         const draw = () => {
             requestAnimationFrame(draw);
             
-            this.analyser.getByteFrequencyData(this.dataArray);
+            this.analyser.getByteTimeDomainData(this.dataArray);
             
-            // Clear canvas with primary color
-            this.canvasCtx.fillStyle = '#66CCDA';
+            // Black background
+            this.canvasCtx.fillStyle = '#000000';
             this.canvasCtx.fillRect(0, 0, this.canvas.width, this.canvas.height);
             
-            // Draw frequency bars
-            const barWidth = (this.canvas.width / this.bufferLength) * 2.5;
+            // White oscillator line
+            this.canvasCtx.lineWidth = 2;
+            this.canvasCtx.strokeStyle = '#FFFFFF';
+            this.canvasCtx.beginPath();
+            
+            const sliceWidth = this.canvas.width / this.bufferLength;
             let x = 0;
             
             for (let i = 0; i < this.bufferLength; i++) {
-                const barHeight = (this.dataArray[i] / 255) * this.canvas.height * 0.8;
+                const v = this.dataArray[i] / 128.0;
+                const y = (v * this.canvas.height) / 2;
                 
-                // Create gradient effect
-                const brightness = 100 + (this.dataArray[i] / 255) * 155;
-                this.canvasCtx.fillStyle = `rgb(${brightness}, 204, 218)`;
+                if (i === 0) {
+                    this.canvasCtx.moveTo(x, y);
+                } else {
+                    this.canvasCtx.lineTo(x, y);
+                }
                 
-                // Draw bar from bottom
-                this.canvasCtx.fillRect(
-                    x, 
-                    this.canvas.height - barHeight, 
-                    barWidth - 1, 
-                    barHeight
-                );
-                
-                x += barWidth;
+                x += sliceWidth;
             }
+            
+            this.canvasCtx.lineTo(this.canvas.width, this.canvas.height / 2);
+            this.canvasCtx.stroke();
         };
         
         draw();
-    }
-
-    calculateDimensions(naturalWidth, naturalHeight) {
-        const maxWidth = window.innerWidth * 0.7;
-        const maxHeight = window.innerHeight * 0.7;
-        
-        let width = naturalWidth;
-        let height = naturalHeight;
-        
-        // Scale down if too wide
-        if (width > maxWidth) {
-            height = (maxWidth / width) * height;
-            width = maxWidth;
-        }
-        
-        // Scale down if too tall
-        if (height > maxHeight) {
-            width = (maxHeight / height) * width;
-            height = maxHeight;
-        }
-        
-        return { width: Math.floor(width), height: Math.floor(height) };
     }
 }
 
@@ -184,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     console.log(`Initialized ${mediaWrappers.length} media wrappers`);
-}); */
+});
 
 // GET request the chatlog
 

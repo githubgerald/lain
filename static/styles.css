@@ -144,35 +144,47 @@ h6 {
   background-color: #0394BB;
 }
 
-.demo-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-  padding: 2rem;
-}
-
 .media-wrapper {
+  display: block;
+  margin: 0.5rem 0;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 100%;
+  grid-column: 4;
   position: relative;
-  margin: 1.5rem auto;
-  max-width: 70vw;
-  max-height: 70vh;
 }
 .media-wrapper[data-media-type=image] {
-  width: auto;
+  width: 50%;
   height: auto;
 }
 .media-wrapper[data-media-type=image] .media-container {
-  width: auto;
+  width: 50%;
   height: auto;
-  max-width: 70vw;
+  max-width: min(500px, 70vw);
   max-height: 70vh;
 }
 .media-wrapper[data-media-type=image] .media-content {
   width: auto;
   height: auto;
-  max-width: 70vw;
+  max-width: 100%;
   max-height: 70vh;
+}
+.media-wrapper[data-media-type=video] {
+  width: 50%;
+  height: auto;
+}
+.media-wrapper[data-media-type=video] .media-container {
+  width: auto;
+  height: auto;
+  max-width: min(600px, 70vw);
+  max-height: 70vh;
+}
+.media-wrapper[data-media-type=video] .media-content {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 70vh;
+  cursor: pointer;
 }
 
 .media-container {
@@ -201,10 +213,10 @@ h6 {
   bottom: -50%;
   width: 200%;
   height: 200%;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+  background-image: url("/assets/images/crt-scanlines.jpg");
   pointer-events: none;
   animation: grain 0.5s steps(4) infinite;
-  opacity: 0.3;
+  opacity: 0.1;
   mix-blend-mode: overlay;
 }
 
@@ -257,12 +269,13 @@ h6 {
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
   overflow: hidden;
+  z-index: 10;
 }
 
 .visualizer-container {
   flex: 1;
   height: 100%;
-  background: #66CCDA;
+  background: #000000;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -272,6 +285,7 @@ h6 {
 .audio-visualizer {
   height: 30px;
   width: 150px;
+  background: #000000;
 }
 
 .volume-container {
