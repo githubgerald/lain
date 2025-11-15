@@ -4,6 +4,7 @@ function myFunction() {
   popup.classList.toggle("show");
 }
 
+
 // Media Wrapper functionality
 class MediaWrapper {
     constructor(element) {
@@ -35,12 +36,17 @@ class MediaWrapper {
         this.canvasCtx = this.canvas.getContext('2d');
         this.previousVolume = 50; // Store previous volume for unmute
 
-        // Set initial volume
+        // Remove muted attribute and set volume
+        this.video.muted = false;
         this.video.volume = this.volume / 100;
         this.updateVolumeIndicator();
 
+        // Ensure loop is enabled
+        this.video.loop = true;
+
         // Click video to play/pause (not on controls)
         this.video.addEventListener('click', (e) => {
+            e.preventDefault();
             this.togglePlayPause();
         });
 
@@ -58,21 +64,34 @@ class MediaWrapper {
         // Scroll to change volume
         this.wrapper.addEventListener('wheel', (e) => this.handleScroll(e), { passive: false });
 
-        // Initialize audio visualizer
-        this.video.addEventListener('play', () => {
+        // Try to autoplay with sound
+        this.video.play().then(() => {
+            console.log('Video playing with sound');
+            this.initAudioContext();
+        }).catch(err => {
+            console.log('Autoplay with sound failed, user interaction required:', err);
+        });
+
+        // Initialize audio visualizer when playing
+        this.video.addEventListener('playing', () => {
             if (!this.audioContext) {
                 this.initAudioContext();
             }
-        }, { once: true });
+        });
     }
 
     togglePlayPause() {
+        console.log('Toggle play/pause - Current state:', this.video.paused ? 'paused' : 'playing');
+        
         if (this.video.paused) {
-            this.video.play().catch(err => {
+            this.video.play().then(() => {
+                console.log('Video resumed');
+            }).catch(err => {
                 console.error('Error playing video:', err);
             });
         } else {
             this.video.pause();
+            console.log('Video paused');
         }
     }
 
@@ -102,17 +121,30 @@ class MediaWrapper {
             // Mute: save current volume and set to 0
             this.previousVolume = this.volume;
             this.volume = 0;
+            this.video.muted = true;
         }
         
         this.video.volume = this.volume / 100;
         this.updateVolumeIndicator();
+        this.updateVolumeButton();
     }
 
     updateVolumeIndicator() {
         this.volumeIndicator.textContent = `${this.volume}%`;
     }
 
+    updateVolumeButton() {
+        // Change emoji based on mute state
+        if (this.volume === 0 || this.video.muted) {
+            this.volumeButton.textContent = '🔇';
+        } else {
+            this.volumeButton.textContent = '🔊';
+        }
+    }
+
     initAudioContext() {
+        if (this.audioContext) return; // Already initialized
+
         try {
             // Create audio context
             const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -134,6 +166,7 @@ class MediaWrapper {
             // Start visualization
             this.drawVisualizer();
             
+            console.log('Audio context initialized');
         } catch (error) {
             console.error('Error initializing audio context:', error);
         }
