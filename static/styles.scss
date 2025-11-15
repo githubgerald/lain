@@ -234,6 +234,7 @@ h6 {
   cursor: pointer;
   right: 10px;
   bottom: 10px;
+  transition: all 0.5s;
   -webkit-transition: all 0.5s;
 
   &:hover {
@@ -243,8 +244,8 @@ h6 {
   }
 
   &:active {
-    transition: all 0.1s;
-    -webkit-transition: all 0.1s;
+    transition: all 0.01s;
+    -webkit-transition: all 0.01s;
     border: solid 4px $colour-primary;
     border-radius: 50px;
   }
@@ -349,7 +350,7 @@ h6 {
    ===================== */
 
 .video-controls {
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 0;
     right: 0;
@@ -376,8 +377,8 @@ h6 {
 }
 
 .audio-visualizer {
-    height: 30px;
-    width: 150px;
+    height: auto;
+    width: 100%;
     background: $colour-oled;
 }
 
@@ -385,8 +386,7 @@ h6 {
     position: relative;
     display: flex;
     align-items: center;
-    padding: 0 $spacing-md;
-    background: $colour-secondary;
+    background: $colour-primary;
     height: 100%;
 }
 
@@ -400,45 +400,25 @@ h6 {
     align-items: center;
     justify-content: center;
     transition: transform $transition-fast;
-
-    &:hover {
-        transform: scale(1.1);
-    }
-
-    &:active {
-        transform: scale(0.95);
-    }
 }
 
 .volume-indicator {
-    position: absolute;
     right: 100%;
     margin-right: $spacing-sm;
-    background: $colour-oled;
-    color: $colour-primary;
-    padding: 0.25rem 0.75rem;
+    background: $colour-primary;
+    color: $colour-dark;
+    padding: 0 10px;
     border-radius: $border-radius-sm;
     font-family: $font-mono;
-    font-size: $text-sm;
+    font-size: $text-md;
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
     transition: opacity $transition-fast;
 }
 
-.volume-container:hover .volume-indicator {
+.volume-indicator {
     opacity: 1;
-}
-
-@keyframes fadeIn {
-    from { 
-        opacity: 0; 
-        transform: translateX(5px); 
-    }
-    to { 
-        opacity: 1; 
-        transform: translateX(0); 
-    }
 }
 
 .settingsMenuWrapper {
@@ -823,6 +803,7 @@ h6 {
     display: flex;
     flex-direction: column;
     gap: 40px;
+    padding-right: 100px;
 
     .pythonScript {
       display: grid;

@@ -138,6 +138,7 @@ h6 {
   cursor: pointer;
   right: 10px;
   bottom: 10px;
+  transition: all 0.5s;
   -webkit-transition: all 0.5s;
 }
 .button:hover {
@@ -146,8 +147,8 @@ h6 {
   border-radius: 50px;
 }
 .button:active {
-  transition: all 0.1s;
-  -webkit-transition: all 0.1s;
+  transition: all 0.01s;
+  -webkit-transition: all 0.01s;
   border: solid 4px #66CCDA;
   border-radius: 50px;
 }
@@ -264,7 +265,7 @@ h6 {
      Video Controls
    ===================== */
 .video-controls {
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
@@ -291,8 +292,8 @@ h6 {
 }
 
 .audio-visualizer {
-  height: 30px;
-  width: 150px;
+  height: auto;
+  width: 100%;
   background: #000000;
 }
 
@@ -300,8 +301,7 @@ h6 {
   position: relative;
   display: flex;
   align-items: center;
-  padding: 0 1rem;
-  background: #0394BB;
+  background: #66CCDA;
   height: 100%;
 }
 
@@ -316,43 +316,26 @@ h6 {
   justify-content: center;
   transition: transform 150ms ease-in-out;
 }
-.volume-button:hover {
-  transform: scale(1.1);
-}
-.volume-button:active {
-  transform: scale(0.95);
-}
 
 .volume-indicator {
-  position: absolute;
   right: 100%;
   margin-right: 0.5rem;
-  background: #000000;
-  color: #66CCDA;
-  padding: 0.25rem 0.75rem;
+  background: #66CCDA;
+  color: #343a40;
+  padding: 0 10px;
   border-radius: 4px;
   font-family: "VT323";
-  font-size: 1.125rem;
+  font-size: 1.5rem;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
   transition: opacity 150ms ease-in-out;
 }
 
-.volume-container:hover .volume-indicator {
+.volume-indicator {
   opacity: 1;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateX(5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
 .settingsMenuWrapper {
   grid-column: span 4/span 4;
   grid-row: span 3/span 3;
@@ -684,6 +667,7 @@ h6 {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  padding-right: 100px;
 }
 .textSection .scrollable .pythonScript {
   display: grid;
