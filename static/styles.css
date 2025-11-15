@@ -138,10 +138,18 @@ h6 {
   cursor: pointer;
   right: 10px;
   bottom: 10px;
+  -webkit-transition: all 0.5s;
 }
 .button:hover {
   transition: 350ms ease-in-out;
   background-color: #0394BB;
+  border-radius: 50px;
+}
+.button:active {
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  border: solid 4px #66CCDA;
+  border-radius: 50px;
 }
 
 .media-wrapper {
@@ -679,7 +687,7 @@ h6 {
 }
 .textSection .scrollable .pythonScript {
   display: grid;
-  grid-template-columns: 6% 6% 6% 1fr;
+  grid-template-columns: 10% 5% 10% 1fr;
   align-items: baseline;
   width: 100%;
   -moz-column-gap: 0;
@@ -725,7 +733,6 @@ h6 {
   flex-shrink: 0;
   font-size: 1.725rem;
   color: #66CCDA;
-  padding: 0 20px;
 }
 .textSection .scrollable .pythonScript .timeSent .daySent {
   width: 100%;
@@ -736,7 +743,6 @@ h6 {
   color: #f8f9fa;
   font-size: 1.725rem;
   margin: 0;
-  padding: 0 20px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   min-width: 0;

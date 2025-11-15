@@ -234,10 +234,19 @@ h6 {
   cursor: pointer;
   right: 10px;
   bottom: 10px;
+  -webkit-transition: all 0.5s;
 
   &:hover {
     transition: $transition-slow;
     background-color: $colour-secondary;
+    border-radius: 50px;
+  }
+
+  &:active {
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+    border: solid 4px $colour-primary;
+    border-radius: 50px;
   }
 }
 
@@ -817,7 +826,7 @@ h6 {
 
     .pythonScript {
       display: grid;
-      grid-template-columns: 6% 6% 6% 1fr;
+      grid-template-columns: 10% 5% 10% 1fr;
       align-items: baseline;
       width: 100%;
 
@@ -869,7 +878,6 @@ h6 {
         flex-shrink: 0;
         font-size: $text-lg;
         color: $colour-primary;
-        padding: 0 20px;
 
         .daySent {
           width: 100%;
@@ -882,7 +890,6 @@ h6 {
         color: $colour-light;
         font-size: $text-lg;
         margin: 0;
-        padding: 0 20px;
         word-wrap: break-word;
         overflow-wrap: break-word;
         min-width: 0;
