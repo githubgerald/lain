@@ -4,6 +4,16 @@ function myFunction() {
   popup.classList.toggle("show");
 }
 
+// Channel name changer
+function channelNameChanger(event) {
+    event.preventDefault();
+    var channelNameInput = document.getElementById("channelName");
+
+    if(channelNameInput.value.trim() !== "") {
+        channelNameInput.placeholder = channelNameInput.value;
+        channelNameInput.value = "";
+    }
+}
 
 // Media Wrapper functionality
 class MediaWrapper {

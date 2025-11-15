@@ -238,7 +238,16 @@
                 </input>
             </div>
             <div class="topBarChannel">
-                <span>Channel Name</span>
+                <form onsubmit="channelNameChanger(event); return false;">
+                    <input type="submit" id="channelSubmit" style="display: none"/>
+                    <input
+                        class="channelText"
+                        id="channelName"
+                        type="text"
+                        placeholder="Channel Name"
+                        >
+                    </input>
+                </form>
             </div>
             <div class="topBarTime">
                 <span id="timeTxt">time</span>
@@ -370,7 +379,10 @@
                             <span id="userStyling">[user]</span>
                         </span>
                         <span class="gapBetween">-</span>
-                        <span class="timeSent" id="timeSent">18:32</span>
+                        <span class="timeSent" id="timeSent">18:32
+                            <span class="daySent" id="daySent">14/11/2025</span>
+                        </span>
+                        
                         <p class="messageStyling">
                             あああああああああああああああああああ
                             ああああああああああああああああああああああああ
