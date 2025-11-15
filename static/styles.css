@@ -513,12 +513,23 @@ h6 {
   grid-column: span 5/span 5;
   grid-column-start: 1;
   grid-row-start: 1;
-  color: #646464;
-  font-family: "LoveLetter";
   background-color: #66CCDA;
   padding: 18px;
   display: flex;
   align-items: center;
+}
+.navbar .icon {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 38px;
+  height: 32px;
+  margin: 0px 10px;
+  background-image: url(/assets/images/icon.ico);
+}
+.navbar .softwareName {
+  font-family: "LoveLetter";
+  color: #646464;
 }
 
 .topBar {
