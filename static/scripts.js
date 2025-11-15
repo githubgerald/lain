@@ -33,7 +33,6 @@ class MediaWrapper {
     initImage() {
         // Images will naturally size themselves within the max constraints
         this.mediaContent.addEventListener('load', () => {
-            console.log('Image loaded:', this.mediaContent.src);
         });
     }
 
@@ -76,7 +75,6 @@ class MediaWrapper {
 
         // Try to autoplay with sound
         this.video.play().then(() => {
-            console.log('Video playing with sound');
             this.initAudioContext();
         }).catch(err => {
             console.log('Autoplay with sound failed, user interaction required:', err);
@@ -90,18 +88,14 @@ class MediaWrapper {
         });
     }
 
-    togglePlayPause() {
-        console.log('Toggle play/pause - Current state:', this.video.paused ? 'paused' : 'playing');
-        
+    togglePlayPause() {        
         if (this.video.paused) {
             this.video.play().then(() => {
-                console.log('Video resumed');
             }).catch(err => {
                 console.error('Error playing video:', err);
             });
         } else {
             this.video.pause();
-            console.log('Video paused');
         }
     }
 
@@ -140,15 +134,15 @@ class MediaWrapper {
     }
 
     updateVolumeIndicator() {
-        this.volumeIndicator.textContent = `${this.volume}%`;
+        this.volumeIndicator.textContent = `${this.volume}`;
     }
 
     updateVolumeButton() {
         // Change emoji based on mute state
         if (this.volume === 0 || this.video.muted) {
-            this.volumeButton.textContent = '🔇';
+            this.volumeIndicator.textContent = '0';
         } else {
-            this.volumeButton.textContent = '🔊';
+            this.volumeIndicator.textContent = this.volumeIndicator.textContent = `${this.volume}`;
         }
     }
 
@@ -176,9 +170,8 @@ class MediaWrapper {
             // Start visualization
             this.drawVisualizer();
             
-            console.log('Audio context initialized');
-        } catch (error) {
-            console.error('Error initializing audio context:', error);
+            } catch (error) {
+                console.error('Error initializing audio context:', error);
         }
     }
 
@@ -230,8 +223,6 @@ document.addEventListener('DOMContentLoaded', () => {
     mediaWrappers.forEach(wrapper => {
         new MediaWrapper(wrapper);
     });
-    
-    console.log(`Initialized ${mediaWrappers.length} media wrappers`);
 });
 
 // GET request the chatlog

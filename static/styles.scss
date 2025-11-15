@@ -224,6 +224,22 @@ h6 {
   font-weight: $font-weight-bold;
 }
 
+// Scrollbar styles
+
+::-webkit-scrollbar {
+  width: 20px;
+  background-color: $colour-primary;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $colour-primary;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $colour-dark;
+}
+
 .button {
   background-color: $colour-primary;
   color: $colour-text-button;
@@ -354,12 +370,11 @@ h6 {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 40px;
+    height: fit-content;
     background: linear-gradient(to right, $colour-primary 0%, $colour-primary 50%, $colour-secondary 50%, $colour-secondary 100%);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0;
     border-bottom-left-radius: $border-radius-md - 2px;
     border-bottom-right-radius: $border-radius-md - 2px;
     overflow: hidden;
@@ -373,11 +388,11 @@ h6 {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding-left: $spacing-sm;
+    padding: 0 $spacing-sm;
 }
 
 .audio-visualizer {
-    height: auto;
+    height: 35px;
     width: 100%;
     background: $colour-oled;
 }
@@ -385,36 +400,41 @@ h6 {
 .volume-container {
     position: relative;
     display: flex;
-    align-items: center;
     background: $colour-primary;
-    height: 100%;
+    height: fit-content;
+    width: 13%;
+    justify-content: center;
 }
 
 .volume-button {
     background: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
     border: none;
-    font-size: 1.25rem;
+    font-size: $text-md;
     cursor: pointer;
-    padding: 0.25rem;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform $transition-fast;
+    transform: all 0.25s;
+    -webkit-transform: all 0.25s;
+
+  &:hover {
+    .volume-indicator {
+      background-color: $colour-secondary;
+    }
+  }
 }
 
 .volume-indicator {
-    right: 100%;
-    margin-right: $spacing-sm;
-    background: $colour-primary;
-    color: $colour-dark;
-    padding: 0 10px;
-    border-radius: $border-radius-sm;
-    font-family: $font-mono;
-    font-size: $text-md;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity $transition-fast;
+  background: $colour-primary;
+  color: $colour-dark;
+  border-radius: $border-radius-sm;
+  font-family: $font-mono;
+  font-size: $text-md;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity $transition-fast;
 }
 
 .volume-indicator {
@@ -430,19 +450,6 @@ h6 {
   width: 100%;
   height: 100%;
   overflow-y: auto;
-
-  ::-webkit-scrollbar {
-    width: 20px;
-    background-color: $colour-primary;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: $colour-primary;
-  }
-
-  ::-webkit-scrollbar-track {
-    background-color: $colour-dark;
-  }
 
   .scrollable {
     overflow-y: scroll;
@@ -683,6 +690,12 @@ h6 {
       height: 32px;
       margin: 0px 10px;
       cursor: pointer;
+      -webkit-transition: all 0.25s;
+      transition: all 0.25s;
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
 
     .pfp {
@@ -697,6 +710,12 @@ h6 {
       width: 32px;
       height: 32px;
       cursor: pointer;
+      -webkit-transition: all 0.25s;
+      transition: all 0.25s;
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
 
     .settings {
@@ -766,19 +785,6 @@ h6 {
     position: inherit;
   }
 
-  ::-webkit-scrollbar {
-    width: 20px;
-    background-color: $colour-primary;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: $colour-primary;
-  }
-
-  ::-webkit-scrollbar-track {
-    background-color: $colour-dark;
-  }
-
   .scrollable {
     overflow-y: scroll;
     height: 100%;
@@ -795,19 +801,6 @@ h6 {
   height: auto;
   overflow-y: auto;
   padding: 50px;
-
-  ::-webkit-scrollbar {
-    width: 20px;
-    background-color: $colour-primary;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: $colour-primary;
-  }
-
-  ::-webkit-scrollbar-track {
-    background-color: $colour-dark;
-  }
 
   .scrollable {
     overflow-y: scroll;
@@ -830,6 +823,7 @@ h6 {
         font: $font-secondary;
         flex-shrink: 0;
         text-align: left;
+        cursor: pointer;
       }
 
       #userStyling {
