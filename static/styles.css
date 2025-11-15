@@ -25,7 +25,9 @@
           Reset
    ===================== */
 /* 1. Use a more-intuitive box-sizing model */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -48,18 +50,31 @@ body {
 }
 
 /* 6. Improve media defaults */
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
 /* 7. Inherit fonts for form controls */
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
 /* 8. Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 
@@ -68,14 +83,20 @@ p {
   text-wrap: pretty;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 
 /*
   10. Create a root stacking context
 */
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }
 
@@ -96,7 +117,12 @@ span {
   font-family: "VT323";
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font: "LoveLetter";
   font-size: 1.5rem;
   font-weight: 700;
@@ -118,6 +144,193 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #0394BB;
 }
 
+.demo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem;
+}
+
+.media-wrapper {
+  position: relative;
+  margin: 1.5rem auto;
+  max-width: 70vw;
+  max-height: 70vh;
+}
+.media-wrapper[data-media-type=image] {
+  width: auto;
+  height: auto;
+}
+.media-wrapper[data-media-type=image] .media-container {
+  width: auto;
+  height: auto;
+  max-width: 70vw;
+  max-height: 70vh;
+}
+.media-wrapper[data-media-type=image] .media-content {
+  width: auto;
+  height: auto;
+  max-width: 70vw;
+  max-height: 70vh;
+}
+
+.media-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #66CCDA;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000000;
+}
+
+.media-content {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: block;
+}
+
+.grain-overlay {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+  pointer-events: none;
+  animation: grain 0.5s steps(4) infinite;
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+}
+
+@keyframes grain {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -10%);
+  }
+  20% {
+    transform: translate(-15%, 5%);
+  }
+  30% {
+    transform: translate(7%, -25%);
+  }
+  40% {
+    transform: translate(-5%, 25%);
+  }
+  50% {
+    transform: translate(-15%, 10%);
+  }
+  60% {
+    transform: translate(15%, 0%);
+  }
+  70% {
+    transform: translate(0%, 15%);
+  }
+  80% {
+    transform: translate(3%, 35%);
+  }
+  90% {
+    transform: translate(-10%, 10%);
+  }
+}
+/* ===================== 
+     Video Controls
+   ===================== */
+.video-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(to right, #66CCDA 0%, #66CCDA 50%, #0394BB 50%, #0394BB 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  overflow: hidden;
+}
+
+.visualizer-container {
+  flex: 1;
+  height: 100%;
+  background: #66CCDA;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 0.5rem;
+}
+
+.audio-visualizer {
+  height: 30px;
+  width: 150px;
+}
+
+.volume-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  background: #0394BB;
+  height: 100%;
+}
+
+.volume-button {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 150ms ease-in-out;
+}
+.volume-button:hover {
+  transform: scale(1.1);
+}
+.volume-button:active {
+  transform: scale(0.95);
+}
+
+.volume-indicator {
+  position: absolute;
+  right: 100%;
+  margin-right: 0.5rem;
+  background: #000000;
+  color: #66CCDA;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-family: "VT323";
+  font-size: 1.125;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease-in-out;
+}
+
+.volume-container:hover .volume-indicator {
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 .settingsMenuWrapper {
   grid-column: span 4/span 4;
   grid-row: span 3/span 3;
@@ -408,7 +621,6 @@ h1, h2, h3, h4, h5, h6 {
   grid-row: span 3/span 3;
   grid-column-start: 2;
   grid-row-start: 3;
-  padding: 10px 0;
   width: 100%;
   height: 100%;
   overflow-y: auto;
@@ -427,9 +639,70 @@ h1, h2, h3, h4, h5, h6 {
 .textSection .scrollable {
   overflow-y: scroll;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 .textSection .scrollable .pythonScript {
-  float: left;
+  display: grid;
+  grid-template-columns: 8% 2% 8% 1fr;
+  align-items: baseline;
+  width: 100%;
+  -moz-column-gap: 0;
+       column-gap: 0;
+}
+.textSection .scrollable .pythonScript .userName {
+  font-size: 1.725rem;
+  font: "OpenSans", sans-serif;
+  flex-shrink: 0;
+  text-align: left;
+}
+.textSection .scrollable .pythonScript #userStyling {
+  color: #DD8E32;
+  font: "LoveLetter";
+  font-size: 1.725rem;
+  font-weight: 400;
+}
+.textSection .scrollable .pythonScript #othersStyling {
+  color: #13801D;
+  font: "LoveLetter";
+  font-size: 1.725rem;
+  font-weight: 400;
+}
+.textSection .scrollable .pythonScript #adminStyling {
+  color: #467592;
+  font: "LoveLetter";
+  font-size: 1.725rem;
+  font-weight: 400;
+}
+.textSection .scrollable .pythonScript #mentionStyling {
+  color: #3a3af8;
+  font: "LoveLetter";
+  font-size: 1.725rem;
+  font-weight: 400;
+}
+.textSection .scrollable .pythonScript .gapBetween {
+  flex-shrink: 0;
+  font-size: 30px;
+  color: #66CCDA;
+  padding: 0px 20px;
+}
+.textSection .scrollable .pythonScript .timeSent {
+  flex-shrink: 0;
+  font-size: 1.725rem;
+  color: #66CCDA;
+  padding: 0 20px;
+}
+.textSection .scrollable .pythonScript .messageStyling {
+  font: "VT323";
+  color: #f8f9fa;
+  font-size: 1.725rem;
+  margin: 0;
+  padding: 0 20px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
+  text-align: left;
 }
 
 .messageButtonsWrapper {
@@ -455,6 +728,9 @@ h1, h2, h3, h4, h5, h6 {
   background-color: transparent;
   color: #66CCDA;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+       user-select: none;
 }
 .messageButtonsWrapper .chatButtonWrapper input:checked ~ label {
   border-top: solid 8px #66CCDA;
@@ -484,6 +760,9 @@ h1, h2, h3, h4, h5, h6 {
   background-color: transparent;
   color: #66CCDA;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+       user-select: none;
 }
 .messageButtonsWrapper .shareButtonWrapper input:checked ~ label {
   border-top: solid 8px #66CCDA;
@@ -556,32 +835,4 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "VT323";
   font-size: 1.5rem;
   color: #66CCDA;
-}
-
-.userText {
-  color: #DD8E32;
-  font: "LoveLetter";
-  font-size: 1.125;
-  font-weight: 400;
-}
-
-.othersText {
-  color: #13801D;
-  font: "LoveLetter";
-  font-size: 1.125;
-  font-weight: 400;
-}
-
-.adminText {
-  color: #467592;
-  font: "LoveLetter";
-  font-size: 1.125;
-  font-weight: 400;
-}
-
-.mentionText {
-  color: #3a3af8;
-  font: "LoveLetter";
-  font-size: 1.125;
-  font-weight: 400;
 }
