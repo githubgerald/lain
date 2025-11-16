@@ -8,7 +8,7 @@ from datetime import datetime
 server = Flask(__name__)
 CORS(server)
 
-# Helper function to ensure JSON file exists
+# Helper function to create JSON file if it doesn't exist (will tweak later to make it random UID, and able to create on user end)
 def ensure_chat_file(chat_id):
     filepath = f"./chats/{chat_id}.json"
     if not os.path.exists(filepath):
@@ -20,7 +20,6 @@ def ensure_chat_file(chat_id):
 @server.route("/api/v0/chats/<int:chat_id>", methods=["GET"])
 def get_chat(chat_id):
     filepath = ensure_chat_file(chat_id)
-    
     try:
         with open(filepath, 'r') as file:
             data = json.load(file)
@@ -36,15 +35,15 @@ def receive_msg(chat_id):
     # Get the message data from request
     new_msg_data = request.json
     
-    # Add timestamp if not provided
+    # Add timestamp if not provided -- need to make this by default but detect timezone
     if 'timestamp' not in new_msg_data:
         new_msg_data['timestamp'] = datetime.now().isoformat()
     
-    # Add date if not provided
+    # Add date if not provided -- need to make this by default
     if 'date' not in new_msg_data:
         new_msg_data['date'] = datetime.now().strftime("%d/%m/%Y")
     
-    # Add time if not provided
+    # Add time if not provided -- need to make this by default
     if 'time' not in new_msg_data:
         new_msg_data['time'] = datetime.now().strftime("%H:%M")
     
