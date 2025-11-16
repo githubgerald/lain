@@ -34,18 +34,16 @@ def receive_msg(chat_id):
     
     # Get the message data from request
     new_msg_data = request.json
-    
-    # Add timestamp if not provided -- need to make this by default but detect timezone
-    if 'timestamp' not in new_msg_data:
-        new_msg_data['timestamp'] = datetime.now().isoformat()
-    
-    # Add date if not provided -- need to make this by default
-    if 'date' not in new_msg_data:
-        new_msg_data['date'] = datetime.now().strftime("%d/%m/%Y")
-    
-    # Add time if not provided -- need to make this by default
-    if 'time' not in new_msg_data:
-        new_msg_data['time'] = datetime.now().strftime("%H:%M")
+
+    # count number of messages in chatlog (for appending uid)
+    with open(filepath, 'r') as file:
+        data = json.load(file)
+        msg_len = len(data['messages'])
+
+    new_msg_data['uid'] = msg_len
+    new_msg_data['timestamp'] = datetime.now().isoformat()
+    new_msg_data['date'] = datetime.now().strftime("%d/%m/%Y")
+    new_msg_data['time'] = datetime.now().strftime("%H:%M")
     
     try:
         # Read existing messages
