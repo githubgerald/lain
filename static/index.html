@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,11 @@
     <link rel="stylesheet" href="/static/styles.css">
     <title>wirechat</title>
 </head>
+
 <body>
     <div class="parent">
         <div class="imageStyling">
-            <img >
+            <img>
         </div>
 
         <nav class="navbar">
@@ -27,10 +29,10 @@
                         <h2>General</h2>
                         <label for="username">Username:</label>
                         <input type="text" id="username" name="username" placeholder="Enter your username">
-                        
+
                         <label for="email">Email:</label>
                         <input type="email" id="email" name="email" placeholder="Enter your email">
-                        
+
                         <label for="status">Status Message:</label>
                         <input type="text" id="status" name="status" placeholder="What's on your mind?">
                     </section>
@@ -129,13 +131,13 @@
                     <!-- Personalization - Color Sliders -->
                     <section class="settingsSection">
                         <h2>Personalization</h2>
-                        
+
                         <div class="sliderWrapper">
                             <label>
                                 <span>Primary Color</span>
                                 <span class="sliderValue" id="primaryValue">#66CCDA</span>
                             </label>
-                            <input type="range" id="primaryHue" min="0" max="360" value="186" 
+                            <input type="range" id="primaryHue" min="0" max="360" value="186"
                                 oninput="updateColor('primary', this.value)">
                             <div class="colorPreview" id="primaryPreview" style="background-color: #66CCDA;"></div>
                         </div>
@@ -145,7 +147,7 @@
                                 <span>Secondary Color</span>
                                 <span class="sliderValue" id="secondaryValue">#0394BB</span>
                             </label>
-                            <input type="range" id="secondaryHue" min="0" max="360" value="193" 
+                            <input type="range" id="secondaryHue" min="0" max="360" value="193"
                                 oninput="updateColor('secondary', this.value)">
                             <div class="colorPreview" id="secondaryPreview" style="background-color: #0394BB;"></div>
                         </div>
@@ -155,7 +157,7 @@
                                 <span>User Message Color</span>
                                 <span class="sliderValue" id="userValue">#DD8E32</span>
                             </label>
-                            <input type="range" id="userHue" min="0" max="360" value="30" 
+                            <input type="range" id="userHue" min="0" max="360" value="30"
                                 oninput="updateColor('user', this.value)">
                             <div class="colorPreview" id="userPreview" style="background-color: #DD8E32;"></div>
                         </div>
@@ -165,7 +167,7 @@
                                 <span>Others Message Color</span>
                                 <span class="sliderValue" id="othersValue">#13801D</span>
                             </label>
-                            <input type="range" id="othersHue" min="0" max="360" value="124" 
+                            <input type="range" id="othersHue" min="0" max="360" value="124"
                                 oninput="updateColor('others', this.value)">
                             <div class="colorPreview" id="othersPreview" style="background-color: #13801D;"></div>
                         </div>
@@ -210,42 +212,22 @@
                 </form>
             </div>
         </div>
-        
+
         <div class="topBar">
             <div class="topBarProfile">
 
-                <label
-                for="pfpBtn" 
-                class="pfpImage"
-                ></label>
-                <input
-                    class="pfp"
-                    id="pfpBtn"
-                    type="button" 
-                    >
+                <label for="pfpBtn" class="pfpImage"></label>
+                <input class="pfp" id="pfpBtn" type="button">
                 </input>
 
-                <label
-                onclick="myFunction()"
-                for="settingsBtn" 
-                class="settingsImage"
-                ></label>
-                <input
-                    class="settings"
-                    id="settingsBtn"
-                    type="button" 
-                    >
+                <label onclick="myFunction()" for="settingsBtn" class="settingsImage"></label>
+                <input class="settings" id="settingsBtn" type="button">
                 </input>
             </div>
             <div class="topBarChannel">
                 <form onsubmit="channelNameChanger(event); return false;">
-                    <input type="submit" id="channelSubmit" style="display: none"/>
-                    <input
-                        class="channelText"
-                        id="channelName"
-                        type="text"
-                        placeholder="Channel Name"
-                        >
+                    <input type="submit" id="channelSubmit" style="display: none" />
+                    <input class="channelText" id="channelName" type="text" placeholder="Channel Name">
                     </input>
                 </form>
             </div>
@@ -257,287 +239,180 @@
         <div class="chatsSection">
             <div class="scrollable">
                 <p class="chatsText">chats</p>
-                    <input
-                        class="button"
-                        id="personBtn"
-                        type="button" 
-                        value="Person"
-                        >
-                    </input>
-                    <input
-                        class="button"
-                        id="personBtn"
-                        type="button" 
-                        value="Person"
-                        >
-                    </input>
-                    <input
-                        class="button"
-                        id="personBtn"
-                        type="button" 
-                        value="Person"
-                        >
-                    </input>
-                    <input
-                        class="button"
-                        id="personBtn"
-                        type="button" 
-                        value="Person"
-                        >
-                    </input>
-                    <input
-                        class="button"
-                        id="personBtn"
-                        type="button" 
-                        value="Person"
-                        >
-                    </input>
-                    <input
-                        class="button"
-                        id="personBtn"
-                        type="button" 
-                        value="Person"
-                        >
-                    </input>
-                    <input
-                        class="button"
-                        id="personBtn"
-                        type="button" 
-                        value="Person"
-                        >
-                    </input>
-                    <input
-                        class="button"
-                        id="personBtn"
-                        type="button" 
-                        value="Person"
-                        >
-                    </input>
-                    <input
-                        class="button"
-                        id="personBtn"
-                        type="button" 
-                        value="Person"
-                        >
-                    </input>
-                    <input
-                        class="button"
-                        id="personBtn"
-                        type="button" 
-                        value="Person"
-                        >
-                    </input>
-                    <input
-                        class="button"
-                        id="personBtn"
-                        type="button" 
-                        value="Person"
-                        >
-                    </input>
-                    <input
-                        class="button"
-                        id="personBtn"
-                        type="button" 
-                        value="Person"
-                        >
-                    </input>
-                    <input
-                        class="button"
-                        id="personBtn"
-                        type="button" 
-                        value="Person"
-                        >
-                    </input>
-                    <input
-                        class="button"
-                        id="personBtn"
-                        type="button" 
-                        value="Person"
-                        >
-                    </input>
-                    <input
-                        class="button"
-                        id="personBtn"
-                        type="button" 
-                        value="Person"
-                        >
-                    </input>
-                    <input
-                        class="button"
-                        id="personBtn"
-                        type="button" 
-                        value="Person"
-                        >
-                    </input>
+                <input class="button" id="personBtn" type="button" value="Person">
+                </input>
+                <input class="button" id="personBtn" type="button" value="Person">
+                </input>
+                <input class="button" id="personBtn" type="button" value="Person">
+                </input>
+                <input class="button" id="personBtn" type="button" value="Person">
+                </input>
+                <input class="button" id="personBtn" type="button" value="Person">
+                </input>
+                <input class="button" id="personBtn" type="button" value="Person">
+                </input>
+                <input class="button" id="personBtn" type="button" value="Person">
+                </input>
+                <input class="button" id="personBtn" type="button" value="Person">
+                </input>
+                <input class="button" id="personBtn" type="button" value="Person">
+                </input>
+                <input class="button" id="personBtn" type="button" value="Person">
+                </input>
+                <input class="button" id="personBtn" type="button" value="Person">
+                </input>
+                <input class="button" id="personBtn" type="button" value="Person">
+                </input>
+                <input class="button" id="personBtn" type="button" value="Person">
+                </input>
+                <input class="button" id="personBtn" type="button" value="Person">
+                </input>
+                <input class="button" id="personBtn" type="button" value="Person">
+                </input>
+                <input class="button" id="personBtn" type="button" value="Person">
+                </input>
             </div>
-            
+
         </div>
-            <div class="textSection">
-                <div class="scrollable">
-                    <div class="pythonScript">
-                        <span class="userName" id="user">
-                            <span id="userStyling">[user]</span>
-                        </span>
-                        <span class="gapBetween">-</span>
-                        <span class="timeSent" id="timeSent">18:32
-                            <span class="daySent" id="daySent">14/11/2025</span>
-                        </span>
-                        
-                        <p class="messageStyling">
-                            あああああああああああああああああああ
-                            ああああああああああああああああああああああああ
-                            あああああああああああああああああああ
-                            あああああああああああああああああああああああああああああああああああああああああああ
-                            あああああああああああああああああああああああああああああああああああああああああああ
-                            あああああああああああああああああああああああああああああああああああああああああああ
-                            あああああああああああああああああああああああああああああああああああああああああああ
-                            ああああああああああああああああああああああああ
-                            ガーリックトーストお
-                            おおおおおおおおおおおおおおおおおおおお
-                            おおおおおおおおお
-                            おおおおおおおおおおおおおおおおおおおお
-                            おおおおおおおおおおおおおおおおおおおおおおおおおおおおお
-                            おおおおおおおおおおおおおおおおおおおおおおおおおおおおお
-                            おおおおおおおおおおおおおおおおおおおおおおおおおおおおお
-                            おおおおおおおおおおおおおおおおおおおおおおおおおおおおお
-                            おおおおおおおおおおおおおおおおおおおおおおおおおおおおお
-                            おおおおおおおおお
-                        </p>
+        <div class="textSection">
+            <div class="scrollable">
+                <div class="pythonScript">
+                    <span class="userName" id="user">
+                        <span id="userStyling">[user]</span>
+                    </span>
+                    <span class="gapBetween">-</span>
+                    <span class="timeSent" id="timeSent">18:32
+                        <span class="daySent" id="daySent">14/11/2025</span>
+                    </span>
+
+                    <p class="messageStyling">
+                        あああああああああああああああああああ
+                        ああああああああああああああああああああああああ
+                        あああああああああああああああああああ
+                        あああああああああああああああああああああああああああああああああああああああああああ
+                        あああああああああああああああああああああああああああああああああああああああああああ
+                        あああああああああああああああああああああああああああああああああああああああああああ
+                        あああああああああああああああああああああああああああああああああああああああああああ
+                        ああああああああああああああああああああああああ
+                        ガーリックトーストお
+                        おおおおおおおおおおおおおおおおおおおお
+                        おおおおおおおおお
+                        おおおおおおおおおおおおおおおおおおおお
+                        おおおおおおおおおおおおおおおおおおおおおおおおおおおおお
+                        おおおおおおおおおおおおおおおおおおおおおおおおおおおおお
+                        おおおおおおおおおおおおおおおおおおおおおおおおおおおおお
+                        おおおおおおおおおおおおおおおおおおおおおおおおおおおおお
+                        おおおおおおおおおおおおおおおおおおおおおおおおおおおおお
+                        おおおおおおおおお
+                    </p>
+                </div>
+                <div class="pythonScript">
+                    <span class="userName" id="admin">
+                        <span id="adminStyling">[admin]</span>
+                    </span>
+                    <span class="gapBetween">-</span>
+                    <span class="timeSent" id="timeSent">18:34</span>
+                    <p class="messageStyling">garlic toast?</p>
+                </div>
+                <div class="pythonScript">
+                    <span class="userName" id="others">
+                        <span id="othersStyling">[others]</span>
+                    </span>
+                    <span class="gapBetween">-</span>
+                    <span class="timeSent" id="timeSent">18:42</span>
+                    <p class="messageStyling">
+                        This is how long a message can be at 100% viewport on
+                        brave browser without wrapping, its affected by man-
+                    </p>
+                </div>
+                <div class="pythonScript">
+                    <span class="userName" id="mention">
+                        <span id="mentionStyling">[darius : mention]</span>
+                    </span>
+                    <span class="gapBetween">-</span>
+                    <span class="timeSent" id="timeSent">18:48</span>
+                    <p class="messageStyling">
+                        cwambor
+                    <div class="media-wrapper" data-media-type="image">
+                        <div class="media-container">
+                            <img src="/assets/images/cramborleton.png" alt="crambor read the book"
+                                class="media-content">
+                            <div class="grain-overlay"></div>
+                        </div>
                     </div>
-                    <div class="pythonScript">
-                        <span class="userName" id="admin">
-                            <span id="adminStyling">[admin]</span>
-                        </span>
-                        <span class="gapBetween">-</span>
-                        <span class="timeSent" id="timeSent">18:34</span>
-                        <p class="messageStyling">garlic toast?</p>
+                    </p>
+                </div>
+                <div class="pythonScript">
+                    <span class="userName" id="user">
+                        <span id="userStyling">[user]</span>
+                    </span>
+                    <span class="gapBetween">-</span>
+                    <span class="timeSent" id="timeSent">18:59</span>
+                    <p class="messageStyling">vroom vroom vroom
+                    <div class="media-wrapper" data-media-type="image">
+                        <div class="media-container">
+                            <img src="/assets/images/bancho-todoroki-hajime.gif" alt="Hajime gif test"
+                                class="media-content">
+                            <div class="grain-overlay"></div>
+                        </div>
                     </div>
-                    <div class="pythonScript">
-                        <span class="userName" id="others">
-                            <span id="othersStyling">[others]</span>
-                        </span>
-                        <span class="gapBetween">-</span>
-                        <span class="timeSent" id="timeSent">18:42</span>
-                        <p class="messageStyling">
-                            This is how long a message can be at 100% viewport on 
-                            brave browser without wrapping, its affected by man-
-                        </p>
-                    </div>
-                    <div class="pythonScript">
-                        <span class="userName" id="mention">
-                            <span id="mentionStyling">[darius : mention]</span>
-                        </span>
-                        <span class="gapBetween">-</span>
-                        <span class="timeSent" id="timeSent">18:48</span>
-                        <p class="messageStyling">
-                            cwambor
-                            <div class="media-wrapper" data-media-type="image">
-                                <div class="media-container">
-                                    <img src="/assets/images/cramborleton.png" alt="crambor read the book" class="media-content">
-                                    <div class="grain-overlay"></div>
-                                </div>
-                            </div>
-                        </p>
-                    </div>
-                     <div class="pythonScript">
-                        <span class="userName" id="user">
-                            <span id="userStyling">[user]</span>
-                        </span>
-                        <span class="gapBetween">-</span>
-                        <span class="timeSent" id="timeSent">18:59</span>
-                        <p class="messageStyling">vroom vroom vroom
-                            <div class="media-wrapper" data-media-type="image">
-                                <div class="media-container">
-                                    <img src="/assets/images/bancho-todoroki-hajime.gif" alt="Hajime gif test" class="media-content">
-                                    <div class="grain-overlay"></div>
-                                </div>
-                            </div>
-                        </p>
-                    </div>
-                    <div class="pythonScript">
-                        <span class="userName" id="admin">
-                            <span id="adminStyling">[admin]</span>
-                        </span>
-                        <span class="gapBetween">-</span>
-                        <span class="timeSent" id="timeSent">18:59</span>
-                        <p class="messageStyling">eekum bokum
-                        <div class="media-wrapper" data-media-type="video">
-                            <div class="media-container">
+                    </p>
+                </div>
+                <div class="pythonScript">
+                    <span class="userName" id="admin">
+                        <span id="adminStyling">[admin]</span>
+                    </span>
+                    <span class="gapBetween">-</span>
+                    <span class="timeSent" id="timeSent">18:59</span>
+                    <p class="messageStyling">eekum bokum
+                    <div class="media-wrapper" data-media-type="video">
+                        <div class="media-container">
+                            <div class="target" id="media">context
                                 <video class="media-content" autoplay loop muted>
                                     <source src="/assets/videos/Korone discovers Eekum Bokum.mp4" type="video/mp4">
                                 </video>
                                 <div class="video-controls">
-                                <div class="visualizer-container">
-                                    <canvas class="audio-visualizer" width="150" height="30"></canvas>
+                                    <div class="visualizer-container">
+                                        <canvas class="audio-visualizer" width="100" height="40"></canvas>
+                                    </div>
+                                    <div class="volume-container">
+                                        <button class="volume-button"></button>
+                                        <div class="volume-indicator">50</div>
+                                    </div>
                                 </div>
-                                <div class="volume-container">
-                                    <button class="volume-button"></button>
-                                    <div class="volume-indicator">50</div>
-                                </div>
-                            </div>
                                 <div class="grain-overlay"></div>
                             </div>
                         </div>
-                        </p>
                     </div>
+                    </p>
                 </div>
             </div>
+        </div>
 
         <div class="textInputSection">
             <div class="messageButtonsWrapper">
                 <div class="chatButtonWrapper">
-                    <input
-                    id="chatBtn"
-                    name="chatButton"
-                    value="Chat"
-                    type="checkbox"
-                    checked
-                    />
+                    <input id="chatBtn" name="chatButton" value="Chat" type="checkbox" checked />
                     <label for="chatBtn">
                         <span>Chat</span>
                     </label>
                 </div>
                 <div class="shareButtonWrapper">
-                    <input
-                    id="shareBtn"
-                    name="shareButton"
-                    value="Share"
-                    type="checkbox"
-                    />
+                    <input id="shareBtn" name="shareButton" value="Share" type="checkbox" />
                     <label for="shareBtn">
                         <span>Share</span>
                     </label>
                 </div>
             </div>
 
-            <label
-            for="fileUpload" 
-            class="fileUploadButton"
-            ></label>
-        
-            <input
-            class="fileUpload" 
-            id="fileUpload"
-            type="file"
-            multiple
-            accept="image/*"
-            />
+            <label for="fileUpload" class="fileUploadButton"></label>
 
-            <textarea
-            class="inputBox"
-            id="msgBox"
-            name="messagebox"
-            placeholder="Send a message"
-            maxlength="140"
-            ></textarea>
+            <input class="fileUpload" id="fileUpload" type="file" multiple accept="image/*" />
 
-            <input
-            class="button" 
-            id="txtSend"
-            type="submit"
-            value="Send"
-            onclick="GETchatlog();"
-            />
+            <textarea class="inputBox" id="msgBox" name="messagebox" placeholder="Send a message"
+                maxlength="140"></textarea>
+
+            <input class="button" id="txtSend" type="submit" value="Send" onclick="GETchatlog();" />
 
             <div class="countWrapper">
                 <p class="charCount">
@@ -546,6 +421,10 @@
             </div>
         </div>
     </div>
-    <script src="/static/scripts.js"></script>
+    <script src="/static/small-things.js"></script>
+    <script src="/static/context-menu.js"></script>
+    <script src="/static/media-styles.js"></script>
+    <script src="/static/python-scripts.js"></script>
 </body>
+
 </html>
