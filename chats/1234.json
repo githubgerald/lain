@@ -269,6 +269,36 @@
       "mediaType": null,
       "mediaUrl": null,
       "timestamp": "2025-11-16T05:43:07.714926"
+    },
+    {
+      "username": "user",
+      "userType": "user",
+      "message": "testing after removing html",
+      "time": "05:52",
+      "date": "16/11/2025",
+      "mediaType": null,
+      "mediaUrl": null,
+      "timestamp": "2025-11-16T05:52:22.056875"
+    },
+    {
+      "username": "user",
+      "userType": "user",
+      "message": "seems good, so the html is inside the javascript now, realistically we should have just used react.js, but its annoying to setup and uses-",
+      "time": "05:52",
+      "date": "16/11/2025",
+      "mediaType": null,
+      "mediaUrl": null,
+      "timestamp": "2025-11-16T05:52:47.070359"
+    },
+    {
+      "username": "user",
+      "userType": "user",
+      "message": "JS way more so it woulda been harder",
+      "time": "05:52",
+      "date": "16/11/2025",
+      "mediaType": null,
+      "mediaUrl": null,
+      "timestamp": "2025-11-16T05:52:53.887995"
     }
   ]
 }
