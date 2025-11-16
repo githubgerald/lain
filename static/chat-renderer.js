@@ -11,6 +11,7 @@ const API_URL = `http://localhost:5000/api/v0/chats/${CHAT_ID}`;
  */
 function createMessageHTML(messageData) {
   const {
+    uid,
     username,
     userType,
     message,
@@ -158,6 +159,7 @@ async function sendMessage(messageText, currentUser = 'user') {
 
   // Create message object with metadata
   const messageData = {
+    uid: null,
     username: getCurrentUsername(), // You'll need to implement this
     userType: currentUser,
     message: messageText,
