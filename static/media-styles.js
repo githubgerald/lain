@@ -56,13 +56,6 @@ class MediaWrapper {
       passive: false,
     });
 
-    /*         // Try to autoplay with sound
-        this.video.play().then(() => {
-            this.initAudioContext();
-        }).catch(err => {
-            console.log('Autoplay with sound failed, user interaction required:', err);
-        }); */
-
     // Initialize audio visualizer when playing
     this.video.addEventListener("playing", () => {
       if (!this.audioContext) {
