@@ -6,7 +6,13 @@ import os
 from datetime import datetime
 
 server = Flask(__name__)
-CORS(server)
+CORS(server, resources={
+    r"/api/*": {
+        "origins": ["http://localhost:5000", "http://127.0.0.1:5000"],
+        "methods": ["GET", "POST", "OPTIONS"],
+        "allow_headers": ["Content-Type"]
+    }
+})
 
 # Helper function to create JSON file if it doesn't exist (will tweak later to make it random UID, and able to create on user end)
 def ensure_chat_file(chat_id):

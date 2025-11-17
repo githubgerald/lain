@@ -32,6 +32,61 @@
       "mediaType": null,
       "mediaUrl": null,
       "timestamp": "2025-11-16T18:18:47.755372"
+    },
+    {
+      "username": "user",
+      "userType": "user",
+      "message": "pentagon?",
+      "time": "18:45",
+      "date": "16/11/2025",
+      "mediaType": null,
+      "mediaUrl": null,
+      "uid": 3,
+      "timestamp": "2025-11-16T18:45:34.264486"
+    },
+    {
+      "username": "cam",
+      "userType": "user",
+      "message": "testing usernames",
+      "time": "03:51",
+      "date": "17/11/2025",
+      "mediaType": null,
+      "mediaUrl": null,
+      "uid": 4,
+      "timestamp": "2025-11-17T03:51:02.142942"
+    },
+    {
+      "username": "cam",
+      "userType": "user",
+      "message": "cam",
+      "time": "03:51",
+      "date": "17/11/2025",
+      "mediaType": null,
+      "mediaUrl": null,
+      "uid": 5,
+      "timestamp": "2025-11-17T03:51:05.895087"
+    },
+    {
+      "username": "Guest",
+      "userType": "user",
+      "message": "testing to see what happens when i press cancel instead of putting in a username or pressing enter with nothing.",
+      "time": "03:51",
+      "date": "17/11/2025",
+      "mediaType": null,
+      "mediaUrl": null,
+      "uid": 6,
+      "timestamp": "2025-11-17T03:51:31.590469"
+    },
+    {
+      "username": "Guest",
+      "userType": "user",
+      "message": "ok it just defaults to guest as well nice",
+      "time": "03:51",
+      "date": "17/11/2025",
+      "mediaType": null,
+      "mediaUrl": null,
+      "uid": 7,
+      "timestamp": "2025-11-17T03:51:42.604062"
     }
   ]
 }

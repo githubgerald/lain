@@ -1,0 +1,15 @@
+{
+  "messages": [
+    {
+      "username": "Guest",
+      "userType": "user",
+      "message": "test other chat",
+      "time": "03:32",
+      "date": "17/11/2025",
+      "mediaType": null,
+      "mediaUrl": null,
+      "uid": 0,
+      "timestamp": "2025-11-17T03:32:24.800431"
+    }
+  ]
+}
