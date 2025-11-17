@@ -10,6 +10,28 @@
       "mediaUrl": null,
       "uid": 0,
       "timestamp": "2025-11-17T03:32:24.800431"
+    },
+    {
+      "username": "Guest",
+      "userType": "user",
+      "message": "holy holy",
+      "time": "17:23",
+      "date": "17/11/2025",
+      "mediaType": null,
+      "mediaUrl": null,
+      "uid": 1,
+      "timestamp": "2025-11-17T17:23:25.323301"
+    },
+    {
+      "username": "Guest",
+      "userType": "user",
+      "message": "juicy moley",
+      "time": "17:23",
+      "date": "17/11/2025",
+      "mediaType": null,
+      "mediaUrl": null,
+      "uid": 2,
+      "timestamp": "2025-11-17T17:23:27.387984"
     }
   ]
 }

@@ -87,6 +87,28 @@
       "mediaUrl": null,
       "uid": 7,
       "timestamp": "2025-11-17T03:51:42.604062"
+    },
+    {
+      "username": "alex",
+      "userType": "user",
+      "message": "holy juice batman",
+      "time": "17:22",
+      "date": "17/11/2025",
+      "mediaType": null,
+      "mediaUrl": null,
+      "uid": 8,
+      "timestamp": "2025-11-17T17:22:06.742558"
+    },
+    {
+      "username": "alex",
+      "userType": "user",
+      "message": "GIVE ME YOUR CRRRRRRRRRRREDIT CARD",
+      "time": "17:22",
+      "date": "17/11/2025",
+      "mediaType": null,
+      "mediaUrl": null,
+      "uid": 9,
+      "timestamp": "2025-11-17T17:22:24.534174"
     }
   ]
 }
