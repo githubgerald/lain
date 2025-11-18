@@ -780,8 +780,8 @@ h6 {
 }
 .textSection .scrollable .pythonScript {
   display: grid;
-  grid-template-columns: 10% 5% 10% 1fr;
-  align-items: baseline;
+  grid-template-columns: 10% 5% 15% 1fr;
+  align-items: start;
   width: 100%;
   -moz-column-gap: 0;
        column-gap: 0;
@@ -792,6 +792,8 @@ h6 {
   flex-shrink: 0;
   text-align: left;
   cursor: pointer;
+  grid-column: 1;
+  align-self: start;
 }
 .textSection .scrollable .pythonScript #userStyling {
   color: #DD8E32;
@@ -822,15 +824,25 @@ h6 {
   font-size: 30px;
   color: #66CCDA;
   padding: 0px 20px;
+  grid-column: 2;
+  align-self: start;
 }
 .textSection .scrollable .pythonScript .timeSent {
   flex-shrink: 0;
   font-size: 1.725rem;
   color: #66CCDA;
+  grid-column: 3;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 .textSection .scrollable .pythonScript .timeSent .daySent {
   width: 100%;
   font-size: 0.75rem;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
 }
 .textSection .scrollable .pythonScript .messageStyling {
   font: "VT323";
@@ -841,6 +853,8 @@ h6 {
   overflow-wrap: break-word;
   min-width: 0;
   text-align: left;
+  grid-column: 4;
+  align-self: start;
 }
 
 .messageButtonsWrapper {
