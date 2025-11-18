@@ -126,6 +126,28 @@ async function channelNameChanger(event) {
 }
 
 // ==========================================
+// CHAT/SHARE MODE SWITCHING
+// ==========================================
+
+/**
+ * Switch between Chat and Share modes
+ */
+function switchMode(mode) {
+  const chatMode = document.getElementById('chatMode');
+  const shareMode = document.getElementById('shareMode');
+  
+  if (mode === 'chat') {
+    chatMode.style.display = 'block';
+    shareMode.style.display = 'none';
+    console.log('📝 Switched to Chat mode');
+  } else if (mode === 'share') {
+    chatMode.style.display = 'none';
+    shareMode.style.display = 'block';
+    console.log('🎁 Switched to Share mode');
+  }
+}
+
+// ==========================================
 // API FUNCTIONS
 // ==========================================
 
@@ -139,6 +161,130 @@ function getApiUrl() {
   }
   const url = `${API_BASE_URL}${currentChatId}`;
   return url;
+}
+
+// ==========================================
+// GIPHY INTEGRATION
+// Add this to chat-renderer.js
+// ==========================================
+
+// Get your API key from: https://developers.giphy.com/
+const GIPHY_API_KEY = 'AYPLoWDr3kEAp9wA4YacrZCWFDY0pjy3'; // You need to get this from Giphy
+let giphySearchTimeout = null;
+
+/**
+ * Search Giphy API
+ */
+async function searchGiphy(query) {
+  if (!query || query.trim() === '') {
+    return [];
+  }
+  
+  const url = `https://api.giphy.com/v1/gifs/search?api_key=${GIPHY_API_KEY}&q=${encodeURIComponent(query)}&limit=20&rating=g`;
+  
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.data || [];
+  } catch (error) {
+    console.error('❌ Error searching Giphy:', error);
+    return [];
+  }
+}
+
+/**
+ * Handle Giphy search input
+ */
+function handleGiphySearch(event) {
+  const query = event.target.value;
+  
+  // Debounce: wait 500ms after user stops typing
+  clearTimeout(giphySearchTimeout);
+  
+  giphySearchTimeout = setTimeout(async () => {
+    console.log('🔍 Searching Giphy for:', query);
+    
+    const resultsContainer = document.getElementById('giphyResults');
+    resultsContainer.innerHTML = '<p style="color: #66CCDA;">Searching...</p>';
+    
+    const gifs = await searchGiphy(query);
+    displayGiphyResults(gifs);
+  }, 500);
+}
+
+/**
+ * Display Giphy results
+ */
+function displayGiphyResults(gifs) {
+  const resultsContainer = document.getElementById('giphyResults');
+  
+  if (gifs.length === 0) {
+    resultsContainer.innerHTML = '<p style="color: #66CCDA;">No GIFs found</p>';
+    return;
+  }
+  
+  resultsContainer.innerHTML = '';
+  
+  gifs.forEach(gif => {
+    const gifElement = document.createElement('div');
+    gifElement.className = 'giphy-result';
+    gifElement.innerHTML = `
+      <img 
+        src="${gif.images.fixed_height_small.url}" 
+        alt="${gif.title}"
+        data-gif-url="${gif.images.original.url}"
+      />
+    `;
+    
+    // Click to send GIF
+    gifElement.addEventListener('click', () => {
+      sendGiphy(gif.images.original.url, gif.title);
+    });
+    
+    resultsContainer.appendChild(gifElement);
+  });
+  
+  console.log('✅ Displayed', gifs.length, 'GIFs');
+}
+
+/**
+ * Send a Giphy GIF as a message
+ */
+async function sendGiphy(gifUrl, title) {
+  console.log('📤 Sending Giphy:', gifUrl);
+  
+  const messageData = {
+    username: getCurrentUsername(),
+    userType: 'user',
+    message: title || 'Sent a GIF',
+    mediaType: 'image',
+    mediaUrl: gifUrl, // Store the Giphy URL directly
+    time: getCurrentTime(),
+    date: getCurrentDate()
+  };
+  
+  try {
+    const response = await fetch(getApiUrl(), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(messageData)
+    });
+    
+    if (!response.ok) {
+      throw new Error('Failed to send GIF');
+    }
+    
+    console.log('✅ GIF sent!');
+    
+    // Clear search and reload messages
+    document.getElementById('giphySearch').value = '';
+    document.getElementById('giphyResults').innerHTML = '<p style="color: #66CCDA;">Type to search GIFs...</p>';
+    await loadAndRenderMessages();
+    
+  } catch (error) {
+    console.error('❌ Error sending GIF:', error);
+    alert('Failed to send GIF');
+  }
 }
 
 // ==========================================
@@ -580,6 +726,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Set up Chat/Share toggle
+  const chatBtn = document.getElementById('chatBtn');
+  const shareBtn = document.getElementById('shareBtn');
+  
+  if (chatBtn) {
+    chatBtn.addEventListener('change', () => {
+      if (chatBtn.checked) {
+        switchMode('chat');
+      }
+    });
+  }
+  
+  if (shareBtn) {
+    shareBtn.addEventListener('change', () => {
+      if (shareBtn.checked) {
+        switchMode('share');
+      }
+    });
+  }
+  
+  // Set up Giphy search
+  const giphySearch = document.getElementById('giphySearch');
+  if (giphySearch) {
+    giphySearch.addEventListener('input', handleGiphySearch);
+    console.log('✅ Giphy search initialized');
+  }
+
   // Send on Enter key
   if (messageBox) {
     messageBox.addEventListener('keypress', async (e) => {
@@ -596,6 +769,8 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('🎯 Auto-selecting first room:', firstChatId);
     chatSelect(firstChatId);
   }
+
+  switchMode('chat');
 
   console.log('✅ Chat system initialization complete!');
 });

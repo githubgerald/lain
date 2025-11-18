@@ -109,6 +109,29 @@
       "mediaUrl": null,
       "uid": 9,
       "timestamp": "2025-11-17T17:22:24.534174"
+    },
+    {
+      "username": "Guest",
+      "userType": "user",
+      "message": "experiments breaking GIF",
+      "mediaType": "image",
+      "mediaUrl": "https://media2.giphy.com/media/v1.Y2lkPTUyMDNmZTQxZjc3ZHhhOXdsaW9zeGJtOWZ5emNwd3Z0ZzA3NDE3b3gyN215eGdhNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ER1kvqvI3mb4s/giphy.gif",
+      "time": "04:25",
+      "date": "18/11/2025",
+      "uid": 10,
+      "timestamp": "2025-11-18T04:25:14.945625"
+    },
+    {
+      "username": "Guest",
+      "userType": "user",
+      "message": "ooh yes, lovellly",
+      "mediaType": null,
+      "mediaUrl": null,
+      "uid": 11,
+      "timestamp": "2025-11-18T04:25:23.557430",
+      "date": "18/11/2025",
+      "time": "04:25"
     }
-  ]
+  ],
+  "channel_name": "Room 1234"
 }

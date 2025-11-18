@@ -232,7 +232,7 @@
                 </form>
             </div>
             <div class="topBarTime">
-                <span id="timeTxt">time</span>
+                <span id="timeTxt"></span>
             </div>
         </div>
 
@@ -246,37 +246,30 @@
         <div class="textSection">
             <div class="scrollable">
                 <div class="pythonScript">
-                   
                 </div>
             </div>
         </div>
 
-        <div class="textInputSection">
-            <div class="messageButtonsWrapper">
-                <div class="chatButtonWrapper">
-                    <input id="chatBtn" name="chatButton" value="Chat" type="checkbox" checked />
-                    <label for="chatBtn">
-                        <span>Chat</span>
-                    </label>
-                </div>
-                <div class="shareButtonWrapper">
-                    <input id="shareBtn" name="shareButton" value="Share" type="checkbox" />
-                    <label for="shareBtn">
-                        <span>Share</span>
-                    </label>
-                </div>
+    <div class="textInputSection">
+        <div class="messageButtonsWrapper">
+            <div class="chatButtonWrapper">
+                <input id="chatBtn" name="chatButton" value="Chat" type="checkbox" checked />
+                <label for="chatBtn">
+                    <span>Chat</span>
+                </label>
             </div>
+            <div class="shareButtonWrapper">
+                <input id="shareBtn" name="shareButton" value="Share" type="checkbox" />
+                <label for="shareBtn">
+                    <span>Share</span>
+                </label>
+            </div>
+        </div>
 
+        <!-- CHAT MODE (Default) -->
+        <div id="chatMode">
             <label for="fileUpload" class="fileUploadButton"></label>
-            
-            <!-- UPDATED: Accept all file types -->
-            <input 
-                class="fileUpload" 
-                id="fileUpload" 
-                type="file" 
-                multiple 
-                accept="image/*,video/*,.gif,.mp4,.webm,.mov,.avi" 
-            />
+            <input class="fileUpload" id="fileUpload" type="file" multiple accept="image/*,video/*" />
 
             <textarea 
                 class="inputBox" 
@@ -294,12 +287,29 @@
                 </p>
             </div>
         </div>
+
+        <!-- SHARE MODE (Giphy) -->
+        <div id="shareMode" style="display: none;">
+            <div class="giphyContainer">
+                <div class="giphySearchBox">
+                    <input 
+                        type="text" 
+                        id="giphySearch" 
+                        placeholder="Search GIFs..."
+                        class="giphySearchInput"
+                    />
+                </div>
+                <div id="giphyResults" class="giphyResults">
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="/static/small-things.js"></script>
-    <script src="/static/context-menu.js"></script>
-    <script src="/static/media-styles.js"></script>
+</div>
+<script src="/static/small-things.js"></script>
+<script src="/static/context-menu.js"></script>
+<script src="/static/media-styles.js"></script>
 <!--     <script src="/static/python-scripts.js"></script> -->
-    <script src="/static/chat-renderer.js"></script>
+<script src="/static/chat-renderer.js"></script>
 </body>
 
 </html>

@@ -974,3 +974,89 @@ h6 {
   font-size: 1.5rem;
   color: #66CCDA;
 }
+
+#shareMode {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.giphyContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 10px;
+}
+
+.giphySearchBox {
+  margin-bottom: 10px;
+}
+
+.giphySearchInput {
+  width: 100%;
+  padding: 10px;
+  background-color: #343a40;
+  border: 2px solid #66CCDA;
+  border-radius: 8px;
+  color: #f8f9fa;
+  font-family: "VT323";
+  font-size: 1.5rem;
+}
+.giphySearchInput:focus {
+  outline: none;
+  border-color: #0394BB;
+  box-shadow: 0 0 10px rgba(102, 204, 218, 0.3);
+}
+.giphySearchInput::-moz-placeholder {
+  color: #646464;
+}
+.giphySearchInput::placeholder {
+  color: #646464;
+}
+
+.giphyResults {
+  flex: 1;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-auto-rows: min-content;
+  gap: 10px;
+  padding: 10px 0;
+}
+.giphyResults p {
+  grid-column: 1/-1;
+  text-align: center;
+  color: #66CCDA;
+}
+
+.giphy-result {
+  position: relative;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+  aspect-ratio: 1/1;
+}
+.giphy-result img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: block;
+}
+.giphy-result:hover {
+  border-color: #66CCDA;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(102, 204, 218, 0.5);
+}
+.giphy-result:active {
+  transform: scale(0.95);
+}
+
+#chatMode, #shareMode {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
