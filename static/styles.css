@@ -760,6 +760,133 @@ h6 {
   height: 100%;
 }
 
+.profilePopup {
+  position: fixed;
+  background: #343a40;
+  border: 2px solid #66CCDA;
+  border-radius: 8px;
+  padding: 20px;
+  min-width: 250px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  animation: popupFadeIn 0.2s ease;
+}
+.profilePopup .profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #66CCDA;
+}
+.profilePopup .profileHeader .profilePicture {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #66CCDA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #343a40;
+  font-family: "LoveLetter";
+}
+.profilePopup .profileHeader .profileInfo {
+  flex: 1;
+}
+.profilePopup .profileHeader .profileInfo .profileName {
+  font-family: "LoveLetter";
+  font-size: 1.725rem;
+  color: #66CCDA;
+  margin-bottom: 5px;
+}
+.profilePopup .profileHeader .profileInfo .profileRole {
+  font-family: "VT323";
+  font-size: 1.125rem;
+  color: #646464;
+}
+.profilePopup .profileDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.profilePopup .profileDetails .profileRow {
+  display: flex;
+  justify-content: space-between;
+  font-family: "VT323";
+  font-size: 1.125rem;
+}
+.profilePopup .profileDetails .profileRow .label {
+  color: #646464;
+}
+.profilePopup .profileDetails .profileRow .value {
+  color: #f8f9fa;
+  font-weight: bold;
+}
+.profilePopup .profileActions {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #66CCDA;
+  display: flex;
+  gap: 10px;
+}
+.profilePopup .profileActions button {
+  flex: 1;
+  padding: 8px 16px;
+  background: #66CCDA;
+  border: 2px solid #0394BB;
+  border-radius: 4px;
+  color: #000000;
+  font-family: "VT323";
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.profilePopup .profileActions button:hover {
+  background: #0394BB;
+}
+.profilePopup .closePopup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #66CCDA;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+.profilePopup .closePopup:hover {
+  background: #66CCDA;
+  color: #343a40;
+}
+
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+}
+
 .textSection {
   grid-column: span 4/span 4;
   grid-row: span 3/span 3;
@@ -780,11 +907,11 @@ h6 {
 }
 .textSection .scrollable .pythonScript {
   display: grid;
-  grid-template-columns: 10% 5% 15% 1fr;
+  grid-template-columns: 100px 20px 100px 1fr;
   align-items: start;
   width: 100%;
-  -moz-column-gap: 0;
-       column-gap: 0;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
 }
 .textSection .scrollable .pythonScript .userName {
   font-size: 1.725rem;
@@ -794,6 +921,9 @@ h6 {
   cursor: pointer;
   grid-column: 1;
   align-self: start;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .textSection .scrollable .pythonScript #userStyling {
   color: #DD8E32;
@@ -823,9 +953,9 @@ h6 {
   flex-shrink: 0;
   font-size: 30px;
   color: #66CCDA;
-  padding: 0px 20px;
   grid-column: 2;
   align-self: start;
+  padding: 0;
 }
 .textSection .scrollable .pythonScript .timeSent {
   flex-shrink: 0;
@@ -835,13 +965,16 @@ h6 {
   align-self: start;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 0px;
+  white-space: nowrap;
+  line-height: 1.2;
 }
 .textSection .scrollable .pythonScript .timeSent .daySent {
   width: 100%;
   font-size: 0.75rem;
   line-height: 1;
   margin: 0;
+  margin-top: 2px;
   padding: 0;
 }
 .textSection .scrollable .pythonScript .messageStyling {

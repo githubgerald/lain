@@ -353,7 +353,7 @@ function createMessageHTML(messageData) {
 
   return `
     <div class="pythonScript">
-      <span class="userName" id="${userType}">
+      <span class="userName" id="${userType}" onclick="showProfilePopup('${username}', '${userType}', event)">
         <span id="${stylingId}">[${username}]</span>
       </span>
       <span class="gapBetween">-</span>
@@ -508,6 +508,145 @@ function clearSelectedFiles() {
   if (messageBox) {
     messageBox.placeholder = 'Send a message';
   }
+}
+
+// ==========================================
+// FLOATING PROFILE POPUP
+// ==========================================
+
+let currentProfilePopup = null;
+
+function showProfilePopup(username, userType, clickEvent) {
+  closeProfilePopup();
+  
+  console.log('👤 Showing profile for:', username);
+  
+  // Stop the click from propagating
+  clickEvent.stopPropagation();
+  
+  // Get mouse click position
+  const mouseX = clickEvent.clientX;
+  const mouseY = clickEvent.clientY;
+  
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.className = 'popupOverlay';
+  overlay.addEventListener('click', closeProfilePopup);
+  
+  // Create popup
+  const popup = document.createElement('div');
+  popup.className = 'profilePopup';
+  
+  // Get role color based on userType
+  const roleColors = {
+    'user': '#DD8E32',
+    'admin': '#467592',
+    'others': '#13801D',
+    'mention': '#3a3af8'
+  };
+  
+  const roleNames = {
+    'user': 'User',
+    'admin': 'Admin',
+    'others': 'Member',
+    'mention': 'Mentioned'
+  };
+  
+  // Build popup HTML
+  popup.innerHTML = `
+    <button class="closePopup" onclick="closeProfilePopup()">×</button>
+    
+    <div class="profileHeader">
+      <div class="profilePicture" style="background: ${roleColors[userType] || '#66CCDA'}">
+        ${username.charAt(0).toUpperCase()}
+      </div>
+      <div class="profileInfo">
+        <div class="profileName">${username}</div>
+        <div class="profileRole" style="color: ${roleColors[userType]}">${roleNames[userType]}</div>
+      </div>
+    </div>
+    
+    <div class="profileDetails">
+      <div class="profileRow">
+        <span class="label">Status:</span>
+        <span class="value">Online</span>
+      </div>
+      <div class="profileRow">
+        <span class="label">Messages:</span>
+        <span class="value">${getMessageCount(username)}</span>
+      </div>
+      <div class="profileRow">
+        <span class="label">Joined:</span>
+        <span class="value">Today</span>
+      </div>
+    </div>
+    
+    <div class="profileActions">
+      <button onclick="mentionUser('${username}')">Mention</button>
+      <button onclick="viewProfile('${username}')">Profile</button>
+    </div>
+  `;
+  
+  // Add to page first (so we can measure it)
+  document.body.appendChild(overlay);
+  document.body.appendChild(popup);
+  
+  // Get popup dimensions
+  const popupRect = popup.getBoundingClientRect();
+  const popupWidth = popupRect.width;
+  const popupHeight = popupRect.height;
+  
+  // Calculate position (right and slightly down from click)
+  let left = mouseX + 10;
+  let top = mouseY;
+  
+  // Keep popup on screen (adjust if too close to edge)
+  if (left + popupWidth > window.innerWidth) {
+    left = mouseX - popupWidth - 10; // Show on left side instead
+  }
+  
+  if (top + popupHeight > window.innerHeight) {
+    top = window.innerHeight - popupHeight - 10; // Keep at bottom
+  }
+  
+  // Apply position
+  popup.style.left = `${left}px`;
+  popup.style.top = `${top}px`;
+  
+  currentProfilePopup = { popup, overlay };
+}
+
+function closeProfilePopup() {
+  if (currentProfilePopup) {
+    currentProfilePopup.popup.remove();
+    currentProfilePopup.overlay.remove();
+    currentProfilePopup = null;
+  }
+}
+
+function getMessageCount(username) {
+  const messages = document.querySelectorAll('.userName');
+  let count = 0;
+  messages.forEach(msg => {
+    if (msg.textContent.includes(username)) {
+      count++;
+    }
+  });
+  return count;
+}
+
+function mentionUser(username) {
+  const messageBox = document.getElementById('msgBox');
+  if (messageBox) {
+    messageBox.value = `@${username} `;
+    messageBox.focus();
+  }
+  closeProfilePopup();
+}
+
+function viewProfile(username) {
+  alert(`Full profile view for ${username} coming soon!`);
+  closeProfilePopup();
 }
 
 // ==========================================

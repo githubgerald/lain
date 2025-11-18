@@ -153,6 +153,28 @@
       "date": "18/11/2025",
       "uid": 13,
       "timestamp": "2025-11-18T18:28:48.591675"
+    },
+    {
+      "username": "Guest",
+      "userType": "user",
+      "message": "@alex no way this works",
+      "mediaType": null,
+      "mediaUrl": null,
+      "uid": 14,
+      "timestamp": "2025-11-18T20:45:13.992269",
+      "date": "18/11/2025",
+      "time": "20:45"
+    },
+    {
+      "username": "Guest",
+      "userType": "user",
+      "message": "oh gg, almost",
+      "mediaType": null,
+      "mediaUrl": null,
+      "uid": 15,
+      "timestamp": "2025-11-18T20:45:19.875646",
+      "date": "18/11/2025",
+      "time": "20:45"
     }
   ],
   "channel_name": "Room 1234"

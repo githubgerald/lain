@@ -942,6 +942,150 @@ h6 {
   }
 }
 
+// Profile Popup
+.profilePopup {
+  position: fixed;
+  background: $colour-dark;
+  border: 2px solid $colour-primary;
+  border-radius: $border-radius-md;
+  padding: 20px;
+  min-width: 250px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  animation: popupFadeIn 0.2s ease;
+  
+  .profileHeader {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $colour-primary;
+    
+    .profilePicture {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: $colour-primary;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: $colour-dark;
+      font-family: $font-primary;
+    }
+    
+    .profileInfo {
+      flex: 1;
+      
+      .profileName {
+        font-family: $font-primary;
+        font-size: $text-lg;
+        color: $colour-primary;
+        margin-bottom: 5px;
+      }
+      
+      .profileRole {
+        font-family: $font-mono;
+        font-size: $text-sm;
+        color: $colour-text-primary;
+      }
+    }
+  }
+  
+  .profileDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+    .profileRow {
+      display: flex;
+      justify-content: space-between;
+      font-family: $font-mono;
+      font-size: $text-sm;
+      
+      .label {
+        color: $colour-text-primary;
+      }
+      
+      .value {
+        color: $colour-light;
+        font-weight: bold;
+      }
+    }
+  }
+  
+  .profileActions {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid $colour-primary;
+    display: flex;
+    gap: 10px;
+    
+    button {
+      flex: 1;
+      padding: 8px 16px;
+      background: $colour-primary;
+      border: 2px solid $colour-secondary;
+      border-radius: $border-radius-sm;
+      color: $colour-text-button;
+      font-family: $font-mono;
+      font-size: $text-sm;
+      cursor: pointer;
+      transition: all 0.2s;
+      
+      &:hover {
+        background: $colour-secondary;
+      }
+    }
+  }
+  
+  .closePopup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: $colour-primary;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s;
+    
+    &:hover {
+      background: $colour-primary;
+      color: $colour-dark;
+    }
+  }
+}
+
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+// Overlay to close popup when clicking outside
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+}
+
 .textSection {
   grid-column: span 4 / span 4;
   grid-row: span 3 / span 3;
@@ -962,10 +1106,10 @@ h6 {
 
     .pythonScript {
       display: grid;
-      grid-template-columns: 10% 5% 15% 1fr;
+      grid-template-columns: 100px 20px 100px 1fr;
       align-items: start;
       width: 100%;
-      column-gap: 0;
+      column-gap: 20px;
 
       .userName {
         font-size: $text-lg;
@@ -975,6 +1119,9 @@ h6 {
         cursor: pointer;
         grid-column: 1;
         align-self: start;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
 
       #userStyling {
@@ -1009,9 +1156,9 @@ h6 {
         flex-shrink: 0;
         font-size: 30px;
         color: $colour-primary;
-        padding: 0px 20px;
         grid-column: 2;
         align-self: start;
+        padding: 0;
       }
 
       .timeSent {
@@ -1022,13 +1169,16 @@ h6 {
         align-self: start;
         display: flex;
         flex-direction: column;
-        gap: 2px;
+        gap: 0px;
+        white-space: nowrap;
+        line-height: 1.2;
         
         .daySent {
           width: 100%;
           font-size: 0.75rem;
           line-height: 1;
           margin: 0;
+          margin-top: 2px;
           padding: 0;
         }
       }
