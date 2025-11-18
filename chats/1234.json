@@ -131,6 +131,28 @@
       "timestamp": "2025-11-18T04:25:23.557430",
       "date": "18/11/2025",
       "time": "04:25"
+    },
+    {
+      "username": "alex",
+      "userType": "user",
+      "message": "eekum",
+      "mediaType": null,
+      "mediaUrl": null,
+      "uid": 12,
+      "timestamp": "2025-11-18T18:28:24.888441",
+      "date": "18/11/2025",
+      "time": "18:28"
+    },
+    {
+      "username": "alex",
+      "userType": "user",
+      "message": "Boing Boing Cleavage GIF",
+      "mediaType": "image",
+      "mediaUrl": "https://media4.giphy.com/media/v1.Y2lkPTUyMDNmZTQxMTBoaWF0Mmk3MWE2Ym5jbTFybWlqM2piN2VydmRiZXZkYW04eHE2ZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/gr1F2Ivpcn1OlhDy5A/giphy.gif",
+      "time": "18:28",
+      "date": "18/11/2025",
+      "uid": 13,
+      "timestamp": "2025-11-18T18:28:48.591675"
     }
   ],
   "channel_name": "Room 1234"
