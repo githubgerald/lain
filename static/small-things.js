@@ -4,17 +4,6 @@ function myFunction() {
   popup.classList.toggle("show");
 }
 
-// Channel name changer (Just temp changes placeholder for now)
-function channelNameChanger(event) {
-  event.preventDefault();
-  var channelNameInput = document.getElementById("channelName");
-
-  if (channelNameInput.value.trim() !== "") {
-    channelNameInput.placeholder = channelNameInput.value;
-    channelNameInput.value = "";
-  }
-}
-
 // Character counter
 let area = document.getElementById("msgBox");
 let char = document.getElementById("char");

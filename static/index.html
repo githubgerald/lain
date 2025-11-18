@@ -225,7 +225,7 @@
                 </input>
             </div>
             <div class="topBarChannel">
-                <form onsubmit="channelNameChanger(event); return false;">
+                <form onsubmit="return channelNameChanger(event);">
                     <input type="submit" id="channelSubmit" style="display: none" />
                     <input class="channelText" id="channelName" type="text" placeholder="Channel Name">
                     </input>
@@ -239,7 +239,7 @@
         <div class="chatsSection">
             <div class="scrollable">
                 <input class="button" data-chat-id="1234" type="button" value="1234" />
-                <input class="button" data-chat-id="4321" type="button" value="4321" />
+                <input class="button" data-chat-id="4321" type="button" value=""/>
             </div>
         </div>
 
@@ -268,13 +268,25 @@
             </div>
 
             <label for="fileUpload" class="fileUploadButton"></label>
+            
+            <!-- UPDATED: Accept all file types -->
+            <input 
+                class="fileUpload" 
+                id="fileUpload" 
+                type="file" 
+                multiple 
+                accept="image/*,video/*,.gif,.mp4,.webm,.mov,.avi" 
+            />
 
-            <input class="fileUpload" id="fileUpload" type="file" multiple accept="image/*" />
+            <textarea 
+                class="inputBox" 
+                id="msgBox" 
+                name="messagebox" 
+                placeholder="Send a message"
+                maxlength="140"
+            ></textarea>
 
-            <textarea class="inputBox" id="msgBox" name="messagebox" placeholder="Send a message"
-                maxlength="140"></textarea>
-
-            <input class="button" id="txtSend" type="submit" value="Send" onclick="" />
+            <input class="button" id="txtSend" type="submit" value="Send" />
 
             <div class="countWrapper">
                 <p class="charCount">

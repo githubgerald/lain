@@ -1,39 +1,26 @@
 // ==========================================
-// MULTI-ROOM CHAT RENDERER - DEBUGGED VERSION
+// GLOBAL STATE
 // ==========================================
 
-console.log('🚀 Chat renderer script loaded!');
-
-// Global state - tracks which room we're currently in
 let currentChatId = null;
+let channelNames = {}; // Store channel names
 const API_BASE_URL = '/api/v0/chats/';
 
-/**
- * ROOM MANAGEMENT: Switch to a different chat room
- */
-function chatSelect(chatId) {
-  console.log('📍 chatSelect called with:', chatId);
-  
-  // Update the current chat ID
-  currentChatId = chatId;
-  console.log('✅ Current chat ID set to:', currentChatId);
-  
-  // Visual feedback - highlight the selected room button
-  highlightSelectedRoom(chatId);
-  
-  // Load messages for this room
-  loadAndRenderMessages();
-  
-  // Update the channel name display (optional)
-  updateChannelName(chatId);
+// Username prompt
+let currentUsername = prompt("Enter your username:") || "Guest";
+
+function getCurrentUsername() {
+  return currentUsername || 'Guest';
 }
+
+// ==========================================
+// ROOM MANAGEMENT
+// ==========================================
 
 /**
  * Highlight the selected room button
  */
 function highlightSelectedRoom(chatId) {
-  console.log('🎨 Highlighting room:', chatId);
-  
   // Remove 'active-chat' class from all buttons
   const allButtons = document.querySelectorAll('.chatsSection .button');
   allButtons.forEach(btn => {
@@ -44,21 +31,103 @@ function highlightSelectedRoom(chatId) {
   const selectedButton = document.querySelector(`.chatsSection .button[data-chat-id="${chatId}"]`);
   if (selectedButton) {
     selectedButton.classList.add('active-chat');
-    console.log('✅ Button highlighted');
-  } else {
-    console.warn('⚠️ Could not find button for chat ID:', chatId);
   }
 }
 
 /**
- * Update the channel name display
+ * Switch to a different chat room
  */
-function updateChannelName(chatId) {
+function chatSelect(chatId) {
+  console.log('📍 Switching to room:', chatId);
+  
+  currentChatId = chatId;
+  
+  highlightSelectedRoom(chatId);
+  
+  // Show channel name in top bar
   const channelInput = document.getElementById('channelName');
   if (channelInput) {
-    channelInput.placeholder = `Room #${chatId}`;
+    channelInput.placeholder = channelNames[chatId] || `Room ${chatId}`;
   }
+  
+  loadAndRenderMessages();
 }
+
+// ==========================================
+// CHANNEL NAME MANAGEMENT
+// ==========================================
+
+/**
+ * Handle channel name change from form
+ */
+async function channelNameChanger(event) {
+  event.preventDefault();
+  
+  const channelInput = document.getElementById('channelName');
+  const newName = channelInput.value.trim();
+  
+  if (!currentChatId) {
+    alert('Select a room first!');
+    return false;
+  }
+  
+  if (newName === '') {
+    return false;
+  }
+  
+  console.log('💾 Saving channel name:', newName, 'for room:', currentChatId);
+  
+  // Save to server
+  try {
+    const apiUrl = getApiUrl();
+    console.log('📤 POST to:', apiUrl);
+    
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ channel_name: newName })
+    });
+    
+    console.log('📥 Response status:', response.status);
+    
+    if (!response.ok) {
+      throw new Error('Failed to save channel name');
+    }
+    
+    const data = await response.json();
+    console.log('📥 Response data:', data);
+    
+    const savedName = data.channel_name;
+    
+    console.log('✅ Channel name saved on server:', savedName);
+    
+    // Save in memory
+    channelNames[currentChatId] = savedName;
+    
+    // Update the button
+    const button = document.querySelector(`[data-chat-id="${currentChatId}"]`);
+    if (button) {
+      button.value = savedName;
+      console.log('✅ Button updated to:', savedName);
+    }
+    
+    // Clear input and update placeholder
+    channelInput.value = '';
+    channelInput.placeholder = savedName;
+    
+    console.log('✅ Renamed room', currentChatId, 'to:', savedName);
+    
+  } catch (error) {
+    console.error('❌ Error saving channel name:', error);
+    alert('Failed to save channel name: ' + error.message);
+  }
+  
+  return false;
+}
+
+// ==========================================
+// API FUNCTIONS
+// ==========================================
 
 /**
  * Get the API URL for the current chat
@@ -69,7 +138,6 @@ function getApiUrl() {
     return null;
   }
   const url = `${API_BASE_URL}${currentChatId}`;
-  console.log('🔗 API URL:', url);
   return url;
 }
 
@@ -174,6 +242,13 @@ async function fetchMessages() {
     
     const data = await response.json();
     console.log('✅ Received messages:', data.messages?.length || 0);
+    
+    // Save the channel name from server
+    if (data.channel_name) {
+      channelNames[currentChatId] = data.channel_name;
+      console.log('📝 Channel name:', data.channel_name);
+    }
+    
     return data.messages || [];
     
   } catch (error) {
@@ -238,42 +313,105 @@ function initializeMediaWrappers() {
 }
 
 // ==========================================
-// SENDING MESSAGES
+// FILE UPLOAD HANDLING
+// ==========================================
+
+let selectedFiles = []; // Store selected files
+
+/**
+ * Handle file selection
+ */
+function handleFileSelect(event) {
+  console.log('🎯 handleFileSelect called!');
+  console.log('Event:', event);
+  console.log('Files:', event.target.files);
+  
+  const files = Array.from(event.target.files);
+  selectedFiles = files;
+  
+  console.log('📁 Files selected:', files.length);
+  files.forEach(file => {
+    console.log(`  - ${file.name} (${file.type}, ${file.size} bytes)`);
+  });
+  
+  // Show preview or filename near the input
+  displayFilePreview(files);
+}
+
+/**
+ * Display preview of selected files
+ */
+function displayFilePreview(files) {
+  const messageBox = document.getElementById('msgBox');
+  if (files.length > 0) {
+    const fileNames = files.map(f => f.name).join(', ');
+    messageBox.placeholder = `📎 ${fileNames}`;
+  }
+}
+
+/**
+ * Clear selected files
+ */
+function clearSelectedFiles() {
+  selectedFiles = [];
+  const fileInput = document.getElementById('fileUpload');
+  if (fileInput) {
+    fileInput.value = '';
+  }
+  const messageBox = document.getElementById('msgBox');
+  if (messageBox) {
+    messageBox.placeholder = 'Send a message';
+  }
+}
+
+// ==========================================
+// SENDING MESSAGES (Updated for files)
 // ==========================================
 
 /**
- * Send a new message to current room
+ * Send a new message to current room (with file support)
  */
 async function sendMessage(messageText, currentUser = 'user') {
-  if (!messageText.trim()) {
-    console.warn('⚠️ Cannot send empty message');
-    return false;
-  }
-
   const apiUrl = getApiUrl();
   if (!apiUrl) {
     alert('Please select a chat room first!');
     return false;
   }
 
-  console.log('📤 Sending message to room', currentChatId);
+  // Check if we have message text or files
+  const hasText = messageText && messageText.trim() !== '';
+  const hasFiles = selectedFiles.length > 0;
+  
+  if (!hasText && !hasFiles) {
+    console.warn('⚠️ No message or files to send');
+    return false;
+  }
 
-  const messageData = {
-    username: getCurrentUsername(),
-    userType: currentUser,
-    message: messageText,
-    time: getCurrentTime(),
-    date: getCurrentDate(),
-    mediaType: null,
-    mediaUrl: null
-  };
+  console.log('📤 Sending to room', currentChatId);
 
   try {
+    // If we have files, upload them first
+    if (hasFiles) {
+      for (const file of selectedFiles) {
+        await sendMessageWithFile(messageText || '', file, currentUser);
+      }
+      clearSelectedFiles();
+      await loadAndRenderMessages();
+      return true;
+    }
+    
+    // Otherwise, send text-only message
+    const messageData = {
+      username: getCurrentUsername(),
+      userType: currentUser,
+      message: messageText,
+      mediaType: null,
+      mediaUrl: null
+    };
+
     const response = await fetch(apiUrl, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(messageData)
     });
 
@@ -282,10 +420,7 @@ async function sendMessage(messageText, currentUser = 'user') {
     }
 
     console.log('✅ Message sent successfully');
-
-    // Reload messages to show the new one
     await loadAndRenderMessages();
-
     return true;
 
   } catch (error) {
@@ -293,6 +428,60 @@ async function sendMessage(messageText, currentUser = 'user') {
     alert('Failed to send message. Check console for details.');
     return false;
   }
+}
+
+/**
+ * Send a message with an attached file
+ */
+async function sendMessageWithFile(messageText, file, currentUser = 'user') {
+  console.log('📤 Uploading file:', file.name);
+  
+  // Determine media type
+  let mediaType = null;
+  if (file.type.startsWith('image/')) {
+    mediaType = 'image';
+  } else if (file.type.startsWith('video/')) {
+    mediaType = 'video';
+  }
+  
+  // Convert file to base64
+  const base64Data = await fileToBase64(file);
+  
+  // Create message with file
+  const messageData = {
+    username: getCurrentUsername(),
+    userType: currentUser,
+    message: messageText || `Shared ${file.name}`,
+    mediaType: mediaType,
+    mediaUrl: base64Data, // Store base64 in JSON
+    fileName: file.name,
+    fileSize: file.size,
+    fileType: file.type
+  };
+
+  const response = await fetch(getApiUrl(), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(messageData)
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to upload ${file.name}`);
+  }
+
+  console.log('✅ File uploaded:', file.name);
+}
+
+/**
+ * Convert file to base64
+ */
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
 }
 
 // ==========================================
@@ -312,11 +501,6 @@ function getCurrentDate() {
   const month = String(now.getMonth() + 1).padStart(2, '0');
   const year = now.getFullYear();
   return `${day}/${month}/${year}`;
-}
-
-let currentUsername = prompt("Enter your username:") || "Guest";
-function getCurrentUsername() {
-  return currentUsername || 'Guest';
 }
 
 /**
@@ -344,17 +528,13 @@ async function loadAndRenderMessages() {
 document.addEventListener('DOMContentLoaded', () => {
   console.log('🎬 DOM loaded - Initializing chat system');
 
-  // Debug: Check what we can find
-  const allButtons = document.querySelectorAll('.chatsSection .button');
-  console.log('🔍 Found .button elements:', allButtons.length);
-  
   const buttonsWithData = document.querySelectorAll('.chatsSection .button[data-chat-id]');
   console.log('🔍 Found buttons with data-chat-id:', buttonsWithData.length);
 
   // Set up room selection buttons
   buttonsWithData.forEach((button, index) => {
     const chatId = button.dataset.chatId;
-    console.log(`🎯 Button ${index}: chat-id=${chatId}, value="${button.value}"`);
+    console.log(`🎯 Button ${index}: chat-id=${chatId}`);
     
     button.addEventListener('click', () => {
       console.log('🖱️ Button clicked! Switching to room:', chatId);
@@ -362,12 +542,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  if (buttonsWithData.length === 0) {
-    console.error('❌ NO ROOM BUTTONS FOUND!');
-    console.log('💡 Check that your HTML has:');
-    console.log('   - class="button"');
-    console.log('   - data-chat-id="1234"');
-    console.log('   - inside element with class="chatsSection"');
+  // Set up file upload
+  const fileInput = document.getElementById('fileUpload');
+  console.log('🔍 Looking for file input...');
+  console.log('File input element:', fileInput);
+  
+  if (fileInput) {
+    console.log('✅ File input found, attaching listener');
+    fileInput.addEventListener('change', handleFileSelect);
+    
+    // Test if it's clickable
+    fileInput.addEventListener('click', () => {
+      console.log('👆 File input clicked!');
+    });
+  } else {
+    console.error('❌ File input NOT found! Check your HTML.');
   }
 
   // Set up the send button
@@ -389,24 +578,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     });
-  } else {
-    console.warn('⚠️ Send button not found (id="txtSend")');
   }
 
   // Send on Enter key
   if (messageBox) {
-    console.log('✅ Message box found');
     messageBox.addEventListener('keypress', async (e) => {
       if (e.key === 'Enter' && !e.shiftKey) {
-        const enterToSendEnabled = document.getElementById('enterToSend')?.checked;
-        if (enterToSendEnabled !== false) { // Default to true if setting not found
-          e.preventDefault();
-          sendButton?.click();
-        }
+        e.preventDefault();
+        sendButton?.click();
       }
     });
-  } else {
-    console.warn('⚠️ Message box not found (id="msgBox")');
   }
 
   // Auto-select first room if available
@@ -414,8 +595,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const firstChatId = parseInt(buttonsWithData[0].dataset.chatId);
     console.log('🎯 Auto-selecting first room:', firstChatId);
     chatSelect(firstChatId);
-  } else {
-    console.log('📭 No rooms to auto-select');
   }
 
   console.log('✅ Chat system initialization complete!');

@@ -14,12 +14,16 @@ CORS(server, resources={
     }
 })
 
-# Helper function to create JSON file if it doesn't exist (will tweak later to make it random UID, and able to create on user end)
+# Helper function to create JSON file if it doesn't exist
 def ensure_chat_file(chat_id):
     filepath = f"./chats/{chat_id}.json"
     if not os.path.exists(filepath):
         with open(filepath, 'w') as f:
-            json.dump({"messages": []}, f)
+            # Include default channel_name when creating new file
+            json.dump({
+                "channel_name": f"Room {chat_id}",
+                "messages": []
+            }, f, indent=2)
     return filepath
 
 # GET: Retrieve all messages from a chat
@@ -29,41 +33,83 @@ def get_chat(chat_id):
     try:
         with open(filepath, 'r') as file:
             data = json.load(file)
+        
+        # Make sure channel_name exists (for old JSON files)
+        if 'channel_name' not in data:
+            data['channel_name'] = f'Room {chat_id}'
+        
         return jsonify(data), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# POST: Add a new message to a chat
+# POST: Add a new message to a chat OR rename channel
 @server.route("/api/v0/chats/<int:chat_id>", methods=["POST"])
 def receive_msg(chat_id):
     filepath = ensure_chat_file(chat_id)
     
-    # Get the message data from request
-    new_msg_data = request.json
-
-    # count number of messages in chatlog (for appending uid)
+    # Get the data from request
+    new_data = request.json
+    
+    # Check if this is a channel rename request (has channel_name but no message)
+    if 'channel_name' in new_data and 'message' not in new_data:
+        # This is a channel rename
+        new_channel_name = new_data['channel_name'].strip()
+        
+        # Security: sanitize the name
+        if len(new_channel_name) == 0:
+            return jsonify({"error": "Channel name cannot be empty"}), 400
+        
+        # Max 30 characters, only safe characters
+        new_channel_name = new_channel_name[:30]
+        new_channel_name = ''.join(c for c in new_channel_name if c.isalnum() or c in ' -_')
+        
+        try:
+            # Read existing data
+            with open(filepath, 'r') as file:
+                data = json.load(file)
+            
+            # Update channel name
+            data['channel_name'] = new_channel_name
+            
+            # Write back
+            with open(filepath, 'w') as file:
+                json.dump(data, file, indent=2)
+            
+            print(f"✅ Channel {chat_id} renamed to: {new_channel_name}")
+            return jsonify({"success": True, "channel_name": new_channel_name}), 200
+        
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+    
+    # Otherwise, it's a regular message
+    # Count number of messages in chatlog (for appending uid)
     with open(filepath, 'r') as file:
         data = json.load(file)
         msg_len = len(data['messages'])
 
-    new_msg_data['uid'] = msg_len
-    new_msg_data['timestamp'] = datetime.now().isoformat()
-    new_msg_data['date'] = datetime.now().strftime("%d/%m/%Y")
-    new_msg_data['time'] = datetime.now().strftime("%H:%M")
+    new_data['uid'] = msg_len
+    new_data['timestamp'] = datetime.now().isoformat()
+    new_data['date'] = datetime.now().strftime("%d/%m/%Y")
+    new_data['time'] = datetime.now().strftime("%H:%M")
     
     try:
         # Read existing messages
         with open(filepath, 'r') as file:
             data = json.load(file)
         
+        # Make sure channel_name exists
+        if 'channel_name' not in data:
+            data['channel_name'] = f'Room {chat_id}'
+        
         # Append new message
-        data['messages'].append(new_msg_data)
+        data['messages'].append(new_data)
         
         # Write back to file
         with open(filepath, 'w') as file:
             json.dump(data, file, indent=2)
         
-        return jsonify({"success": True, "message": new_msg_data}), 201
+        print(f"✅ Message {msg_len} added to chat {chat_id}")
+        return jsonify({"success": True, "message": new_data}), 201
     
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -84,4 +130,8 @@ def get_webcli_assets(asset_type, asset_file):
 if __name__ == "__main__":
     # Create chats directory if it doesn't exist
     os.makedirs("chats", exist_ok=True)
+    print("=" * 50)
+    print("Starting wirechat server...")
+    print("Server: http://localhost:5000")
+    print("=" * 50)
     server.run(debug=True, port=5000)
