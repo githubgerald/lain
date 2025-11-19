@@ -1,4 +1,183 @@
 /* ===================== 
+        Themes
+   ===================== */
+body.theme-light {
+  --colour-light: #f8f9fa;
+  --colour-dark: #ffffff;
+  --colour-oled: #f0f0f0;
+  --colour-text-primary: #333333;
+  --colour-text-button: #000000;
+  --navbar-bg: #66CCDA;
+  background-color: #ffffff;
+}
+body.theme-light .navbar {
+  background-color: var(--navbar-bg);
+}
+body.theme-light .chatsSection, body.theme-light .textSection, body.theme-light .textInputSection {
+  background-color: var(--colour-light);
+}
+body.theme-light .topBar {
+  background-color: var(--colour-light);
+  border-bottom-color: var(--colour-primary);
+}
+body.theme-light .messageStyling {
+  color: var(--colour-text-primary);
+}
+body.theme-light ::-webkit-scrollbar-track {
+  background-color: var(--colour-light);
+}
+
+body.theme-dark {
+  --colour-light: #f8f9fa;
+  --colour-dark: #343a40;
+  --colour-oled: #2a2e33;
+  --colour-text-primary: #cccccc;
+  --colour-text-button: #000000;
+  --navbar-bg: #66CCDA;
+  background-color: #343a40;
+}
+body.theme-dark .navbar {
+  background-color: var(--navbar-bg);
+}
+body.theme-dark .chatsSection, body.theme-dark .textSection, body.theme-dark .textInputSection {
+  background-color: var(--colour-dark);
+}
+body.theme-dark .topBar {
+  background-color: var(--colour-dark);
+  border-bottom-color: var(--colour-primary);
+}
+body.theme-dark .messageStyling {
+  color: var(--colour-light);
+}
+body.theme-dark ::-webkit-scrollbar-track {
+  background-color: var(--colour-dark);
+}
+
+body.theme-oled {
+  --colour-light: #ffffff;
+  --colour-dark: #000000;
+  --colour-oled: #000000;
+  --colour-text-primary: #ffffff;
+  --colour-text-button: #000000;
+  --navbar-bg: #66CCDA;
+  background-color: #000000;
+}
+body.theme-oled .navbar {
+  background-color: var(--navbar-bg);
+}
+body.theme-oled .chatsSection, body.theme-oled .textSection, body.theme-oled .textInputSection {
+  background-color: var(--colour-oled);
+}
+body.theme-oled .topBar {
+  background-color: var(--colour-oled);
+  border-bottom-color: var(--colour-primary);
+}
+body.theme-oled .messageStyling {
+  color: var(--colour-light);
+}
+body.theme-oled ::-webkit-scrollbar-track {
+  background-color: var(--colour-oled);
+}
+body.theme-oled .chatsSection {
+  border-right-color: var(--colour-primary);
+}
+body.theme-oled .topBarProfile, body.theme-oled .topBarChannel {
+  border-right-color: var(--colour-primary);
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+body .chatsSection, body .textSection, body .textInputSection {
+  transition: background-color 0.3s ease;
+}
+body .topBar {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+body .messageStyling {
+  transition: color 0.3s ease;
+}
+
+.parent {
+  height: 100vh;
+  width: 100vw;
+}
+.parent .navbar {
+  transition: background-color 0.3s ease;
+}
+.parent .chatsSection {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.parent .textSection {
+  transition: background-color 0.3s ease;
+}
+.parent .textInputSection {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.parent .topBar {
+  transition: background-color 0.3s ease;
+}
+.parent .topBar .topBarProfile, .parent .topBar .topBarChannel {
+  transition: border-color 0.3s ease;
+}
+.parent .topBar .channelText {
+  transition: color 0.3s ease, border-color 0.3s ease;
+  background-color: transparent;
+  color: var(--colour-text-primary);
+}
+.parent .topBar .channelText::-moz-placeholder {
+  color: var(--colour-text-primary);
+  opacity: 0.7;
+}
+.parent .topBar .channelText::placeholder {
+  color: var(--colour-text-primary);
+  opacity: 0.7;
+}
+.parent .topBar .topBarTime {
+  transition: color 0.3s ease;
+  color: var(--colour-primary);
+}
+
+.softwareName {
+  color: var(--colour-text-primary);
+}
+
+.chatsText {
+  color: var(--colour-text-primary);
+}
+
+.charCount {
+  color: var(--colour-primary);
+}
+
+.inputBox {
+  background-color: transparent;
+  color: var(--colour-text-primary);
+}
+.inputBox::-moz-placeholder {
+  color: var(--colour-text-primary);
+  opacity: 0.7;
+}
+.inputBox::placeholder {
+  color: var(--colour-text-primary);
+  opacity: 0.7;
+}
+
+.giphySearchInput {
+  background-color: var(--colour-dark);
+  color: var(--colour-text-primary);
+  border-color: var(--colour-primary);
+}
+.giphySearchInput::-moz-placeholder {
+  color: var(--colour-text-primary);
+  opacity: 0.7;
+}
+.giphySearchInput::placeholder {
+  color: var(--colour-text-primary);
+  opacity: 0.7;
+}
+
+/* ===================== 
        Colour Palette
    ===================== */
 /* ===================== 
@@ -456,65 +635,160 @@ h6 {
   opacity: 1;
 }
 
+.typing-indicator {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(102, 204, 218, 0.9);
+  color: #000000;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: "VT323";
+  font-size: 1.125rem;
+  z-index: 1000;
+  display: none;
+}
+.typing-indicator.show {
+  display: block;
+  animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
 .settingsMenuWrapper {
-  grid-column: span 4/span 4;
-  grid-row: span 3/span 3;
-  grid-column-start: 2;
-  grid-row-start: 3;
-  padding-left: 4px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  display: none;
+  pointer-events: none;
+}
+.settingsMenuWrapper.show {
+  display: block;
+  pointer-events: auto;
+}
+.settingsMenuWrapper .settingsOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 0.3s;
 }
-.settingsMenuWrapper .scrollable {
-  overflow-y: scroll;
-  height: 100%;
+.show .settingsMenuWrapper .settingsOverlay {
+  opacity: 1;
 }
 .settingsMenuWrapper .settingsMenu {
-  visibility: hidden;
-  width: 100%;
-  height: 100%;
-  background-color: #555;
-  color: #fff;
-  text-align: left;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  right: 5%;
+  bottom: 5%;
+  background: #343a40;
+  border: 2px solid #66CCDA;
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  overflow: hidden;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: translateY(20px);
+  transition: transform 0.3s;
+}
+.show .settingsMenuWrapper .settingsMenu {
+  transform: translateY(0);
+}
+.settingsMenuWrapper .settingsSidebar {
+  background: darkslategrey;
+  border-right: 2px solid #66CCDA;
   padding: 1.5rem;
-  position: relative;
-  z-index: 1000;
   overflow-y: auto;
 }
-.settingsMenuWrapper .settingsMenu form {
-  background-color: transparent;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-}
-.settingsMenuWrapper .settingsMenu .settingsSection {
-  margin-bottom: 3rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #666;
-}
-.settingsMenuWrapper .settingsMenu .settingsSection:last-of-type {
-  border-bottom: none;
-}
-.settingsMenuWrapper .settingsMenu h2 {
-  color: #66CCDA;
+.settingsMenuWrapper .settingsSidebar .sidebarHeader {
   font-family: "LoveLetter";
   font-size: 1.725rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  text-align: left;
+  color: #66CCDA;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #66CCDA;
 }
-.settingsMenuWrapper .settingsMenu label {
+.settingsMenuWrapper .settingsSidebar .settingsNavButton {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  color: #646464;
+  font-family: "VT323";
+  font-size: 1.125rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.settingsMenuWrapper .settingsSidebar .settingsNavButton:hover {
+  background: rgba(102, 204, 218, 0.1);
+  border-color: #66CCDA;
+}
+.settingsMenuWrapper .settingsSidebar .settingsNavButton.active {
+  background: #66CCDA;
+  color: #000000;
+  border-color: #0394BB;
+}
+.settingsMenuWrapper .settingsContent {
+  padding: 3rem;
+  overflow-y: auto;
+  position: relative;
+}
+.settingsMenuWrapper .settingsContent .settingsSection {
+  display: none;
+}
+.settingsMenuWrapper .settingsContent .settingsSection.active {
+  display: block;
+  animation: fadeInSettings 0.3s;
+}
+.settingsMenuWrapper .settingsContent .settingsSection h2 {
+  color: #66CCDA;
+  font-family: "LoveLetter";
+  font-size: 2.07rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #66CCDA;
+}
+.settingsMenuWrapper .settingsContent .settingsSection .settingsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.settingsMenuWrapper .settingsContent .settingsSection .settingsGrid .settingsColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.settingsMenuWrapper .settingsContent .settingsSection label {
   display: block;
   margin-bottom: 0.5rem;
   color: #ddd;
   font-family: "OpenSans", sans-serif;
   font-size: 1.125rem;
-  text-align: left;
 }
-.settingsMenuWrapper .settingsMenu input[type=text],
-.settingsMenuWrapper .settingsMenu input[type=email],
-.settingsMenuWrapper .settingsMenu select {
+.settingsMenuWrapper .settingsContent .settingsSection input[type=text],
+.settingsMenuWrapper .settingsContent .settingsSection input[type=email],
+.settingsMenuWrapper .settingsContent .settingsSection select {
   width: 100%;
   padding: 0.5rem;
   margin-bottom: 1rem;
@@ -523,67 +797,77 @@ h6 {
   background-color: #444;
   color: #fff;
   font-family: "OpenSans", sans-serif;
+  transition: border-color 0.2s;
 }
-.settingsMenuWrapper .settingsMenu input[type=checkbox],
-.settingsMenuWrapper .settingsMenu input[type=radio] {
+.settingsMenuWrapper .settingsContent .settingsSection input[type=text]:focus,
+.settingsMenuWrapper .settingsContent .settingsSection input[type=email]:focus,
+.settingsMenuWrapper .settingsContent .settingsSection select:focus {
+  outline: none;
+  border-color: #66CCDA;
+}
+.settingsMenuWrapper .settingsContent .settingsSection input[type=checkbox],
+.settingsMenuWrapper .settingsContent .settingsSection input[type=radio] {
   margin-right: 0.5rem;
 }
-.settingsMenuWrapper .settingsMenu .checkboxWrapper,
-.settingsMenuWrapper .settingsMenu .radioWrapper {
-  margin-bottom: 0.5rem;
+.settingsMenuWrapper .settingsContent .settingsSection .checkboxWrapper,
+.settingsMenuWrapper .settingsContent .settingsSection .radioWrapper {
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
 }
-.settingsMenuWrapper .settingsMenu .checkboxWrapper label,
-.settingsMenuWrapper .settingsMenu .radioWrapper label {
+.settingsMenuWrapper .settingsContent .settingsSection .checkboxWrapper label,
+.settingsMenuWrapper .settingsContent .settingsSection .radioWrapper label {
   margin-bottom: 0;
-  display: inline;
+  cursor: pointer;
 }
-.settingsMenuWrapper .settingsMenu .sliderWrapper {
+.settingsMenuWrapper .settingsContent .settingsSection .checkboxWrapper input,
+.settingsMenuWrapper .settingsContent .settingsSection .radioWrapper input {
+  cursor: pointer;
+}
+.settingsMenuWrapper .settingsContent .settingsSection .sliderWrapper {
   margin-bottom: 1.5rem;
 }
-.settingsMenuWrapper .settingsMenu .sliderWrapper label {
+.settingsMenuWrapper .settingsContent .settingsSection .sliderWrapper label {
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.5rem;
 }
-.settingsMenuWrapper .settingsMenu .sliderWrapper label .sliderValue {
+.settingsMenuWrapper .settingsContent .settingsSection .sliderWrapper label .sliderValue {
   font-weight: 700;
   color: #66CCDA;
   font-family: "VT323";
 }
-.settingsMenuWrapper .settingsMenu .sliderWrapper input[type=range] {
+.settingsMenuWrapper .settingsContent .settingsSection .sliderWrapper input[type=range] {
   width: 100%;
   margin-bottom: 0.5rem;
 }
-.settingsMenuWrapper .settingsMenu .sliderWrapper .colorPreview {
+.settingsMenuWrapper .settingsContent .settingsSection .sliderWrapper .colorPreview {
   width: 100%;
-  height: 30px;
+  height: 40px;
   border-radius: 4px;
   margin-top: 0.5rem;
   border: 2px solid #666;
 }
-.settingsMenuWrapper .settingsMenu input[type=submit],
-.settingsMenuWrapper .settingsMenu .submitButton {
+.settingsMenuWrapper .settingsContent .settingsSection .saveButton {
   background-color: #66CCDA;
   color: #000000;
   font-family: "VT323";
   font-size: 1.5rem;
-  padding: 0.5rem 3rem;
+  padding: 1rem 3rem;
   margin-top: 1.5rem;
   border: solid 4px #0394BB;
   border-radius: 8px;
   cursor: pointer;
-  transition: 250ms ease-in-out;
+  transition: all 0.2s;
 }
-.settingsMenuWrapper .settingsMenu input[type=submit]:hover,
-.settingsMenuWrapper .settingsMenu .submitButton:hover {
+.settingsMenuWrapper .settingsContent .settingsSection .saveButton:hover {
   background-color: #0394BB;
+  transform: translateY(-2px);
 }
-.settingsMenuWrapper .settingsMenu .closeButton {
+.settingsMenuWrapper .closeButton {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 1.5rem;
+  right: 1.5rem;
   background-color: #dc3545;
   color: #fff;
   border: none;
@@ -591,25 +875,43 @@ h6 {
   border-radius: 4px;
   cursor: pointer;
   font-family: "VT323";
-  font-size: 1.5rem;
+  font-size: 1.725rem;
+  z-index: 10;
+  transition: all 0.2s;
 }
-.settingsMenuWrapper .settingsMenu .closeButton:hover {
-  background-color: darkblue;
-}
-.settingsMenuWrapper .show {
-  visibility: visible;
-  animation: fadeIn 1s;
+.settingsMenuWrapper .closeButton:hover {
+  background-color: darkred;
+  transform: scale(1.1);
 }
 
-/* Animation */
-@keyframes fadeIn {
+@keyframes fadeInSettings {
   from {
     opacity: 0;
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
+.settingsSidebar::-webkit-scrollbar,
+.settingsContent::-webkit-scrollbar {
+  width: 10px;
+}
+.settingsSidebar::-webkit-scrollbar-track,
+.settingsContent::-webkit-scrollbar-track {
+  background: #343a40;
+}
+.settingsSidebar::-webkit-scrollbar-thumb,
+.settingsContent::-webkit-scrollbar-thumb {
+  background: #66CCDA;
+  border-radius: 5px;
+}
+.settingsSidebar::-webkit-scrollbar-thumb:hover,
+.settingsContent::-webkit-scrollbar-thumb:hover {
+  background: #0394BB;
+}
+
 .parent {
   display: grid;
   grid-template-columns: 200px repeat(4, 1fr);

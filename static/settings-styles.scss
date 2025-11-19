@@ -1,0 +1,536 @@
+@import 'styles';
+
+/* ===================== 
+    SETTINGS STYLES
+   ===================== */
+
+// Settings-specific variables
+$settings-overlay-opacity: 0.8;
+$settings-transition-duration: 0.3s;
+
+// Font size variables
+$font-size-small: 1.0rem;
+$font-size-medium: 1.5rem;
+$font-size-large: 2.0rem;
+
+// Message spacing variables
+$message-spacing-compact: 20px;
+$message-spacing-cozy: 40px;
+$message-spacing-spacious: 60px;
+
+// Theme definitions with CSS variables
+:root {
+  // Font sizes
+  --message-font-size: #{$font-size-medium};
+  --message-gap: #{$message-spacing-cozy};
+  
+  // Privacy & Behavior
+  --typing-indicator-display: block;
+  --read-receipts-display: block;
+  --online-status-display: block;
+  
+  // Notification styles
+  --notification-sound-enabled: 1;
+  --desktop-notifications-enabled: 0;
+  
+  // Input behavior
+  --enter-to-send: 1;
+}
+
+/* ===================== 
+        Themes
+   ===================== */
+
+// Light Theme
+body.theme-light {
+  --colour-light: #f8f9fa;
+  --colour-dark: #ffffff;
+  --colour-oled: #f0f0f0;
+  --colour-text-primary: #333333;
+  --colour-text-button: #000000;
+  --navbar-bg: var(--colour-primary);
+  --section-bg: #f8f9fa;
+  --border-color: var(--colour-primary);
+  background-color: #ffffff;
+  
+  .navbar {
+    background-color: var(--navbar-bg);
+  }
+  
+  .chatsSection, .textSection, .textInputSection {
+    background-color: var(--section-bg);
+  }
+  
+  .topBar {
+    background-color: var(--section-bg);
+    border-bottom-color: var(--border-color);
+  }
+  
+  .messageStyling {
+    color: var(--colour-text-primary);
+  }
+  
+  .softwareName, .chatsText {
+    color: var(--colour-text-primary);
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: var(--section-bg);
+  }
+}
+
+// Dark Theme (Default)
+body.theme-dark {
+  --colour-light: #f8f9fa;
+  --colour-dark: #343a40;
+  --colour-oled: #2a2e33;
+  --colour-text-primary: #cccccc;
+  --colour-text-button: #000000;
+  --navbar-bg: var(--colour-primary);
+  --section-bg: #343a40;
+  --border-color: var(--colour-primary);
+  background-color: #343a40;
+  
+  .navbar {
+    background-color: var(--navbar-bg);
+  }
+  
+  .chatsSection, .textSection, .textInputSection {
+    background-color: var(--section-bg);
+  }
+  
+  .topBar {
+    background-color: var(--section-bg);
+    border-bottom-color: var(--border-color);
+  }
+  
+  .messageStyling {
+    color: var(--colour-light);
+  }
+  
+  .softwareName, .chatsText {
+    color: var(--colour-text-primary);
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: var(--section-bg);
+  }
+}
+
+// OLED Theme
+body.theme-oled {
+  --colour-light: #ffffff;
+  --colour-dark: #000000;
+  --colour-oled: #000000;
+  --colour-text-primary: #ffffff;
+  --colour-text-button: #000000;
+  --navbar-bg: var(--colour-primary);
+  --section-bg: #000000;
+  --border-color: var(--colour-primary);
+  background-color: #000000;
+  
+  .navbar {
+    background-color: var(--navbar-bg);
+  }
+  
+  .chatsSection, .textSection, .textInputSection {
+    background-color: var(--section-bg);
+  }
+  
+  .topBar {
+    background-color: var(--section-bg);
+    border-bottom-color: var(--border-color);
+  }
+  
+  .messageStyling {
+    color: var(--colour-light);
+  }
+  
+  .softwareName, .chatsText {
+    color: var(--colour-text-primary);
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: var(--section-bg);
+  }
+}
+
+/* ===================== 
+    Settings-specific Styles
+   ===================== */
+
+// Settings Menu
+.settingsMenuWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  display: none;
+  pointer-events: none;
+  
+  &.show {
+    display: block;
+    pointer-events: auto;
+  }
+
+  .settingsOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, $settings-overlay-opacity);
+    opacity: 0;
+    transition: opacity $settings-transition-duration;
+    
+    .show & {
+      opacity: 1;
+    }
+  }
+
+  .settingsMenu {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    right: 5%;
+    bottom: 5%;
+    background: var(--section-bg, #343a40);
+    border: 2px solid var(--colour-primary);
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    overflow: hidden;
+    transform: translateY(20px);
+    transition: transform $settings-transition-duration;
+    
+    .show & {
+      transform: translateY(0);
+    }
+  }
+
+  // Left sidebar
+  .settingsSidebar {
+    background: darkslategrey;
+    border-right: 2px solid var(--colour-primary);
+    padding: $spacing-lg;
+    overflow-y: auto;
+    
+    .sidebarHeader {
+      font-family: $font-primary;
+      font-size: $text-lg;
+      color: var(--colour-primary);
+      margin-bottom: $spacing-lg;
+      padding-bottom: $spacing-md;
+      border-bottom: 1px solid var(--colour-primary);
+    }
+    
+    .settingsNavButton {
+      width: 100%;
+      padding: $spacing-md;
+      margin-bottom: $spacing-sm;
+      background: transparent;
+      border: 2px solid transparent;
+      border-radius: $border-radius-sm;
+      color: var(--colour-text-primary);
+      font-family: $font-mono;
+      font-size: $text-sm;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s;
+      
+      &:hover {
+        background: rgba(var(--colour-primary), 0.1);
+        border-color: var(--colour-primary);
+      }
+      
+      &.active {
+        background: var(--colour-primary);
+        color: var(--colour-text-button);
+        border-color: var(--colour-secondary);
+      }
+    }
+  }
+
+  // Right content area
+  .settingsContent {
+    padding: $spacing-lg * 2;
+    overflow-y: auto;
+    position: relative;
+    
+    .settingsSection {
+      display: none;
+      
+      &.active {
+        display: block;
+        animation: fadeInSettings 0.3s;
+      }
+      
+      h2 {
+        color: var(--colour-primary);
+        font-family: $font-primary;
+        font-size: $text-lg * 1.2;
+        font-weight: $font-weight-bold;
+        margin-bottom: $spacing-lg;
+        padding-bottom: $spacing-md;
+        border-bottom: 2px solid var(--colour-primary);
+      }
+      
+      .settingsGrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: $spacing-lg;
+        
+        .settingsColumn {
+          display: flex;
+          flex-direction: column;
+          gap: $spacing-md;
+        }
+      }
+      
+      label {
+        display: block;
+        margin-bottom: $spacing-sm;
+        color: var(--colour-text-primary);
+        font-family: $font-secondary;
+        font-size: $text-sm;
+      }
+      
+      input[type="text"],
+      input[type="email"],
+      select {
+        width: 100%;
+        padding: $spacing-sm;
+        margin-bottom: $spacing-md;
+        border: 1px solid #666;
+        border-radius: $border-radius-sm;
+        background-color: #444;
+        color: #fff;
+        font-family: $font-secondary;
+        transition: border-color 0.2s;
+        
+        &:focus {
+          outline: none;
+          border-color: var(--colour-primary);
+        }
+      }
+      
+      input[type="checkbox"],
+      input[type="radio"] {
+        margin-right: $spacing-sm;
+      }
+      
+      .checkboxWrapper,
+      .radioWrapper {
+        margin-bottom: $spacing-md;
+        display: flex;
+        align-items: center;
+        
+        label {
+          margin-bottom: 0;
+          cursor: pointer;
+        }
+        
+        input {
+          cursor: pointer;
+        }
+      }
+      
+      .sliderWrapper {
+        margin-bottom: $spacing-lg;
+        
+        label {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: $spacing-sm;
+          
+          .sliderValue {
+            font-weight: $font-weight-bold;
+            color: var(--colour-primary);
+            font-family: $font-mono;
+          }
+        }
+        
+        input[type="range"] {
+          width: 100%;
+          margin-bottom: $spacing-sm;
+        }
+        
+        .colorPreview {
+          width: 100%;
+          height: 40px;
+          border-radius: $border-radius-sm;
+          margin-top: $spacing-sm;
+          border: 2px solid #666;
+        }
+      }
+      
+      .saveButton {
+        background-color: var(--colour-primary);
+        color: var(--colour-text-button);
+        font-family: $font-mono;
+        font-size: $btn-font-size;
+        padding: $spacing-md $spacing-lg * 2;
+        margin-top: $spacing-lg;
+        border: solid 4px var(--colour-secondary);
+        border-radius: $border-radius-md;
+        cursor: pointer;
+        transition: all 0.2s;
+        
+        &:hover {
+          background-color: var(--colour-secondary);
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+
+  .closeButton {
+    position: absolute;
+    top: $spacing-lg;
+    right: $spacing-lg;
+    background-color: $colour-danger;
+    color: #fff;
+    border: none;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $border-radius-sm;
+    cursor: pointer;
+    font-family: $font-mono;
+    font-size: $text-lg;
+    z-index: 10;
+    transition: all 0.2s;
+    
+    &:hover {
+      background-color: darkred;
+      transform: scale(1.1);
+    }
+  }
+}
+
+@keyframes fadeInSettings {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Scrollbar styling for settings
+.settingsSidebar,
+.settingsContent {
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: var(--section-bg, $colour-dark);
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: var(--colour-primary);
+    border-radius: 5px;
+    
+    &:hover {
+      background: var(--colour-secondary);
+    }
+  }
+}
+
+/* ===================== 
+    Application of Settings
+   ===================== */
+
+// Font size application
+.messageStyling {
+  font-size: var(--message-font-size);
+  transition: font-size 0.3s ease;
+}
+
+// Message spacing application
+.pythonScript {
+  margin-bottom: var(--message-gap);
+  transition: margin-bottom 0.3s ease;
+}
+
+// Typing indicator
+.typing-indicator {
+  display: var(--typing-indicator-display);
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(var(--colour-primary), 0.9);
+  color: var(--colour-text-button);
+  padding: 8px 16px;
+  border-radius: $border-radius-md;
+  font-family: $font-mono;
+  font-size: $text-sm;
+  z-index: 1000;
+  
+  &.show {
+    display: block;
+    animation: fadeInUp 0.3s ease;
+  }
+}
+
+// Read receipts
+.read-receipt {
+  display: var(--read-receipts-display);
+  font-size: 0.8em;
+  color: var(--colour-primary);
+  margin-left: 5px;
+}
+
+// Online status
+.online-status {
+  display: var(--online-status-display);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $colour-success;
+  margin-left: 5px;
+}
+
+// Input behavior
+.inputBox {
+  &[data-enter-to-send="true"] {
+    // Styles when Enter to send is enabled
+  }
+  
+  &[data-enter-to-send="false"] {
+    // Styles when Enter to send is disabled
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+// Smooth transitions for all theme changes
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  
+  .navbar,
+  .chatsSection,
+  .textSection,
+  .textInputSection,
+  .topBar,
+  .messageStyling,
+  .softwareName,
+  .chatsText,
+  .inputBox,
+  .channelText {
+    transition: all 0.3s ease;
+  }
+}
