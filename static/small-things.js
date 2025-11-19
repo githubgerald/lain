@@ -1,42 +1,42 @@
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('🔧 Initializing settings button...');
-  
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("🔧 Initializing settings button...");
+
   // Wait a bit to ensure everything is loaded
   setTimeout(() => {
-    const settingsImage = document.querySelector('.settingsImage');
-    const settingsBtn = document.getElementById('settingsBtn');
-    
+    const settingsImage = document.querySelector(".settingsImage");
+    const settingsBtn = document.getElementById("settingsBtn");
+
     function handleSettingsOpen(e) {
       e.preventDefault();
       e.stopPropagation();
-      console.log('🖱️ Settings clicked');
-      
+      console.log("🖱️ Settings clicked");
+
       // Check if function exists
-      if (typeof window.openSettings === 'function') {
-        console.log('✅ openSettings function found, calling...');
+      if (typeof window.openSettings === "function") {
+        console.log("✅ openSettings function found, calling...");
         window.openSettings();
       } else {
-        console.error('❌ openSettings function not found on window object');
+        console.error("❌ openSettings function not found on window object");
         // Try to find it globally
-        if (typeof openSettings === 'function') {
-          console.log('✅ openSettings found globally');
+        if (typeof openSettings === "function") {
+          console.log("✅ openSettings found globally");
           openSettings();
         } else {
-          console.error('❌ openSettings not found anywhere');
+          console.error("❌ openSettings not found anywhere");
         }
       }
     }
-    
+
     if (settingsImage) {
       settingsImage.onclick = handleSettingsOpen;
-      console.log('✅ Settings image handler attached');
+      console.log("✅ Settings image handler attached");
     } else {
-      console.error('❌ Settings image not found');
+      console.error("❌ Settings image not found");
     }
-    
+
     if (settingsBtn) {
       settingsBtn.onclick = handleSettingsOpen;
-      console.log('✅ Settings button handler attached');
+      console.log("✅ Settings button handler attached");
     }
   }, 100);
 });

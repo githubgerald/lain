@@ -11,24 +11,26 @@ body.theme-light {
   --colour-text-button: #000000;
   --navbar-bg: #66CCDA;
   background-color: #ffffff;
-  
+
   .navbar {
     background-color: var(--navbar-bg);
   }
-  
-  .chatsSection, .textSection, .textInputSection {
+
+  .chatsSection,
+  .textSection,
+  .textInputSection {
     background-color: var(--colour-light);
   }
-  
+
   .topBar {
     background-color: var(--colour-light);
     border-bottom-color: var(--colour-primary);
   }
-  
+
   .messageStyling {
     color: var(--colour-text-primary);
   }
-  
+
   // Scrollbars for light theme
   ::-webkit-scrollbar-track {
     background-color: var(--colour-light);
@@ -44,24 +46,26 @@ body.theme-dark {
   --colour-text-button: #000000;
   --navbar-bg: #66CCDA;
   background-color: #343a40;
-  
+
   .navbar {
     background-color: var(--navbar-bg);
   }
-  
-  .chatsSection, .textSection, .textInputSection {
+
+  .chatsSection,
+  .textSection,
+  .textInputSection {
     background-color: var(--colour-dark);
   }
-  
+
   .topBar {
     background-color: var(--colour-dark);
     border-bottom-color: var(--colour-primary);
   }
-  
+
   .messageStyling {
     color: var(--colour-light);
   }
-  
+
   // Scrollbars for dark theme
   ::-webkit-scrollbar-track {
     background-color: var(--colour-dark);
@@ -77,35 +81,38 @@ body.theme-oled {
   --colour-text-button: #000000;
   --navbar-bg: #66CCDA;
   background-color: #000000;
-  
+
   .navbar {
     background-color: var(--navbar-bg);
   }
-  
-  .chatsSection, .textSection, .textInputSection {
+
+  .chatsSection,
+  .textSection,
+  .textInputSection {
     background-color: var(--colour-oled);
   }
-  
+
   .topBar {
     background-color: var(--colour-oled);
     border-bottom-color: var(--colour-primary);
   }
-  
+
   .messageStyling {
     color: var(--colour-light);
   }
-  
+
   // Scrollbars for OLED theme
   ::-webkit-scrollbar-track {
     background-color: var(--colour-oled);
   }
-  
+
   // Make borders more visible in OLED
   .chatsSection {
     border-right-color: var(--colour-primary);
   }
-  
-  .topBarProfile, .topBarChannel {
+
+  .topBarProfile,
+  .topBarChannel {
     border-right-color: var(--colour-primary);
   }
 }
@@ -113,15 +120,17 @@ body.theme-oled {
 // Ensure proper contrast for all themes
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
-  
-  .chatsSection, .textSection, .textInputSection {
+
+  .chatsSection,
+  .textSection,
+  .textInputSection {
     transition: background-color 0.3s ease;
   }
-  
+
   .topBar {
     transition: background-color 0.3s ease, border-color 0.3s ease;
   }
-  
+
   .messageStyling {
     transition: color 0.3s ease;
   }
@@ -131,42 +140,43 @@ body {
 .parent {
   height: 100vh;
   width: 100vw;
-  
+
   // Each theme will control the actual colors through CSS variables
   .navbar {
     transition: background-color 0.3s ease;
   }
-  
+
   .chatsSection {
     transition: background-color 0.3s ease, border-color 0.3s ease;
   }
-  
+
   .textSection {
     transition: background-color 0.3s ease;
   }
-  
+
   .textInputSection {
     transition: background-color 0.3s ease, border-color 0.3s ease;
   }
-  
+
   .topBar {
     transition: background-color 0.3s ease;
-    
-    .topBarProfile, .topBarChannel {
+
+    .topBarProfile,
+    .topBarChannel {
       transition: border-color 0.3s ease;
     }
-    
+
     .channelText {
       transition: color 0.3s ease, border-color 0.3s ease;
       background-color: transparent;
       color: var(--colour-text-primary);
-      
+
       &::placeholder {
         color: var(--colour-text-primary);
         opacity: 0.7;
       }
     }
-    
+
     .topBarTime {
       transition: color 0.3s ease;
       color: var(--colour-primary);
@@ -191,7 +201,7 @@ body {
 .inputBox {
   background-color: transparent;
   color: var(--colour-text-primary);
-  
+
   &::placeholder {
     color: var(--colour-text-primary);
     opacity: 0.7;
@@ -203,7 +213,7 @@ body {
   background-color: var(--colour-dark);
   color: var(--colour-text-primary);
   border-color: var(--colour-primary);
-  
+
   &::placeholder {
     color: var(--colour-text-primary);
     opacity: 0.7;
@@ -817,7 +827,7 @@ h6 {
   font-size: $text-sm;
   z-index: 1000;
   display: none;
-  
+
   &.show {
     display: block;
     animation: fadeInUp 0.3s ease;
@@ -829,6 +839,7 @@ h6 {
     opacity: 0;
     transform: translateX(-50%) translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
@@ -844,7 +855,7 @@ h6 {
   z-index: 10000;
   display: none;
   pointer-events: none;
-  
+
   &.show {
     display: block;
     pointer-events: auto;
@@ -859,7 +870,7 @@ h6 {
     background: rgba(0, 0, 0, 0.8); // Changed to 80% opacity
     opacity: 0;
     transition: opacity 0.3s;
-    
+
     .show & {
       opacity: 1;
     }
@@ -881,209 +892,209 @@ h6 {
     opacity: 1 !important;
     transform: translateY(20px);
     transition: transform 0.3s;
-    
+
     .show & {
       transform: translateY(0);
     }
   }
 
- // Left sidebar - Section navigation
-    .settingsSidebar {
-      background: darkslategrey;
-      border-right: 2px solid $colour-primary;
-      padding: $spacing-lg;
-      overflow-y: auto;
-      
-      .sidebarHeader {
-        font-family: $font-primary;
-        font-size: $text-lg;
-        color: $colour-primary;
-        margin-bottom: $spacing-lg;
-        padding-bottom: $spacing-md;
-        border-bottom: 1px solid $colour-primary;
-      }
-      
-      .settingsNavButton {
-        width: 100%;
-        padding: $spacing-md;
-        margin-bottom: $spacing-sm;
-        background: transparent;
-        border: 2px solid transparent;
-        border-radius: $border-radius-sm;
-        color: $colour-text-primary;
-        font-family: $font-mono;
-        font-size: $text-sm;
-        text-align: left;
-        cursor: pointer;
-        transition: all 0.2s;
-        
-        &:hover {
-          background: rgba($colour-primary, 0.1);
-          border-color: $colour-primary;
-        }
-        
-        &.active {
-          background: $colour-primary;
-          color: $colour-text-button;
-          border-color: $colour-secondary;
-        }
-      }
-    }
+  // Left sidebar - Section navigation
+  .settingsSidebar {
+    background: darkslategrey;
+    border-right: 2px solid $colour-primary;
+    padding: $spacing-lg;
+    overflow-y: auto;
 
-    // Right content area
-    .settingsContent {
-      padding: $spacing-lg * 2;
-      overflow-y: auto;
-      position: relative;
-      
-      .settingsSection {
-        display: none;
-        
-        &.active {
-          display: block;
-          animation: fadeInSettings 0.3s;
-        }
-        
-        h2 {
-          color: $colour-primary;
-          font-family: $font-primary;
-          font-size: $text-lg * 1.2;
-          font-weight: $font-weight-bold;
-          margin-bottom: $spacing-lg;
-          padding-bottom: $spacing-md;
-          border-bottom: 2px solid $colour-primary;
-        }
-        
-        .settingsGrid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: $spacing-lg;
-          
-          .settingsColumn {
-            display: flex;
-            flex-direction: column;
-            gap: $spacing-md;
-          }
-        }
-        
-        label {
-          display: block;
-          margin-bottom: $spacing-sm;
-          color: #ddd;
-          font-family: $font-secondary;
-          font-size: $text-sm;
-        }
-        
-        input[type="text"],
-        input[type="email"],
-        select {
-          width: 100%;
-          padding: $spacing-sm;
-          margin-bottom: $spacing-md;
-          border: 1px solid #666;
-          border-radius: $border-radius-sm;
-          background-color: #444;
-          color: #fff;
-          font-family: $font-secondary;
-          transition: border-color 0.2s;
-          
-          &:focus {
-            outline: none;
-            border-color: $colour-primary;
-          }
-        }
-        
-        input[type="checkbox"],
-        input[type="radio"] {
-          margin-right: $spacing-sm;
-        }
-        
-        .checkboxWrapper,
-        .radioWrapper {
-          margin-bottom: $spacing-md;
-          display: flex;
-          align-items: center;
-          
-          label {
-            margin-bottom: 0;
-            cursor: pointer;
-          }
-          
-          input {
-            cursor: pointer;
-          }
-        }
-        
-        .sliderWrapper {
-          margin-bottom: $spacing-lg;
-          
-          label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: $spacing-sm;
-            
-            .sliderValue {
-              font-weight: $font-weight-bold;
-              color: $colour-primary;
-              font-family: $font-mono;
-            }
-          }
-          
-          input[type="range"] {
-            width: 100%;
-            margin-bottom: $spacing-sm;
-          }
-          
-          .colorPreview {
-            width: 100%;
-            height: 40px;
-            border-radius: $border-radius-sm;
-            margin-top: $spacing-sm;
-            border: 2px solid #666;
-          }
-        }
-        
-        .saveButton {
-          background-color: $colour-primary;
-          color: $colour-text-button;
-          font-family: $font-mono;
-          font-size: $btn-font-size;
-          padding: $spacing-md $spacing-lg * 2;
-          margin-top: $spacing-lg;
-          border: solid 4px $colour-secondary;
-          border-radius: $border-radius-md;
-          cursor: pointer;
-          transition: all 0.2s;
-          
-          &:hover {
-            background-color: $colour-secondary;
-            transform: translateY(-2px);
-          }
-        }
-      }
-    }
-
-    .closeButton {
-      position: absolute;
-      top: $spacing-lg;
-      right: $spacing-lg;
-      background-color: $colour-danger;
-      color: #fff;
-      border: none;
-      padding: $spacing-sm $spacing-md;
-      border-radius: $border-radius-sm;
-      cursor: pointer;
-      font-family: $font-mono;
+    .sidebarHeader {
+      font-family: $font-primary;
       font-size: $text-lg;
-      z-index: 10;
+      color: $colour-primary;
+      margin-bottom: $spacing-lg;
+      padding-bottom: $spacing-md;
+      border-bottom: 1px solid $colour-primary;
+    }
+
+    .settingsNavButton {
+      width: 100%;
+      padding: $spacing-md;
+      margin-bottom: $spacing-sm;
+      background: transparent;
+      border: 2px solid transparent;
+      border-radius: $border-radius-sm;
+      color: $colour-text-primary;
+      font-family: $font-mono;
+      font-size: $text-sm;
+      text-align: left;
+      cursor: pointer;
       transition: all 0.2s;
-      
+
       &:hover {
-        background-color: darkred;
-        transform: scale(1.1);
+        background: rgba($colour-primary, 0.1);
+        border-color: $colour-primary;
+      }
+
+      &.active {
+        background: $colour-primary;
+        color: $colour-text-button;
+        border-color: $colour-secondary;
       }
     }
   }
+
+  // Right content area
+  .settingsContent {
+    padding: $spacing-lg * 2;
+    overflow-y: auto;
+    position: relative;
+
+    .settingsSection {
+      display: none;
+
+      &.active {
+        display: block;
+        animation: fadeInSettings 0.3s;
+      }
+
+      h2 {
+        color: $colour-primary;
+        font-family: $font-primary;
+        font-size: $text-lg * 1.2;
+        font-weight: $font-weight-bold;
+        margin-bottom: $spacing-lg;
+        padding-bottom: $spacing-md;
+        border-bottom: 2px solid $colour-primary;
+      }
+
+      .settingsGrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: $spacing-lg;
+
+        .settingsColumn {
+          display: flex;
+          flex-direction: column;
+          gap: $spacing-md;
+        }
+      }
+
+      label {
+        display: block;
+        margin-bottom: $spacing-sm;
+        color: #ddd;
+        font-family: $font-secondary;
+        font-size: $text-sm;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      select {
+        width: 100%;
+        padding: $spacing-sm;
+        margin-bottom: $spacing-md;
+        border: 1px solid #666;
+        border-radius: $border-radius-sm;
+        background-color: #444;
+        color: #fff;
+        font-family: $font-secondary;
+        transition: border-color 0.2s;
+
+        &:focus {
+          outline: none;
+          border-color: $colour-primary;
+        }
+      }
+
+      input[type="checkbox"],
+      input[type="radio"] {
+        margin-right: $spacing-sm;
+      }
+
+      .checkboxWrapper,
+      .radioWrapper {
+        margin-bottom: $spacing-md;
+        display: flex;
+        align-items: center;
+
+        label {
+          margin-bottom: 0;
+          cursor: pointer;
+        }
+
+        input {
+          cursor: pointer;
+        }
+      }
+
+      .sliderWrapper {
+        margin-bottom: $spacing-lg;
+
+        label {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: $spacing-sm;
+
+          .sliderValue {
+            font-weight: $font-weight-bold;
+            color: $colour-primary;
+            font-family: $font-mono;
+          }
+        }
+
+        input[type="range"] {
+          width: 100%;
+          margin-bottom: $spacing-sm;
+        }
+
+        .colorPreview {
+          width: 100%;
+          height: 40px;
+          border-radius: $border-radius-sm;
+          margin-top: $spacing-sm;
+          border: 2px solid #666;
+        }
+      }
+
+      .saveButton {
+        background-color: $colour-primary;
+        color: $colour-text-button;
+        font-family: $font-mono;
+        font-size: $btn-font-size;
+        padding: $spacing-md $spacing-lg * 2;
+        margin-top: $spacing-lg;
+        border: solid 4px $colour-secondary;
+        border-radius: $border-radius-md;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover {
+          background-color: $colour-secondary;
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+
+  .closeButton {
+    position: absolute;
+    top: $spacing-lg;
+    right: $spacing-lg;
+    background-color: $colour-danger;
+    color: #fff;
+    border: none;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $border-radius-sm;
+    cursor: pointer;
+    font-family: $font-mono;
+    font-size: $text-lg;
+    z-index: 10;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: darkred;
+      transform: scale(1.1);
+    }
+  }
+}
 
 
 @keyframes fadeInSettings {
@@ -1091,6 +1102,7 @@ h6 {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1103,15 +1115,15 @@ h6 {
   &::-webkit-scrollbar {
     width: 10px;
   }
-  
+
   &::-webkit-scrollbar-track {
     background: $colour-dark;
   }
-  
+
   &::-webkit-scrollbar-thumb {
     background: $colour-primary;
     border-radius: 5px;
-    
+
     &:hover {
       background: $colour-secondary;
     }
@@ -1294,7 +1306,7 @@ h6 {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   z-index: 10000;
   animation: popupFadeIn 0.2s ease;
-  
+
   .profileHeader {
     display: flex;
     align-items: center;
@@ -1302,7 +1314,7 @@ h6 {
     margin-bottom: 15px;
     padding-bottom: 15px;
     border-bottom: 1px solid $colour-primary;
-    
+
     .profilePicture {
       width: 64px;
       height: 64px;
@@ -1315,17 +1327,17 @@ h6 {
       color: $colour-dark;
       font-family: $font-primary;
     }
-    
+
     .profileInfo {
       flex: 1;
-      
+
       .profileName {
         font-family: $font-primary;
         font-size: $text-lg;
         color: $colour-primary;
         margin-bottom: 5px;
       }
-      
+
       .profileRole {
         font-family: $font-mono;
         font-size: $text-sm;
@@ -1333,36 +1345,36 @@ h6 {
       }
     }
   }
-  
+
   .profileDetails {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    
+
     .profileRow {
       display: flex;
       justify-content: space-between;
       font-family: $font-mono;
       font-size: $text-sm;
-      
+
       .label {
         color: $colour-text-primary;
       }
-      
+
       .value {
         color: $colour-light;
         font-weight: bold;
       }
     }
   }
-  
+
   .profileActions {
     margin-top: 15px;
     padding-top: 15px;
     border-top: 1px solid $colour-primary;
     display: flex;
     gap: 10px;
-    
+
     button {
       flex: 1;
       padding: 8px 16px;
@@ -1374,13 +1386,13 @@ h6 {
       font-size: $text-sm;
       cursor: pointer;
       transition: all 0.2s;
-      
+
       &:hover {
         background: $colour-secondary;
       }
     }
   }
-  
+
   .closePopup {
     position: absolute;
     top: 10px;
@@ -1397,7 +1409,7 @@ h6 {
     justify-content: center;
     border-radius: 50%;
     transition: all 0.2s;
-    
+
     &:hover {
       background: $colour-primary;
       color: $colour-dark;
@@ -1410,6 +1422,7 @@ h6 {
     opacity: 0;
     transform: scale(0.9) translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -1513,7 +1526,7 @@ h6 {
         gap: 0px;
         white-space: nowrap;
         line-height: 1.2;
-        
+
         .daySent {
           width: 100%;
           font-size: 0.75rem;
@@ -1713,13 +1726,13 @@ h6 {
   color: $colour-light;
   font-family: $font-mono;
   font-size: $text-md;
-  
+
   &:focus {
     outline: none;
     border-color: $colour-secondary;
     box-shadow: 0 0 10px rgba(102, 204, 218, 0.3);
   }
-  
+
   &::placeholder {
     color: $colour-text-primary;
   }
@@ -1733,7 +1746,7 @@ h6 {
   grid-auto-rows: min-content;
   gap: 10px;
   padding: 10px 0;
-  
+
   p {
     grid-column: 1 / -1;
     text-align: center;
@@ -1749,27 +1762,27 @@ h6 {
   border: 2px solid transparent;
   transition: all 0.2s;
   aspect-ratio: 1 / 1;
-  
+
   img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     display: block;
   }
-  
+
   &:hover {
     border-color: $colour-primary;
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(102, 204, 218, 0.5);
   }
-  
+
   &:active {
     transform: scale(0.95);
   }
 }
 
-// Make sure chat mode and share mode fit properly
-#chatMode, #shareMode {
+#chatMode,
+#shareMode {
   width: 100%;
   height: 100%;
   position: relative;

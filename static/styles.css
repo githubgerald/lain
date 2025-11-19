@@ -13,7 +13,9 @@ body.theme-light {
 body.theme-light .navbar {
   background-color: var(--navbar-bg);
 }
-body.theme-light .chatsSection, body.theme-light .textSection, body.theme-light .textInputSection {
+body.theme-light .chatsSection,
+body.theme-light .textSection,
+body.theme-light .textInputSection {
   background-color: var(--colour-light);
 }
 body.theme-light .topBar {
@@ -39,7 +41,9 @@ body.theme-dark {
 body.theme-dark .navbar {
   background-color: var(--navbar-bg);
 }
-body.theme-dark .chatsSection, body.theme-dark .textSection, body.theme-dark .textInputSection {
+body.theme-dark .chatsSection,
+body.theme-dark .textSection,
+body.theme-dark .textInputSection {
   background-color: var(--colour-dark);
 }
 body.theme-dark .topBar {
@@ -65,7 +69,9 @@ body.theme-oled {
 body.theme-oled .navbar {
   background-color: var(--navbar-bg);
 }
-body.theme-oled .chatsSection, body.theme-oled .textSection, body.theme-oled .textInputSection {
+body.theme-oled .chatsSection,
+body.theme-oled .textSection,
+body.theme-oled .textInputSection {
   background-color: var(--colour-oled);
 }
 body.theme-oled .topBar {
@@ -81,14 +87,17 @@ body.theme-oled ::-webkit-scrollbar-track {
 body.theme-oled .chatsSection {
   border-right-color: var(--colour-primary);
 }
-body.theme-oled .topBarProfile, body.theme-oled .topBarChannel {
+body.theme-oled .topBarProfile,
+body.theme-oled .topBarChannel {
   border-right-color: var(--colour-primary);
 }
 
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-body .chatsSection, body .textSection, body .textInputSection {
+body .chatsSection,
+body .textSection,
+body .textInputSection {
   transition: background-color 0.3s ease;
 }
 body .topBar {
@@ -117,7 +126,8 @@ body .messageStyling {
 .parent .topBar {
   transition: background-color 0.3s ease;
 }
-.parent .topBar .topBarProfile, .parent .topBar .topBarChannel {
+.parent .topBar .topBarProfile,
+.parent .topBar .topBarChannel {
   transition: border-color 0.3s ease;
 }
 .parent .topBar .channelText {
@@ -1504,7 +1514,8 @@ h6 {
   transform: scale(0.95);
 }
 
-#chatMode, #shareMode {
+#chatMode,
+#shareMode {
   width: 100%;
   height: 100%;
   position: relative;

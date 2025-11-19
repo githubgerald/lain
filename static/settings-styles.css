@@ -1541,7 +1541,9 @@ body.theme-light {
 body.theme-light .navbar {
   background-color: var(--navbar-bg);
 }
-body.theme-light .chatsSection, body.theme-light .textSection, body.theme-light .textInputSection {
+body.theme-light .chatsSection,
+body.theme-light .textSection,
+body.theme-light .textInputSection {
   background-color: var(--section-bg);
 }
 body.theme-light .topBar {
@@ -1551,7 +1553,8 @@ body.theme-light .topBar {
 body.theme-light .messageStyling {
   color: var(--colour-text-primary);
 }
-body.theme-light .softwareName, body.theme-light .chatsText {
+body.theme-light .softwareName,
+body.theme-light .chatsText {
   color: var(--colour-text-primary);
 }
 body.theme-light ::-webkit-scrollbar-track {
@@ -1572,7 +1575,9 @@ body.theme-dark {
 body.theme-dark .navbar {
   background-color: var(--navbar-bg);
 }
-body.theme-dark .chatsSection, body.theme-dark .textSection, body.theme-dark .textInputSection {
+body.theme-dark .chatsSection,
+body.theme-dark .textSection,
+body.theme-dark .textInputSection {
   background-color: var(--section-bg);
 }
 body.theme-dark .topBar {
@@ -1582,7 +1587,8 @@ body.theme-dark .topBar {
 body.theme-dark .messageStyling {
   color: var(--colour-light);
 }
-body.theme-dark .softwareName, body.theme-dark .chatsText {
+body.theme-dark .softwareName,
+body.theme-dark .chatsText {
   color: var(--colour-text-primary);
 }
 body.theme-dark ::-webkit-scrollbar-track {
@@ -1603,7 +1609,9 @@ body.theme-oled {
 body.theme-oled .navbar {
   background-color: var(--navbar-bg);
 }
-body.theme-oled .chatsSection, body.theme-oled .textSection, body.theme-oled .textInputSection {
+body.theme-oled .chatsSection,
+body.theme-oled .textSection,
+body.theme-oled .textInputSection {
   background-color: var(--section-bg);
 }
 body.theme-oled .topBar {
@@ -1613,7 +1621,8 @@ body.theme-oled .topBar {
 body.theme-oled .messageStyling {
   color: var(--colour-light);
 }
-body.theme-oled .softwareName, body.theme-oled .chatsText {
+body.theme-oled .softwareName,
+body.theme-oled .chatsText {
   color: var(--colour-text-primary);
 }
 body.theme-oled ::-webkit-scrollbar-track {
