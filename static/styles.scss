@@ -1,254 +1,4 @@
 /* ===================== 
-        Themes
-   ===================== */
-
-// Light Theme
-body.theme-light {
-  --colour-light: #f8f9fa;
-  --colour-dark: #ffffff;
-  --colour-oled: #f0f0f0;
-  --colour-text-primary: #333333;
-  --colour-text-button: #000000;
-  --navbar-bg: #66CCDA;
-  background-color: #ffffff;
-
-  .navbar {
-    background-color: var(--navbar-bg);
-  }
-
-  .chatsSection,
-  .textSection,
-  .textInputSection {
-    background-color: var(--colour-light);
-  }
-
-  .topBar {
-    background-color: var(--colour-light);
-    border-bottom-color: var(--colour-primary);
-  }
-
-  .messageStyling {
-    color: var(--colour-text-primary);
-  }
-
-  // Scrollbars for light theme
-  ::-webkit-scrollbar-track {
-    background-color: var(--colour-light);
-  }
-}
-
-// Dark Theme (Default)
-body.theme-dark {
-  --colour-light: #f8f9fa;
-  --colour-dark: #343a40;
-  --colour-oled: #2a2e33;
-  --colour-text-primary: #cccccc;
-  --colour-text-button: #000000;
-  --navbar-bg: #66CCDA;
-  background-color: #343a40;
-
-  .navbar {
-    background-color: var(--navbar-bg);
-  }
-
-  .chatsSection,
-  .textSection,
-  .textInputSection {
-    background-color: var(--colour-dark);
-  }
-
-  .topBar {
-    background-color: var(--colour-dark);
-    border-bottom-color: var(--colour-primary);
-  }
-
-  .messageStyling {
-    color: var(--colour-light);
-  }
-
-  // Scrollbars for dark theme
-  ::-webkit-scrollbar-track {
-    background-color: var(--colour-dark);
-  }
-}
-
-// OLED Theme
-body.theme-oled {
-  --colour-light: #ffffff;
-  --colour-dark: #000000;
-  --colour-oled: #000000;
-  --colour-text-primary: #ffffff;
-  --colour-text-button: #000000;
-  --navbar-bg: #66CCDA;
-  background-color: #000000;
-
-  .navbar {
-    background-color: var(--navbar-bg);
-  }
-
-  .chatsSection,
-  .textSection,
-  .textInputSection {
-    background-color: var(--colour-oled);
-  }
-
-  .topBar {
-    background-color: var(--colour-oled);
-    border-bottom-color: var(--colour-primary);
-  }
-
-  .messageStyling {
-    color: var(--colour-light);
-  }
-
-  // Scrollbars for OLED theme
-  ::-webkit-scrollbar-track {
-    background-color: var(--colour-oled);
-  }
-
-  // Make borders more visible in OLED
-  .chatsSection {
-    border-right-color: var(--colour-primary);
-  }
-
-  .topBarProfile,
-  .topBarChannel {
-    border-right-color: var(--colour-primary);
-  }
-}
-
-// Ensure proper contrast for all themes
-body {
-  transition: background-color 0.3s ease, color 0.3s ease;
-
-  .chatsSection,
-  .textSection,
-  .textInputSection {
-    transition: background-color 0.3s ease;
-  }
-
-  .topBar {
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-
-  .messageStyling {
-    transition: color 0.3s ease;
-  }
-}
-
-// Update the existing parent grid background
-.parent {
-  height: 100vh;
-  width: 100vw;
-
-  // Each theme will control the actual colors through CSS variables
-  .navbar {
-    transition: background-color 0.3s ease;
-  }
-
-  .chatsSection {
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-
-  .textSection {
-    transition: background-color 0.3s ease;
-  }
-
-  .textInputSection {
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-
-  .topBar {
-    transition: background-color 0.3s ease;
-
-    .topBarProfile,
-    .topBarChannel {
-      transition: border-color 0.3s ease;
-    }
-
-    .channelText {
-      transition: color 0.3s ease, border-color 0.3s ease;
-      background-color: transparent;
-      color: var(--colour-text-primary);
-
-      &::placeholder {
-        color: var(--colour-text-primary);
-        opacity: 0.7;
-      }
-    }
-
-    .topBarTime {
-      transition: color 0.3s ease;
-      color: var(--colour-primary);
-    }
-  }
-}
-
-// Update text colors for all themes
-.softwareName {
-  color: var(--colour-text-primary);
-}
-
-.chatsText {
-  color: var(--colour-text-primary);
-}
-
-.charCount {
-  color: var(--colour-primary);
-}
-
-// Input fields
-.inputBox {
-  background-color: transparent;
-  color: var(--colour-text-primary);
-
-  &::placeholder {
-    color: var(--colour-text-primary);
-    opacity: 0.7;
-  }
-}
-
-// Giphy search
-.giphySearchInput {
-  background-color: var(--colour-dark);
-  color: var(--colour-text-primary);
-  border-color: var(--colour-primary);
-
-  &::placeholder {
-    color: var(--colour-text-primary);
-    opacity: 0.7;
-  }
-}
-
-/* ===================== 
-       Colour Palette
-   ===================== */
-
-// System
-$colour-primary: #66CCDA;
-$colour-secondary: #0394BB;
-$colour-primary-low-opacity: #66ccda50;
-$colour-user: #DD8E32;
-$colour-others: #13801D;
-$colour-admin: #467592;
-$colour-mention: #3a3af8;
-
-// Modes
-$colour-light: #f8f9fa;
-$colour-dark: #343a40;
-$colour-oled: #000000;
-
-// Text
-$colour-text-primary: #646464;
-$colour-text-time: $colour-primary;
-$colour-text-button: #000000;
-
-// System Messages
-$colour-success: #28a745;
-$colour-danger: #dc3545;
-$colour-warning: #ffc107;
-
-/* ===================== 
         Typography 
    ===================== */
 
@@ -283,7 +33,6 @@ $text-sm: 1.125rem;
 $text-md: 1.5rem;
 $text-lg: 1.725rem;
 
-
 /* ===================== 
           Layout
    ===================== */
@@ -301,7 +50,6 @@ $border-radius-sm: 4px;
 $border-radius-md: 8px;
 $border-radius-lg: 12px;
 $border-width: 2px;
-$border-colour: $colour-primary;
 
 // Buttons
 $btn-padding-top: 0.5rem;
@@ -312,8 +60,6 @@ $btn-height: 2.5rem;
 
 // Navbar
 $navbar-height: 60px;
-$navbar-bg: $colour-primary;
-$navbar-text: $colour-text-primary;
 $navbar-padding-top: 0.5rem;
 $navbar-padding-bottom: 1rem;
 
@@ -423,7 +169,6 @@ h6 {
 
 body {
   text-align: center;
-  background-color: $colour-dark;
 }
 
 p {
@@ -447,28 +192,18 @@ h6 {
 }
 
 // Scrollbar styles
-
 ::-webkit-scrollbar {
   width: 20px;
-  background-color: $colour-primary;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: $colour-primary;
   cursor: pointer;
 }
 
-::-webkit-scrollbar-track {
-  background-color: $colour-dark;
-}
-
 .button {
-  background-color: $colour-primary;
-  color: $colour-text-button;
   font-family: $font-mono;
   font-size: $btn-font-size;
   padding: 5px 40px;
-  border: solid 4px $colour-secondary;
   cursor: pointer;
   right: 10px;
   bottom: 10px;
@@ -477,14 +212,12 @@ h6 {
 
   &:hover {
     transition: $transition-slow;
-    background-color: $colour-secondary;
     border-radius: 50px;
   }
 
   &:active {
     transition: all 0.01s;
     -webkit-transition: all 0.01s;
-    border: solid 4px $colour-primary;
     border-radius: 50px;
   }
 }
@@ -500,14 +233,6 @@ h6 {
 }
 
 .contextMenu {
-  --menu-border: rgba(255, 255, 255, 0.08);
-  --menu-bg: linear-gradient(45deg,
-      rgba(10, 20, 28, 0.2) 0%,
-      rgba(10, 20, 28, 0.7) 100%);
-  --item-border: rgba(255, 255, 255, 0.1);
-  --item-color: #fff;
-  --item-bg-hover: rgba(255, 255, 255, 0.1);
-
   height: 0;
   overflow: hidden;
   background: var(--menu-bg);
@@ -570,16 +295,6 @@ h6 {
       background-color: var(--item-bg-hover);
     }
   }
-
-  &[data-theme="light"] {
-    --menu-bg: linear-gradient(45deg,
-        rgba(255, 255, 255, 0.45) 0%,
-        rgba(255, 255, 255, 0.85) 100%);
-    --menu-border: rgba(0, 0, 0, 0.08);
-    --item-border: rgba(0, 0, 0, 0.1);
-    --item-color: rgb(10, 20, 28);
-    --item-bg-hover: rgba(10, 20, 28, 0.09);
-  }
 }
 
 @keyframes menuAnimation {
@@ -616,7 +331,6 @@ h6 {
   grid-column: 4;
   position: relative;
 
-  // Let images determine their own size within constraints
   &[data-media-type="image"] {
     width: 50%;
     height: auto;
@@ -661,10 +375,9 @@ h6 {
   position: relative;
   width: 100%;
   height: 100%;
-  border: $border-width solid $border-colour;
   border-radius: $border-radius-md;
   overflow: hidden;
-  background: $colour-oled;
+  background: var(--colour-oled);
 }
 
 .media-content {
@@ -743,7 +456,6 @@ h6 {
   left: 0;
   right: 0;
   height: fit-content;
-  background: linear-gradient(to right, $colour-primary 0%, $colour-primary 50%, $colour-secondary 50%, $colour-secondary 100%);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -756,7 +468,7 @@ h6 {
 .visualizer-container {
   flex: 1;
   height: 100%;
-  background: $colour-oled;
+  background: var(--colour-oled);
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -766,13 +478,12 @@ h6 {
 .audio-visualizer {
   height: 35px;
   width: 100%;
-  background: $colour-oled;
+  background: var(--colour-oled);
 }
 
 .volume-container {
   position: relative;
   display: flex;
-  background: $colour-primary;
   height: fit-content;
   width: 13%;
   justify-content: center;
@@ -789,17 +500,9 @@ h6 {
   display: flex;
   transform: all 0.25s;
   -webkit-transform: all 0.25s;
-
-  &:hover {
-    .volume-indicator {
-      background-color: $colour-secondary;
-    }
-  }
 }
 
 .volume-indicator {
-  background: $colour-primary;
-  color: $colour-dark;
   border-radius: $border-radius-sm;
   font-family: $font-mono;
   font-size: $text-md;
@@ -811,39 +514,6 @@ h6 {
 
 .volume-indicator {
   opacity: 1;
-}
-
-// Typing indicator
-.typing-indicator {
-  position: fixed;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba($colour-primary, 0.9);
-  color: $colour-text-button;
-  padding: 8px 16px;
-  border-radius: $border-radius-md;
-  font-family: $font-mono;
-  font-size: $text-sm;
-  z-index: 1000;
-  display: none;
-
-  &.show {
-    display: block;
-    animation: fadeInUp 0.3s ease;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
 }
 
 .settingsMenuWrapper {
@@ -867,7 +537,7 @@ h6 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8); // Changed to 80% opacity
+    background: rgba(0, 0, 0, 0.8);
     opacity: 0;
     transition: opacity 0.3s;
 
@@ -882,8 +552,6 @@ h6 {
     left: 5%;
     right: 5%;
     bottom: 5%;
-    background: #343a40;
-    border: 2px solid #66CCDA;
     border-radius: 12px;
     display: grid;
     grid-template-columns: 250px 1fr;
@@ -898,20 +566,16 @@ h6 {
     }
   }
 
-  // Left sidebar - Section navigation
   .settingsSidebar {
     background: darkslategrey;
-    border-right: 2px solid $colour-primary;
     padding: $spacing-lg;
     overflow-y: auto;
 
     .sidebarHeader {
       font-family: $font-primary;
       font-size: $text-lg;
-      color: $colour-primary;
       margin-bottom: $spacing-lg;
       padding-bottom: $spacing-md;
-      border-bottom: 1px solid $colour-primary;
     }
 
     .settingsNavButton {
@@ -921,7 +585,6 @@ h6 {
       background: transparent;
       border: 2px solid transparent;
       border-radius: $border-radius-sm;
-      color: $colour-text-primary;
       font-family: $font-mono;
       font-size: $text-sm;
       text-align: left;
@@ -929,19 +592,11 @@ h6 {
       transition: all 0.2s;
 
       &:hover {
-        background: rgba($colour-primary, 0.1);
-        border-color: $colour-primary;
-      }
-
-      &.active {
-        background: $colour-primary;
-        color: $colour-text-button;
-        border-color: $colour-secondary;
+        background: rgba(102, 204, 218, 0.1);
       }
     }
   }
 
-  // Right content area
   .settingsContent {
     padding: $spacing-lg * 2;
     overflow-y: auto;
@@ -956,13 +611,11 @@ h6 {
       }
 
       h2 {
-        color: $colour-primary;
         font-family: $font-primary;
         font-size: $text-lg * 1.2;
         font-weight: $font-weight-bold;
         margin-bottom: $spacing-lg;
         padding-bottom: $spacing-md;
-        border-bottom: 2px solid $colour-primary;
       }
 
       .settingsGrid {
@@ -980,7 +633,6 @@ h6 {
       label {
         display: block;
         margin-bottom: $spacing-sm;
-        color: #ddd;
         font-family: $font-secondary;
         font-size: $text-sm;
       }
@@ -1000,7 +652,6 @@ h6 {
 
         &:focus {
           outline: none;
-          border-color: $colour-primary;
         }
       }
 
@@ -1035,7 +686,6 @@ h6 {
 
           .sliderValue {
             font-weight: $font-weight-bold;
-            color: $colour-primary;
             font-family: $font-mono;
           }
         }
@@ -1055,19 +705,15 @@ h6 {
       }
 
       .saveButton {
-        background-color: $colour-primary;
-        color: $colour-text-button;
         font-family: $font-mono;
         font-size: $btn-font-size;
         padding: $spacing-md $spacing-lg * 2;
         margin-top: $spacing-lg;
-        border: solid 4px $colour-secondary;
         border-radius: $border-radius-md;
         cursor: pointer;
         transition: all 0.2s;
 
         &:hover {
-          background-color: $colour-secondary;
           transform: translateY(-2px);
         }
       }
@@ -1078,7 +724,6 @@ h6 {
     position: absolute;
     top: $spacing-lg;
     right: $spacing-lg;
-    background-color: $colour-danger;
     color: #fff;
     border: none;
     padding: $spacing-sm $spacing-md;
@@ -1090,12 +735,10 @@ h6 {
     transition: all 0.2s;
 
     &:hover {
-      background-color: darkred;
       transform: scale(1.1);
     }
   }
 }
-
 
 @keyframes fadeInSettings {
   from {
@@ -1109,7 +752,6 @@ h6 {
   }
 }
 
-// Scrollbar styling for settings
 .settingsSidebar,
 .settingsContent {
   &::-webkit-scrollbar {
@@ -1117,16 +759,11 @@ h6 {
   }
 
   &::-webkit-scrollbar-track {
-    background: $colour-dark;
+    background: var(--colour-dark);
   }
 
   &::-webkit-scrollbar-thumb {
-    background: $colour-primary;
     border-radius: 5px;
-
-    &:hover {
-      background: $colour-secondary;
-    }
   }
 }
 
@@ -1143,7 +780,6 @@ h6 {
   grid-column: span 5 / span 5;
   grid-column-start: 1;
   grid-row-start: 1;
-  background-color: $navbar-bg;
   padding: 18px;
   display: flex;
   align-items: center;
@@ -1160,7 +796,6 @@ h6 {
 
   .softwareName {
     font-family: $font-primary;
-    color: $navbar-text;
   }
 }
 
@@ -1168,7 +803,6 @@ h6 {
   grid-column: span 5 / span 5;
   grid-column-start: 1;
   grid-row-start: 2;
-  border-bottom: solid $border-width $border-colour;
   overflow-y: hidden;
   display: grid;
   grid-template-columns: $grid-chats-width $grid-chats-width 1fr;
@@ -1177,7 +811,6 @@ h6 {
   font-size: $text-lg;
 
   .topBarProfile {
-    border-right: solid $border-width $border-colour;
     padding: 5px 0;
     display: flex;
     justify-content: left;
@@ -1228,7 +861,6 @@ h6 {
   }
 
   .topBarChannel {
-    border-right: solid $border-width $border-colour;
     white-space: nowrap;
     margin-left: 10px;
     text-align: left;
@@ -1240,8 +872,7 @@ h6 {
       height: 90%;
       background-color: transparent;
       border: none;
-      border-left: solid $border-width $border-colour;
-      color: $colour-text-primary;
+      border-left: solid;
 
       &::placeholder {
         font-size: $text-md !important;
@@ -1250,7 +881,6 @@ h6 {
       &:focus {
         border: none;
         outline: none;
-        caret-color: $colour-primary;
 
         &::placeholder {
           color: transparent;
@@ -1259,9 +889,7 @@ h6 {
     }
   }
 
-
   .topBarTime {
-    color: $colour-primary;
     margin-left: 10px;
     text-align: left;
   }
@@ -1272,7 +900,6 @@ h6 {
   grid-column-start: 1;
   grid-row-start: 3;
   padding: 10px 0;
-  border-right: solid $border-width $border-colour;
   padding-bottom: $section-padding-bottom;
   overflow-y: auto;
 
@@ -1295,11 +922,8 @@ h6 {
   }
 }
 
-// Profile Popup
 .profilePopup {
   position: fixed;
-  background: $colour-dark;
-  border: 2px solid $colour-primary;
   border-radius: $border-radius-md;
   padding: 20px;
   min-width: 250px;
@@ -1313,18 +937,15 @@ h6 {
     gap: 15px;
     margin-bottom: 15px;
     padding-bottom: 15px;
-    border-bottom: 1px solid $colour-primary;
 
     .profilePicture {
       width: 64px;
       height: 64px;
       border-radius: 50%;
-      background: $colour-primary;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 2rem;
-      color: $colour-dark;
       font-family: $font-primary;
     }
 
@@ -1334,14 +955,12 @@ h6 {
       .profileName {
         font-family: $font-primary;
         font-size: $text-lg;
-        color: $colour-primary;
         margin-bottom: 5px;
       }
 
       .profileRole {
         font-family: $font-mono;
         font-size: $text-sm;
-        color: $colour-text-primary;
       }
     }
   }
@@ -1357,12 +976,7 @@ h6 {
       font-family: $font-mono;
       font-size: $text-sm;
 
-      .label {
-        color: $colour-text-primary;
-      }
-
       .value {
-        color: $colour-light;
         font-weight: bold;
       }
     }
@@ -1371,25 +985,17 @@ h6 {
   .profileActions {
     margin-top: 15px;
     padding-top: 15px;
-    border-top: 1px solid $colour-primary;
     display: flex;
     gap: 10px;
 
     button {
       flex: 1;
       padding: 8px 16px;
-      background: $colour-primary;
-      border: 2px solid $colour-secondary;
       border-radius: $border-radius-sm;
-      color: $colour-text-button;
       font-family: $font-mono;
       font-size: $text-sm;
       cursor: pointer;
       transition: all 0.2s;
-
-      &:hover {
-        background: $colour-secondary;
-      }
     }
   }
 
@@ -1399,7 +1005,6 @@ h6 {
     right: 10px;
     background: transparent;
     border: none;
-    color: $colour-primary;
     font-size: 1.5rem;
     cursor: pointer;
     width: 30px;
@@ -1409,11 +1014,6 @@ h6 {
     justify-content: center;
     border-radius: 50%;
     transition: all 0.2s;
-
-    &:hover {
-      background: $colour-primary;
-      color: $colour-dark;
-    }
   }
 }
 
@@ -1429,7 +1029,6 @@ h6 {
   }
 }
 
-// Overlay to close popup when clicking outside
 .popupOverlay {
   position: fixed;
   top: 0;
@@ -1478,29 +1077,10 @@ h6 {
         text-overflow: ellipsis;
       }
 
-      #userStyling {
-        color: $colour-user;
-        font: $font-primary;
-        font-size: $text-lg;
-        font-weight: $font-weight-regular;
-      }
-
-      #othersStyling {
-        color: $colour-others;
-        font: $font-primary;
-        font-size: $text-lg;
-        font-weight: $font-weight-regular;
-      }
-
-      #adminStyling {
-        color: $colour-admin;
-        font: $font-primary;
-        font-size: $text-lg;
-        font-weight: $font-weight-regular;
-      }
-
+      #userStyling,
+      #othersStyling,
+      #adminStyling,
       #mentionStyling {
-        color: $colour-mention;
         font: $font-primary;
         font-size: $text-lg;
         font-weight: $font-weight-regular;
@@ -1509,7 +1089,6 @@ h6 {
       .gapBetween {
         flex-shrink: 0;
         font-size: 30px;
-        color: $colour-primary;
         grid-column: 2;
         align-self: start;
         padding: 0;
@@ -1518,7 +1097,6 @@ h6 {
       .timeSent {
         flex-shrink: 0;
         font-size: $text-lg;
-        color: $colour-primary;
         grid-column: 3;
         align-self: start;
         display: flex;
@@ -1539,7 +1117,6 @@ h6 {
 
       .messageStyling {
         font: $font-mono;
-        color: $colour-light;
         font-size: $text-lg;
         margin: 0;
         word-wrap: break-word;
@@ -1559,77 +1136,30 @@ h6 {
   margin-left: 50px;
   padding: 10px 10px;
   position: absolute;
+  z-index: 10;
 
-  .chatButtonWrapper {
-    input {
-      appearance: none;
-    }
-
-    label {
-      border-top: solid 8px $colour-primary-low-opacity;
-      border-right: solid 8px $colour-primary-low-opacity;
-      border-bottom: solid 8px $colour-primary;
-      border-left: solid 8px $colour-primary-low-opacity;
-      font-family: $font-mono;
-      font-size: $text-lg;
-      padding: 4px 24px;
-      background-color: transparent;
-      color: $colour-primary;
-      cursor: pointer;
-
-      // Disable highlighting
-      -webkit-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    input:checked~label {
-      border-top: solid 8px $colour-primary;
-      border-right: solid 8px $colour-primary;
-      border-bottom: solid 8px $colour-dark;
-      border-left: solid 8px $colour-primary;
-      font-family: $font-mono;
-      font-size: $text-lg;
-      padding: px 24px;
-      background-color: transparent;
-      color: $colour-primary;
-    }
-  }
-
+  .chatButtonWrapper,
   .shareButtonWrapper {
     input {
       appearance: none;
-      float: left;
     }
 
     label {
-      border-top: solid 8px $colour-primary-low-opacity;
-      border-right: solid 8px $colour-primary-low-opacity;
-      border-bottom: solid 8px $colour-primary;
-      border-left: solid 8px $colour-primary-low-opacity;
       font-family: $font-mono;
       font-size: $text-lg;
       padding: 4px 24px;
       background-color: transparent;
-      color: $colour-primary;
       cursor: pointer;
-
-      // Disable highlighting
       -webkit-user-select: none;
       -ms-user-select: none;
       user-select: none;
     }
 
-    input:checked~label {
-      border-top: solid 8px $colour-primary;
-      border-right: solid 8px $colour-primary;
-      border-bottom: solid 8px $colour-dark;
-      border-left: solid 8px $colour-primary;
+    input:checked ~ label {
       font-family: $font-mono;
       font-size: $text-lg;
       padding: 4px 24px;
       background-color: transparent;
-      color: $colour-primary;
     }
   }
 }
@@ -1639,8 +1169,8 @@ h6 {
   grid-column-start: 2;
   grid-row-start: 6;
   margin-left: 4px;
-  border-top: solid 8px $border-colour;
   position: relative;
+  z-index: 1;
 
   .fileUploadButton {
     background: url(/assets/images/mumenupload.png);
@@ -1659,8 +1189,6 @@ h6 {
   }
 
   .inputBox {
-    background-color: transparent;
-    color: $colour-text-primary;
     font-family: $font-mono;
     font-size: $text-md;
     border: none;
@@ -1674,7 +1202,6 @@ h6 {
     &:focus {
       border: none;
       outline: none;
-      caret-color: $colour-primary;
 
       &::placeholder {
         color: transparent;
@@ -1695,7 +1222,6 @@ h6 {
   .charCount {
     font-family: $font-mono;
     font-size: $text-md;
-    color: $colour-primary;
   }
 }
 
@@ -1720,21 +1246,13 @@ h6 {
 .giphySearchInput {
   width: 100%;
   padding: 10px;
-  background-color: $colour-dark;
-  border: 2px solid $colour-primary;
   border-radius: $border-radius-md;
-  color: $colour-light;
   font-family: $font-mono;
   font-size: $text-md;
 
   &:focus {
     outline: none;
-    border-color: $colour-secondary;
     box-shadow: 0 0 10px rgba(102, 204, 218, 0.3);
-  }
-
-  &::placeholder {
-    color: $colour-text-primary;
   }
 }
 
@@ -1750,7 +1268,6 @@ h6 {
   p {
     grid-column: 1 / -1;
     text-align: center;
-    color: $colour-primary;
   }
 }
 
@@ -1771,9 +1288,7 @@ h6 {
   }
 
   &:hover {
-    border-color: $colour-primary;
     transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(102, 204, 218, 0.5);
   }
 
   &:active {

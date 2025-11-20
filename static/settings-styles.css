@@ -1,186 +1,4 @@
 /* ===================== 
-        Themes
-   ===================== */
-body.theme-light {
-  --colour-light: #f8f9fa;
-  --colour-dark: #ffffff;
-  --colour-oled: #f0f0f0;
-  --colour-text-primary: #333333;
-  --colour-text-button: #000000;
-  --navbar-bg: #66CCDA;
-  background-color: #ffffff;
-}
-body.theme-light .navbar {
-  background-color: var(--navbar-bg);
-}
-body.theme-light .chatsSection, body.theme-light .textSection, body.theme-light .textInputSection {
-  background-color: var(--colour-light);
-}
-body.theme-light .topBar {
-  background-color: var(--colour-light);
-  border-bottom-color: var(--colour-primary);
-}
-body.theme-light .messageStyling {
-  color: var(--colour-text-primary);
-}
-body.theme-light ::-webkit-scrollbar-track {
-  background-color: var(--colour-light);
-}
-
-body.theme-dark {
-  --colour-light: #f8f9fa;
-  --colour-dark: #343a40;
-  --colour-oled: #2a2e33;
-  --colour-text-primary: #cccccc;
-  --colour-text-button: #000000;
-  --navbar-bg: #66CCDA;
-  background-color: #343a40;
-}
-body.theme-dark .navbar {
-  background-color: var(--navbar-bg);
-}
-body.theme-dark .chatsSection, body.theme-dark .textSection, body.theme-dark .textInputSection {
-  background-color: var(--colour-dark);
-}
-body.theme-dark .topBar {
-  background-color: var(--colour-dark);
-  border-bottom-color: var(--colour-primary);
-}
-body.theme-dark .messageStyling {
-  color: var(--colour-light);
-}
-body.theme-dark ::-webkit-scrollbar-track {
-  background-color: var(--colour-dark);
-}
-
-body.theme-oled {
-  --colour-light: #ffffff;
-  --colour-dark: #000000;
-  --colour-oled: #000000;
-  --colour-text-primary: #ffffff;
-  --colour-text-button: #000000;
-  --navbar-bg: #66CCDA;
-  background-color: #000000;
-}
-body.theme-oled .navbar {
-  background-color: var(--navbar-bg);
-}
-body.theme-oled .chatsSection, body.theme-oled .textSection, body.theme-oled .textInputSection {
-  background-color: var(--colour-oled);
-}
-body.theme-oled .topBar {
-  background-color: var(--colour-oled);
-  border-bottom-color: var(--colour-primary);
-}
-body.theme-oled .messageStyling {
-  color: var(--colour-light);
-}
-body.theme-oled ::-webkit-scrollbar-track {
-  background-color: var(--colour-oled);
-}
-body.theme-oled .chatsSection {
-  border-right-color: var(--colour-primary);
-}
-body.theme-oled .topBarProfile, body.theme-oled .topBarChannel {
-  border-right-color: var(--colour-primary);
-}
-
-body {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-body .chatsSection, body .textSection, body .textInputSection {
-  transition: background-color 0.3s ease;
-}
-body .topBar {
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-body .messageStyling {
-  transition: color 0.3s ease;
-}
-
-.parent {
-  height: 100vh;
-  width: 100vw;
-}
-.parent .navbar {
-  transition: background-color 0.3s ease;
-}
-.parent .chatsSection {
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-.parent .textSection {
-  transition: background-color 0.3s ease;
-}
-.parent .textInputSection {
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-.parent .topBar {
-  transition: background-color 0.3s ease;
-}
-.parent .topBar .topBarProfile, .parent .topBar .topBarChannel {
-  transition: border-color 0.3s ease;
-}
-.parent .topBar .channelText {
-  transition: color 0.3s ease, border-color 0.3s ease;
-  background-color: transparent;
-  color: var(--colour-text-primary);
-}
-.parent .topBar .channelText::-moz-placeholder {
-  color: var(--colour-text-primary);
-  opacity: 0.7;
-}
-.parent .topBar .channelText::placeholder {
-  color: var(--colour-text-primary);
-  opacity: 0.7;
-}
-.parent .topBar .topBarTime {
-  transition: color 0.3s ease;
-  color: var(--colour-primary);
-}
-
-.softwareName {
-  color: var(--colour-text-primary);
-}
-
-.chatsText {
-  color: var(--colour-text-primary);
-}
-
-.charCount {
-  color: var(--colour-primary);
-}
-
-.inputBox {
-  background-color: transparent;
-  color: var(--colour-text-primary);
-}
-.inputBox::-moz-placeholder {
-  color: var(--colour-text-primary);
-  opacity: 0.7;
-}
-.inputBox::placeholder {
-  color: var(--colour-text-primary);
-  opacity: 0.7;
-}
-
-.giphySearchInput {
-  background-color: var(--colour-dark);
-  color: var(--colour-text-primary);
-  border-color: var(--colour-primary);
-}
-.giphySearchInput::-moz-placeholder {
-  color: var(--colour-text-primary);
-  opacity: 0.7;
-}
-.giphySearchInput::placeholder {
-  color: var(--colour-text-primary);
-  opacity: 0.7;
-}
-
-/* ===================== 
-       Colour Palette
-   ===================== */
-/* ===================== 
         Typography 
    ===================== */
 @font-face {
@@ -284,7 +102,6 @@ h6 {
    ===================== */
 body {
   text-align: center;
-  background-color: #343a40;
 }
 
 p {
@@ -309,25 +126,16 @@ h6 {
 
 ::-webkit-scrollbar {
   width: 20px;
-  background-color: #66CCDA;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #66CCDA;
   cursor: pointer;
 }
 
-::-webkit-scrollbar-track {
-  background-color: #343a40;
-}
-
 .button {
-  background-color: #66CCDA;
-  color: #000000;
   font-family: "VT323";
   font-size: 1.5rem;
   padding: 5px 40px;
-  border: solid 4px #0394BB;
   cursor: pointer;
   right: 10px;
   bottom: 10px;
@@ -336,13 +144,11 @@ h6 {
 }
 .button:hover {
   transition: 350ms ease-in-out;
-  background-color: #0394BB;
   border-radius: 50px;
 }
 .button:active {
   transition: all 0.01s;
   -webkit-transition: all 0.01s;
-  border: solid 4px #66CCDA;
   border-radius: 50px;
 }
 
@@ -356,13 +162,6 @@ h6 {
 }
 
 .contextMenu {
-  --menu-border: rgba(255, 255, 255, 0.08);
-  --menu-bg: linear-gradient(45deg,
-      rgba(10, 20, 28, 0.2) 0%,
-      rgba(10, 20, 28, 0.7) 100%);
-  --item-border: rgba(255, 255, 255, 0.1);
-  --item-color: #fff;
-  --item-bg-hover: rgba(255, 255, 255, 0.1);
   height: 0;
   overflow: hidden;
   background: var(--menu-bg);
@@ -416,15 +215,6 @@ h6 {
 }
 .contextMenu-button:hover {
   background-color: var(--item-bg-hover);
-}
-.contextMenu[data-theme=light] {
-  --menu-bg: linear-gradient(45deg,
-      rgba(255, 255, 255, 0.45) 0%,
-      rgba(255, 255, 255, 0.85) 100%);
-  --menu-border: rgba(0, 0, 0, 0.08);
-  --item-border: rgba(0, 0, 0, 0.1);
-  --item-color: rgb(10, 20, 28);
-  --item-bg-hover: rgba(10, 20, 28, 0.09);
 }
 
 @keyframes menuAnimation {
@@ -496,10 +286,9 @@ h6 {
   position: relative;
   width: 100%;
   height: 100%;
-  border: 2px solid #66CCDA;
   border-radius: 8px;
   overflow: hidden;
-  background: #000000;
+  background: var(--colour-oled);
 }
 
 .media-content {
@@ -567,7 +356,6 @@ h6 {
   right: 0;
   height: -moz-fit-content;
   height: fit-content;
-  background: linear-gradient(to right, #66CCDA 0%, #66CCDA 50%, #0394BB 50%, #0394BB 100%);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -580,7 +368,7 @@ h6 {
 .visualizer-container {
   flex: 1;
   height: 100%;
-  background: #000000;
+  background: var(--colour-oled);
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -590,13 +378,12 @@ h6 {
 .audio-visualizer {
   height: 35px;
   width: 100%;
-  background: #000000;
+  background: var(--colour-oled);
 }
 
 .volume-container {
   position: relative;
   display: flex;
-  background: #66CCDA;
   height: -moz-fit-content;
   height: fit-content;
   width: 13%;
@@ -615,13 +402,8 @@ h6 {
   transform: all 0.25s;
   -webkit-transform: all 0.25s;
 }
-.volume-button:hover .volume-indicator {
-  background-color: #0394BB;
-}
 
 .volume-indicator {
-  background: #66CCDA;
-  color: #343a40;
   border-radius: 4px;
   font-family: "VT323";
   font-size: 1.5rem;
@@ -635,35 +417,6 @@ h6 {
   opacity: 1;
 }
 
-.typing-indicator {
-  position: fixed;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(102, 204, 218, 0.9);
-  color: #000000;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-family: "VT323";
-  font-size: 1.125rem;
-  z-index: 1000;
-  display: none;
-}
-.typing-indicator.show {
-  display: block;
-  animation: fadeInUp 0.3s ease;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-}
 .settingsMenuWrapper {
   position: fixed;
   top: 0;
@@ -697,8 +450,6 @@ h6 {
   left: 5%;
   right: 5%;
   bottom: 5%;
-  background: #343a40;
-  border: 2px solid #66CCDA;
   border-radius: 12px;
   display: grid;
   grid-template-columns: 250px 1fr;
@@ -713,17 +464,14 @@ h6 {
 }
 .settingsMenuWrapper .settingsSidebar {
   background: darkslategrey;
-  border-right: 2px solid #66CCDA;
   padding: 1.5rem;
   overflow-y: auto;
 }
 .settingsMenuWrapper .settingsSidebar .sidebarHeader {
   font-family: "LoveLetter";
   font-size: 1.725rem;
-  color: #66CCDA;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #66CCDA;
 }
 .settingsMenuWrapper .settingsSidebar .settingsNavButton {
   width: 100%;
@@ -732,7 +480,6 @@ h6 {
   background: transparent;
   border: 2px solid transparent;
   border-radius: 4px;
-  color: #646464;
   font-family: "VT323";
   font-size: 1.125rem;
   text-align: left;
@@ -741,12 +488,6 @@ h6 {
 }
 .settingsMenuWrapper .settingsSidebar .settingsNavButton:hover {
   background: rgba(102, 204, 218, 0.1);
-  border-color: #66CCDA;
-}
-.settingsMenuWrapper .settingsSidebar .settingsNavButton.active {
-  background: #66CCDA;
-  color: #000000;
-  border-color: #0394BB;
 }
 .settingsMenuWrapper .settingsContent {
   padding: 3rem;
@@ -761,13 +502,11 @@ h6 {
   animation: fadeInSettings 0.3s;
 }
 .settingsMenuWrapper .settingsContent .settingsSection h2 {
-  color: #66CCDA;
   font-family: "LoveLetter";
   font-size: 2.07rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 2px solid #66CCDA;
 }
 .settingsMenuWrapper .settingsContent .settingsSection .settingsGrid {
   display: grid;
@@ -782,7 +521,6 @@ h6 {
 .settingsMenuWrapper .settingsContent .settingsSection label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #ddd;
   font-family: "OpenSans", sans-serif;
   font-size: 1.125rem;
 }
@@ -803,7 +541,6 @@ h6 {
 .settingsMenuWrapper .settingsContent .settingsSection input[type=email]:focus,
 .settingsMenuWrapper .settingsContent .settingsSection select:focus {
   outline: none;
-  border-color: #66CCDA;
 }
 .settingsMenuWrapper .settingsContent .settingsSection input[type=checkbox],
 .settingsMenuWrapper .settingsContent .settingsSection input[type=radio] {
@@ -834,7 +571,6 @@ h6 {
 }
 .settingsMenuWrapper .settingsContent .settingsSection .sliderWrapper label .sliderValue {
   font-weight: 700;
-  color: #66CCDA;
   font-family: "VT323";
 }
 .settingsMenuWrapper .settingsContent .settingsSection .sliderWrapper input[type=range] {
@@ -849,26 +585,21 @@ h6 {
   border: 2px solid #666;
 }
 .settingsMenuWrapper .settingsContent .settingsSection .saveButton {
-  background-color: #66CCDA;
-  color: #000000;
   font-family: "VT323";
   font-size: 1.5rem;
   padding: 1rem 3rem;
   margin-top: 1.5rem;
-  border: solid 4px #0394BB;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
 }
 .settingsMenuWrapper .settingsContent .settingsSection .saveButton:hover {
-  background-color: #0394BB;
   transform: translateY(-2px);
 }
 .settingsMenuWrapper .closeButton {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  background-color: #dc3545;
   color: #fff;
   border: none;
   padding: 0.5rem 1rem;
@@ -880,7 +611,6 @@ h6 {
   transition: all 0.2s;
 }
 .settingsMenuWrapper .closeButton:hover {
-  background-color: darkred;
   transform: scale(1.1);
 }
 
@@ -900,16 +630,11 @@ h6 {
 }
 .settingsSidebar::-webkit-scrollbar-track,
 .settingsContent::-webkit-scrollbar-track {
-  background: #343a40;
+  background: var(--colour-dark);
 }
 .settingsSidebar::-webkit-scrollbar-thumb,
 .settingsContent::-webkit-scrollbar-thumb {
-  background: #66CCDA;
   border-radius: 5px;
-}
-.settingsSidebar::-webkit-scrollbar-thumb:hover,
-.settingsContent::-webkit-scrollbar-thumb:hover {
-  background: #0394BB;
 }
 
 .parent {
@@ -925,7 +650,6 @@ h6 {
   grid-column: span 5/span 5;
   grid-column-start: 1;
   grid-row-start: 1;
-  background-color: #66CCDA;
   padding: 18px;
   display: flex;
   align-items: center;
@@ -941,14 +665,12 @@ h6 {
 }
 .navbar .softwareName {
   font-family: "LoveLetter";
-  color: #646464;
 }
 
 .topBar {
   grid-column: span 5/span 5;
   grid-column-start: 1;
   grid-row-start: 2;
-  border-bottom: solid 2px #66CCDA;
   overflow-y: hidden;
   display: grid;
   grid-template-columns: 200px 200px 1fr;
@@ -957,7 +679,6 @@ h6 {
   font-size: 1.725rem;
 }
 .topBar .topBarProfile {
-  border-right: solid 2px #66CCDA;
   padding: 5px 0;
   display: flex;
   justify-content: left;
@@ -999,7 +720,6 @@ h6 {
   display: none;
 }
 .topBar .topBarChannel {
-  border-right: solid 2px #66CCDA;
   white-space: nowrap;
   margin-left: 10px;
   text-align: left;
@@ -1010,9 +730,7 @@ h6 {
   width: 100%;
   height: 90%;
   background-color: transparent;
-  border: none;
-  border-left: solid 2px #66CCDA;
-  color: #646464;
+  border-left: solid 2px var(--border-color);
 }
 .topBar .topBarChannel .channelText::-moz-placeholder {
   font-size: 1.5rem !important;
@@ -1023,7 +741,6 @@ h6 {
 .topBar .topBarChannel .channelText:focus {
   border: none;
   outline: none;
-  caret-color: #66CCDA;
 }
 .topBar .topBarChannel .channelText:focus::-moz-placeholder {
   color: transparent;
@@ -1032,7 +749,6 @@ h6 {
   color: transparent;
 }
 .topBar .topBarTime {
-  color: #66CCDA;
   margin-left: 10px;
   text-align: left;
 }
@@ -1042,7 +758,6 @@ h6 {
   grid-column-start: 1;
   grid-row-start: 3;
   padding: 10px 0;
-  border-right: solid 2px #66CCDA;
   padding-bottom: 1rem;
   overflow-y: auto;
 }
@@ -1064,8 +779,6 @@ h6 {
 
 .profilePopup {
   position: fixed;
-  background: #343a40;
-  border: 2px solid #66CCDA;
   border-radius: 8px;
   padding: 20px;
   min-width: 250px;
@@ -1079,18 +792,15 @@ h6 {
   gap: 15px;
   margin-bottom: 15px;
   padding-bottom: 15px;
-  border-bottom: 1px solid #66CCDA;
 }
 .profilePopup .profileHeader .profilePicture {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: #66CCDA;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  color: #343a40;
   font-family: "LoveLetter";
 }
 .profilePopup .profileHeader .profileInfo {
@@ -1099,13 +809,11 @@ h6 {
 .profilePopup .profileHeader .profileInfo .profileName {
   font-family: "LoveLetter";
   font-size: 1.725rem;
-  color: #66CCDA;
   margin-bottom: 5px;
 }
 .profilePopup .profileHeader .profileInfo .profileRole {
   font-family: "VT323";
   font-size: 1.125rem;
-  color: #646464;
 }
 .profilePopup .profileDetails {
   display: flex;
@@ -1118,34 +826,23 @@ h6 {
   font-family: "VT323";
   font-size: 1.125rem;
 }
-.profilePopup .profileDetails .profileRow .label {
-  color: #646464;
-}
 .profilePopup .profileDetails .profileRow .value {
-  color: #f8f9fa;
   font-weight: bold;
 }
 .profilePopup .profileActions {
   margin-top: 15px;
   padding-top: 15px;
-  border-top: 1px solid #66CCDA;
   display: flex;
   gap: 10px;
 }
 .profilePopup .profileActions button {
   flex: 1;
   padding: 8px 16px;
-  background: #66CCDA;
-  border: 2px solid #0394BB;
   border-radius: 4px;
-  color: #000000;
   font-family: "VT323";
   font-size: 1.125rem;
   cursor: pointer;
   transition: all 0.2s;
-}
-.profilePopup .profileActions button:hover {
-  background: #0394BB;
 }
 .profilePopup .closePopup {
   position: absolute;
@@ -1153,7 +850,6 @@ h6 {
   right: 10px;
   background: transparent;
   border: none;
-  color: #66CCDA;
   font-size: 1.5rem;
   cursor: pointer;
   width: 30px;
@@ -1163,10 +859,6 @@ h6 {
   justify-content: center;
   border-radius: 50%;
   transition: all 0.2s;
-}
-.profilePopup .closePopup:hover {
-  background: #66CCDA;
-  color: #343a40;
 }
 
 @keyframes popupFadeIn {
@@ -1227,26 +919,10 @@ h6 {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.textSection .scrollable .pythonScript #userStyling {
-  color: #DD8E32;
-  font: "LoveLetter";
-  font-size: 1.725rem;
-  font-weight: 400;
-}
-.textSection .scrollable .pythonScript #othersStyling {
-  color: #13801D;
-  font: "LoveLetter";
-  font-size: 1.725rem;
-  font-weight: 400;
-}
-.textSection .scrollable .pythonScript #adminStyling {
-  color: #467592;
-  font: "LoveLetter";
-  font-size: 1.725rem;
-  font-weight: 400;
-}
+.textSection .scrollable .pythonScript #userStyling,
+.textSection .scrollable .pythonScript #othersStyling,
+.textSection .scrollable .pythonScript #adminStyling,
 .textSection .scrollable .pythonScript #mentionStyling {
-  color: #3a3af8;
   font: "LoveLetter";
   font-size: 1.725rem;
   font-weight: 400;
@@ -1254,7 +930,6 @@ h6 {
 .textSection .scrollable .pythonScript .gapBetween {
   flex-shrink: 0;
   font-size: 30px;
-  color: #66CCDA;
   grid-column: 2;
   align-self: start;
   padding: 0;
@@ -1262,7 +937,6 @@ h6 {
 .textSection .scrollable .pythonScript .timeSent {
   flex-shrink: 0;
   font-size: 1.725rem;
-  color: #66CCDA;
   grid-column: 3;
   align-self: start;
   display: flex;
@@ -1281,7 +955,6 @@ h6 {
 }
 .textSection .scrollable .pythonScript .messageStyling {
   font: "VT323";
-  color: #f8f9fa;
   font-size: 1.725rem;
   margin: 0;
   word-wrap: break-word;
@@ -1299,68 +972,29 @@ h6 {
   padding: 10px 10px;
   position: absolute;
 }
-.messageButtonsWrapper .chatButtonWrapper input {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-}
-.messageButtonsWrapper .chatButtonWrapper label {
-  border-top: solid 8px rgba(102, 204, 218, 0.3137254902);
-  border-right: solid 8px rgba(102, 204, 218, 0.3137254902);
-  border-bottom: solid 8px #66CCDA;
-  border-left: solid 8px rgba(102, 204, 218, 0.3137254902);
-  font-family: "VT323";
-  font-size: 1.725rem;
-  padding: 4px 24px;
-  background-color: transparent;
-  color: #66CCDA;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-       user-select: none;
-}
-.messageButtonsWrapper .chatButtonWrapper input:checked ~ label {
-  border-top: solid 8px #66CCDA;
-  border-right: solid 8px #66CCDA;
-  border-bottom: solid 8px #343a40;
-  border-left: solid 8px #66CCDA;
-  font-family: "VT323";
-  font-size: 1.725rem;
-  padding: px 24px;
-  background-color: transparent;
-  color: #66CCDA;
-}
+.messageButtonsWrapper .chatButtonWrapper input,
 .messageButtonsWrapper .shareButtonWrapper input {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  float: left;
 }
+.messageButtonsWrapper .chatButtonWrapper label,
 .messageButtonsWrapper .shareButtonWrapper label {
-  border-top: solid 8px rgba(102, 204, 218, 0.3137254902);
-  border-right: solid 8px rgba(102, 204, 218, 0.3137254902);
-  border-bottom: solid 8px #66CCDA;
-  border-left: solid 8px rgba(102, 204, 218, 0.3137254902);
   font-family: "VT323";
   font-size: 1.725rem;
   padding: 4px 24px;
   background-color: transparent;
-  color: #66CCDA;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
        user-select: none;
 }
+.messageButtonsWrapper .chatButtonWrapper input:checked ~ label,
 .messageButtonsWrapper .shareButtonWrapper input:checked ~ label {
-  border-top: solid 8px #66CCDA;
-  border-right: solid 8px #66CCDA;
-  border-bottom: solid 8px #343a40;
-  border-left: solid 8px #66CCDA;
   font-family: "VT323";
   font-size: 1.725rem;
   padding: 4px 24px;
   background-color: transparent;
-  color: #66CCDA;
 }
 
 .textInputSection {
@@ -1368,7 +1002,6 @@ h6 {
   grid-column-start: 2;
   grid-row-start: 6;
   margin-left: 4px;
-  border-top: solid 8px #66CCDA;
   position: relative;
 }
 .textInputSection .fileUploadButton {
@@ -1386,8 +1019,6 @@ h6 {
   display: none;
 }
 .textInputSection .inputBox {
-  background-color: transparent;
-  color: #646464;
   font-family: "VT323";
   font-size: 1.5rem;
   border: none;
@@ -1401,7 +1032,6 @@ h6 {
 .textInputSection .inputBox:focus {
   border: none;
   outline: none;
-  caret-color: #66CCDA;
 }
 .textInputSection .inputBox:focus::-moz-placeholder {
   color: transparent;
@@ -1421,7 +1051,6 @@ h6 {
 .countWrapper .charCount {
   font-family: "VT323";
   font-size: 1.5rem;
-  color: #66CCDA;
 }
 
 #shareMode {
@@ -1445,23 +1074,13 @@ h6 {
 .giphySearchInput {
   width: 100%;
   padding: 10px;
-  background-color: #343a40;
-  border: 2px solid #66CCDA;
   border-radius: 8px;
-  color: #f8f9fa;
   font-family: "VT323";
   font-size: 1.5rem;
 }
 .giphySearchInput:focus {
   outline: none;
-  border-color: #0394BB;
   box-shadow: 0 0 10px rgba(102, 204, 218, 0.3);
-}
-.giphySearchInput::-moz-placeholder {
-  color: #646464;
-}
-.giphySearchInput::placeholder {
-  color: #646464;
 }
 
 .giphyResults {
@@ -1476,7 +1095,6 @@ h6 {
 .giphyResults p {
   grid-column: 1/-1;
   text-align: center;
-  color: #66CCDA;
 }
 
 .giphy-result {
@@ -1496,15 +1114,14 @@ h6 {
   display: block;
 }
 .giphy-result:hover {
-  border-color: #66CCDA;
   transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(102, 204, 218, 0.5);
 }
 .giphy-result:active {
   transform: scale(0.95);
 }
 
-#chatMode, #shareMode {
+#chatMode,
+#shareMode {
   width: 100%;
   height: 100%;
   position: relative;
@@ -1512,372 +1129,8 @@ h6 {
 
 /* ===================== 
     SETTINGS STYLES
+    All colors are managed in theme-colors.css
    ===================== */
-:root {
-  --message-font-size: 1.5rem;
-  --message-gap: 40px;
-  --typing-indicator-display: block;
-  --read-receipts-display: block;
-  --online-status-display: block;
-  --notification-sound-enabled: 1;
-  --desktop-notifications-enabled: 0;
-  --enter-to-send: 1;
-}
-
-/* ===================== 
-        Themes
-   ===================== */
-body.theme-light {
-  --colour-light: #f8f9fa;
-  --colour-dark: #ffffff;
-  --colour-oled: #f0f0f0;
-  --colour-text-primary: #333333;
-  --colour-text-button: #000000;
-  --navbar-bg: var(--colour-primary);
-  --section-bg: #f8f9fa;
-  --border-color: var(--colour-primary);
-  background-color: #ffffff;
-}
-body.theme-light .navbar {
-  background-color: var(--navbar-bg);
-}
-body.theme-light .chatsSection,
-body.theme-light .textSection,
-body.theme-light .textInputSection {
-  background-color: var(--section-bg);
-}
-body.theme-light .topBar {
-  background-color: var(--section-bg);
-  border-bottom-color: var(--border-color);
-}
-body.theme-light .messageStyling {
-  color: var(--colour-text-primary);
-}
-body.theme-light .softwareName,
-body.theme-light .chatsText {
-  color: var(--colour-text-primary);
-}
-body.theme-light ::-webkit-scrollbar-track {
-  background-color: var(--section-bg);
-}
-
-body.theme-dark {
-  --colour-light: #f8f9fa;
-  --colour-dark: #343a40;
-  --colour-oled: #2a2e33;
-  --colour-text-primary: #cccccc;
-  --colour-text-button: #000000;
-  --navbar-bg: var(--colour-primary);
-  --section-bg: #343a40;
-  --border-color: var(--colour-primary);
-  background-color: #343a40;
-}
-body.theme-dark .navbar {
-  background-color: var(--navbar-bg);
-}
-body.theme-dark .chatsSection,
-body.theme-dark .textSection,
-body.theme-dark .textInputSection {
-  background-color: var(--section-bg);
-}
-body.theme-dark .topBar {
-  background-color: var(--section-bg);
-  border-bottom-color: var(--border-color);
-}
-body.theme-dark .messageStyling {
-  color: var(--colour-light);
-}
-body.theme-dark .softwareName,
-body.theme-dark .chatsText {
-  color: var(--colour-text-primary);
-}
-body.theme-dark ::-webkit-scrollbar-track {
-  background-color: var(--section-bg);
-}
-
-body.theme-oled {
-  --colour-light: #ffffff;
-  --colour-dark: #000000;
-  --colour-oled: #000000;
-  --colour-text-primary: #ffffff;
-  --colour-text-button: #000000;
-  --navbar-bg: var(--colour-primary);
-  --section-bg: #000000;
-  --border-color: var(--colour-primary);
-  background-color: #000000;
-}
-body.theme-oled .navbar {
-  background-color: var(--navbar-bg);
-}
-body.theme-oled .chatsSection,
-body.theme-oled .textSection,
-body.theme-oled .textInputSection {
-  background-color: var(--section-bg);
-}
-body.theme-oled .topBar {
-  background-color: var(--section-bg);
-  border-bottom-color: var(--border-color);
-}
-body.theme-oled .messageStyling {
-  color: var(--colour-light);
-}
-body.theme-oled .softwareName,
-body.theme-oled .chatsText {
-  color: var(--colour-text-primary);
-}
-body.theme-oled ::-webkit-scrollbar-track {
-  background-color: var(--section-bg);
-}
-
-/* ===================== 
-    Settings-specific Styles
-   ===================== */
-.settingsMenuWrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 10000;
-  display: none;
-  pointer-events: none;
-}
-.settingsMenuWrapper.show {
-  display: block;
-  pointer-events: auto;
-}
-.settingsMenuWrapper .settingsOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.show .settingsMenuWrapper .settingsOverlay {
-  opacity: 1;
-}
-.settingsMenuWrapper .settingsMenu {
-  position: absolute;
-  top: 5%;
-  left: 5%;
-  right: 5%;
-  bottom: 5%;
-  background: var(--section-bg, #343a40);
-  border: 2px solid var(--colour-primary);
-  border-radius: 12px;
-  display: grid;
-  grid-template-columns: 250px 1fr;
-  overflow: hidden;
-  transform: translateY(20px);
-  transition: transform 0.3s;
-}
-.show .settingsMenuWrapper .settingsMenu {
-  transform: translateY(0);
-}
-.settingsMenuWrapper .settingsSidebar {
-  background: darkslategrey;
-  border-right: 2px solid var(--colour-primary);
-  padding: 1.5rem;
-  overflow-y: auto;
-}
-.settingsMenuWrapper .settingsSidebar .sidebarHeader {
-  font-family: "LoveLetter";
-  font-size: 1.725rem;
-  color: var(--colour-primary);
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--colour-primary);
-}
-.settingsMenuWrapper .settingsSidebar .settingsNavButton {
-  width: 100%;
-  padding: 1rem;
-  margin-bottom: 0.5rem;
-  background: transparent;
-  border: 2px solid transparent;
-  border-radius: 4px;
-  color: var(--colour-text-primary);
-  font-family: "VT323";
-  font-size: 1.125rem;
-  text-align: left;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.settingsMenuWrapper .settingsSidebar .settingsNavButton:hover {
-  background: rgba(var(--colour-primary), 0.1);
-  border-color: var(--colour-primary);
-}
-.settingsMenuWrapper .settingsSidebar .settingsNavButton.active {
-  background: var(--colour-primary);
-  color: var(--colour-text-button);
-  border-color: var(--colour-secondary);
-}
-.settingsMenuWrapper .settingsContent {
-  padding: 3rem;
-  overflow-y: auto;
-  position: relative;
-}
-.settingsMenuWrapper .settingsContent .settingsSection {
-  display: none;
-}
-.settingsMenuWrapper .settingsContent .settingsSection.active {
-  display: block;
-  animation: fadeInSettings 0.3s;
-}
-.settingsMenuWrapper .settingsContent .settingsSection h2 {
-  color: var(--colour-primary);
-  font-family: "LoveLetter";
-  font-size: 2.07rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid var(--colour-primary);
-}
-.settingsMenuWrapper .settingsContent .settingsSection .settingsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-}
-.settingsMenuWrapper .settingsContent .settingsSection .settingsGrid .settingsColumn {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.settingsMenuWrapper .settingsContent .settingsSection label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: var(--colour-text-primary);
-  font-family: "OpenSans", sans-serif;
-  font-size: 1.125rem;
-}
-.settingsMenuWrapper .settingsContent .settingsSection input[type=text],
-.settingsMenuWrapper .settingsContent .settingsSection input[type=email],
-.settingsMenuWrapper .settingsContent .settingsSection select {
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #666;
-  border-radius: 4px;
-  background-color: #444;
-  color: #fff;
-  font-family: "OpenSans", sans-serif;
-  transition: border-color 0.2s;
-}
-.settingsMenuWrapper .settingsContent .settingsSection input[type=text]:focus,
-.settingsMenuWrapper .settingsContent .settingsSection input[type=email]:focus,
-.settingsMenuWrapper .settingsContent .settingsSection select:focus {
-  outline: none;
-  border-color: var(--colour-primary);
-}
-.settingsMenuWrapper .settingsContent .settingsSection input[type=checkbox],
-.settingsMenuWrapper .settingsContent .settingsSection input[type=radio] {
-  margin-right: 0.5rem;
-}
-.settingsMenuWrapper .settingsContent .settingsSection .checkboxWrapper,
-.settingsMenuWrapper .settingsContent .settingsSection .radioWrapper {
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-}
-.settingsMenuWrapper .settingsContent .settingsSection .checkboxWrapper label,
-.settingsMenuWrapper .settingsContent .settingsSection .radioWrapper label {
-  margin-bottom: 0;
-  cursor: pointer;
-}
-.settingsMenuWrapper .settingsContent .settingsSection .checkboxWrapper input,
-.settingsMenuWrapper .settingsContent .settingsSection .radioWrapper input {
-  cursor: pointer;
-}
-.settingsMenuWrapper .settingsContent .settingsSection .sliderWrapper {
-  margin-bottom: 1.5rem;
-}
-.settingsMenuWrapper .settingsContent .settingsSection .sliderWrapper label {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-}
-.settingsMenuWrapper .settingsContent .settingsSection .sliderWrapper label .sliderValue {
-  font-weight: 700;
-  color: var(--colour-primary);
-  font-family: "VT323";
-}
-.settingsMenuWrapper .settingsContent .settingsSection .sliderWrapper input[type=range] {
-  width: 100%;
-  margin-bottom: 0.5rem;
-}
-.settingsMenuWrapper .settingsContent .settingsSection .sliderWrapper .colorPreview {
-  width: 100%;
-  height: 40px;
-  border-radius: 4px;
-  margin-top: 0.5rem;
-  border: 2px solid #666;
-}
-.settingsMenuWrapper .settingsContent .settingsSection .saveButton {
-  background-color: var(--colour-primary);
-  color: var(--colour-text-button);
-  font-family: "VT323";
-  font-size: 1.5rem;
-  padding: 1rem 3rem;
-  margin-top: 1.5rem;
-  border: solid 4px var(--colour-secondary);
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.settingsMenuWrapper .settingsContent .settingsSection .saveButton:hover {
-  background-color: var(--colour-secondary);
-  transform: translateY(-2px);
-}
-.settingsMenuWrapper .closeButton {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-family: "VT323";
-  font-size: 1.725rem;
-  z-index: 10;
-  transition: all 0.2s;
-}
-.settingsMenuWrapper .closeButton:hover {
-  background-color: darkred;
-  transform: scale(1.1);
-}
-
-@keyframes fadeInSettings {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.settingsSidebar::-webkit-scrollbar,
-.settingsContent::-webkit-scrollbar {
-  width: 10px;
-}
-.settingsSidebar::-webkit-scrollbar-track,
-.settingsContent::-webkit-scrollbar-track {
-  background: var(--section-bg, #343a40);
-}
-.settingsSidebar::-webkit-scrollbar-thumb,
-.settingsContent::-webkit-scrollbar-thumb {
-  background: var(--colour-primary);
-  border-radius: 5px;
-}
-.settingsSidebar::-webkit-scrollbar-thumb:hover,
-.settingsContent::-webkit-scrollbar-thumb:hover {
-  background: var(--colour-secondary);
-}
-
 /* ===================== 
     Application of Settings
    ===================== */
@@ -1897,8 +1150,6 @@ body.theme-oled ::-webkit-scrollbar-track {
   bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(var(--colour-primary), 0.9);
-  color: var(--colour-text-button);
   padding: 8px 16px;
   border-radius: 8px;
   font-family: "VT323";
@@ -1913,7 +1164,6 @@ body.theme-oled ::-webkit-scrollbar-track {
 .read-receipt {
   display: var(--read-receipts-display);
   font-size: 0.8em;
-  color: var(--colour-primary);
   margin-left: 5px;
 }
 
@@ -1922,7 +1172,6 @@ body.theme-oled ::-webkit-scrollbar-track {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #28a745;
   margin-left: 5px;
 }
 
@@ -1935,19 +1184,4 @@ body.theme-oled ::-webkit-scrollbar-track {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
-}
-body {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-body .navbar,
-body .chatsSection,
-body .textSection,
-body .textInputSection,
-body .topBar,
-body .messageStyling,
-body .softwareName,
-body .chatsText,
-body .inputBox,
-body .channelText {
-  transition: all 0.3s ease;
 }
